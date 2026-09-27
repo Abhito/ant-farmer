@@ -1,0 +1,26 @@
+# Godot 4+ specific ignores
+/android/
+
+# Godot 4+ cache and imported assets
+.godot/
+
+# Godot 3 (if applicable)
+.import/
+
+# Mono / C# builds (if using Godot .NET)
+.vs/
+.vscode/
+.idea/
+bin/
+obj/
+*.csproj.user
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Exported game binaries
+builds/
+export/
+*.pck
+*.apk
