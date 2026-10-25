@@ -55,8 +55,8 @@ public partial class Hud : CanvasLayer
         if (_sim == null)
             return;
 
-        _redScore.Text = $"RED  {_sim.Deliveries[Team.Red]}";
-        _blueScore.Text = $"{_sim.Deliveries[Team.Blue]}  BLUE";
+        _redScore.Text = $"RED ({ControllerName(Team.Red)})  {_sim.Deliveries[Team.Red]}";
+        _blueScore.Text = $"{_sim.Deliveries[Team.Blue]}  ({ControllerName(Team.Blue)}) BLUE";
 
         int seconds = Mathf.CeilToInt(_sim.RemainingSeconds);
         _clock.Text = $"{seconds / 60}:{seconds % 60:00}";
@@ -67,6 +67,8 @@ public partial class Hud : CanvasLayer
         if (_sim.IsOver && !_banner.Visible)
             ShowBanner();
     }
+
+    private string ControllerName(Team team) => _sim.Controller(team)?.Name ?? "no AI";
 
     private void ShowBanner()
     {

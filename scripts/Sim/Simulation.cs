@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using AntFarmer.Sim.Ai;
 using Godot;
 
 namespace AntFarmer.Sim;
@@ -46,6 +47,15 @@ public class Simulation
     private readonly Dictionary<Team, int> _bites = new() { [Team.Red] = 0, [Team.Blue] = 0 };
 
     private readonly List<(Ant Biter, Ant Target)> _pendingBites = new();
+
+    /// <summary>Times each side's AI switched an ant to a different order.</summary>
+    public IReadOnlyDictionary<Team, int> RoleChanges => _roleChanges;
+    private readonly Dictionary<Team, int> _roleChanges = new() { [Team.Red] = 0, [Team.Blue] = 0 };
+
+    private readonly Dictionary<Team, ITeamController> _controllers = new();
+
+    /// <summary>Raised whenever an ant is switched to a different order (not when the same order is re-sent).</summary>
+    public event Action<Simulation, Ant> RoleChanged;
 
     /// <summary>Deliveries needed for an instant win (see <see cref="MatchSettings.WinDeliveries"/>).</summary>
     public int WinTarget { get; }
@@ -115,6 +125,10 @@ public class Simulation
             ant.WasCarrying = ant.CarryingFood;
         }
 
+        // The AIs decide on the first tick and then every DecisionTicks, before any ant moves.
+        if ((Tick - 1) % Settings.DecisionTicks == 0)
+            RunControllers();
+
         // Ants earlier in the update order win ties, like two ants reaching the last unit of food on
         // the same tick. Flip the order every tick so neither side always goes first. The order is
         // still fixed by the tick number, so matches with the same seed replay exactly.
@@ -160,6 +174,35 @@ public class Simulation
         }
     }
 
+    /// <summary>Puts <paramref name="controller"/> in charge of <paramref name="team"/>. Null leaves the ants on their current orders.</summary>
+    public void SetController(Team team, ITeamController controller)
+    {
+        if (controller == null)
+            _controllers.Remove(team);
+        else
+            _controllers[team] = controller;
+    }
+
+    public ITeamController Controller(Team team) => _controllers.GetValueOrDefault(team);
+
+    /// <summary>
+    /// Asks each side's AI for orders. Both snapshots are taken before either side's orders are
+    /// applied, so the side that happens to be asked first gains nothing.
+    /// </summary>
+    private void RunControllers()
+    {
+        var snapshots = _controllers.Keys.ToDictionary(team => team, team => WorldSnapshot.Capture(this, team));
+
+        foreach (Team team in Enum.GetValues<Team>())
+        {
+            if (!_controllers.TryGetValue(team, out ITeamController controller))
+                continue;
+
+            foreach (AntCommand command in controller.Decide(snapshots[team]))
+                AssignRole(team, command.AntId, command.Order);
+        }
+    }
+
     /// <summary>
     /// Gives one of <paramref name="team"/>'s ants a new role. Orders for the other side's ants
     /// (or unknown ids) are ignored, so an AI can only command its own colony.
@@ -171,7 +214,12 @@ public class Simulation
         if (ant == null || ant.Team != team)
             return false;
 
-        ant.SetOrder(order);
+        if (ant.SetOrder(order))
+        {
+            _roleChanges[team]++;
+            RoleChanged?.Invoke(this, ant);
+        }
+
         return true;
     }
 

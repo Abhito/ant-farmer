@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bgsnhmvi217yu" path="res://scripts/GameRunner.cs" id="1_runner"]
 [ext_resource type="Script" uid="uid://cejk2k4xv1y6t" path="res://scripts/View/MapView.cs" id="2_mapview"]
-[ext_resource type="Script" path="res://scripts/View/AntView.cs" id="3_antview"]
-[ext_resource type="Script" path="res://scripts/View/Hud.cs" id="4_hud"]
+[ext_resource type="Script" uid="uid://cavq8vdlk3jq8" path="res://scripts/View/AntView.cs" id="3_antview"]
+[ext_resource type="Script" uid="uid://vrlbujm3o0ju" path="res://scripts/View/Hud.cs" id="4_hud"]
 
 [node name="Main" type="Node2D" unique_id=1880396027]
 
@@ -13,15 +13,18 @@ MapView = NodePath("../MapView")
 AntView = NodePath("../AntView")
 Hud = NodePath("../Hud")
 Camera = NodePath("../Camera2D")
+RedController = 1
+BlueController = 1
+FixedDefenders = 1
 
 [node name="MapView" type="Node2D" parent="." unique_id=625746548]
 script = ExtResource("2_mapview")
 
-[node name="AntView" type="Node2D" parent="." node_paths=PackedStringArray("MapView")]
+[node name="AntView" type="Node2D" parent="." unique_id=1804820372 node_paths=PackedStringArray("MapView")]
 script = ExtResource("3_antview")
 MapView = NodePath("../MapView")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1914087978]
 
-[node name="Hud" type="CanvasLayer" parent="."]
+[node name="Hud" type="CanvasLayer" parent="." unique_id=2136185025]
 script = ExtResource("4_hud")

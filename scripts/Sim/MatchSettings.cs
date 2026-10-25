@@ -45,5 +45,10 @@ public class MatchSettings
     /// <summary>Defenders chase enemy carriers that come within this many cells of their post.</summary>
     public float DefendRadius = 5f;
 
+    /// <summary>How often each side's AI is asked for new orders, in seconds.</summary>
+    public float DecisionSeconds = 0.5f;
+
     public int MatchTicks => (int)(MatchSeconds * TicksPerSecond);
+
+    public int DecisionTicks => System.Math.Max(1, (int)System.MathF.Round(DecisionSeconds * TicksPerSecond));
 }

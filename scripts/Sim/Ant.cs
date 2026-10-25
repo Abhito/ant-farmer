@@ -94,11 +94,12 @@ public class Ant
     /// <summary>
     /// Switches to a new role. Does nothing if the order is unchanged, so an AI can re-send the
     /// same orders every decision without resetting what the ant is doing.
+    /// Returns true if the order changed.
     /// </summary>
-    public void SetOrder(RoleOrder order)
+    public bool SetOrder(RoleOrder order)
     {
         if (order == Order)
-            return;
+            return false;
 
         Order = order;
         ChaseTarget = null;
@@ -106,6 +107,8 @@ public class Ant
         // Keep any food already picked up; the new behavior will bring it home first.
         if (!CarryingFood)
             TargetFood = null;
+
+        return true;
     }
 
     /// <summary>

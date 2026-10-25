@@ -1,5 +1,6 @@
 using System.Linq;
 using AntFarmer.Sim;
+using AntFarmer.Sim.Ai;
 using AntFarmer.View;
 using Godot;
 
@@ -41,6 +42,19 @@ public partial class GameRunner : Node
     [Export(PropertyHint.Range, "0,20,0.25")]
     public float SimSpeed { get; set; } = 1f;
 
+    [ExportGroup("AI")]
+    [Export] public ControllerKind RedController { get; set; } = ControllerKind.Baseline;
+    [Export] public ControllerKind BlueController { get; set; } = ControllerKind.Baseline;
+
+    /// <summary>Defenders used by a <see cref="ControllerKind.FixedMix"/> side.</summary>
+    [Export] public int FixedDefenders { get; set; } = 0;
+
+    /// <summary>Interceptors used by a <see cref="ControllerKind.FixedMix"/> side.</summary>
+    [Export] public int FixedInterceptors { get; set; } = 1;
+
+    /// <summary>Print a line to the output every time an AI switches an ant to a new role.</summary>
+    [Export] public bool LogRoleChanges { get; set; } = true;
+
     /// <summary>Fraction of the window the map fills, leaving a small border.</summary>
     [ExportGroup("View")]
     [Export(PropertyHint.Range, "0.5,1,0.01")]
@@ -78,7 +92,11 @@ public partial class GameRunner : Node
         };
 
         Sim = new Simulation(Map, settings);
+        Sim.SetController(Team.Red, Controllers.Create(RedController, FixedDefenders, FixedInterceptors));
+        Sim.SetController(Team.Blue, Controllers.Create(BlueController, FixedDefenders, FixedInterceptors));
         Sim.MatchEnded += OnMatchEnded;
+        if (LogRoleChanges)
+            Sim.RoleChanged += OnRoleChanged;
         _tickTimer = 0;
         _lastFoodRemaining = Sim.FoodRemaining;
         _paused = false;
@@ -91,7 +109,8 @@ public partial class GameRunner : Node
 
         GD.Print($"Match started: seed {settings.Seed}, {settings.TicksPerSecond} ticks/s, " +
                  $"{settings.MatchSeconds}s limit, first to {Sim.WinTarget} deliveries wins, " +
-                 $"{settings.AntsPerTeam} ant(s) per side.");
+                 $"{settings.AntsPerTeam} ant(s) per side. " +
+                 $"Red: {Sim.Controller(Team.Red).Name}, Blue: {Sim.Controller(Team.Blue).Name}.");
     }
 
     public override void _PhysicsProcess(double delta)
@@ -138,11 +157,18 @@ public partial class GameRunner : Node
         }
     }
 
+    private void OnRoleChanged(Simulation sim, Ant ant)
+    {
+        GD.Print($"  t={sim.ElapsedSeconds:0.0}s  {ant.Team} ant {ant.Id} -> {ant.Order}");
+    }
+
     private void OnMatchEnded(Simulation sim)
     {
         string result = sim.Winner is Team winner ? $"{winner} wins" : "Draw";
         GD.Print($"Match over at t={sim.ElapsedSeconds:0.0}s: {result} " +
-                 $"(red {sim.Deliveries[Team.Red]}, blue {sim.Deliveries[Team.Blue]}).");
+                 $"(red {sim.Deliveries[Team.Red]}, blue {sim.Deliveries[Team.Blue]}; " +
+                 $"bites red {sim.Bites[Team.Red]}, blue {sim.Bites[Team.Blue]}; " +
+                 $"role changes red {sim.RoleChanges[Team.Red]}, blue {sim.RoleChanges[Team.Blue]}).");
     }
 
     /// <summary>

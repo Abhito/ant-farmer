@@ -6,7 +6,7 @@ A top-down 2D ant colony game in Godot 4.7.2 .NET (C#). Two AI-controlled coloni
 
 - Open the project in **Godot 4.7.2 .NET** and press **F5**. The main scene is `scenes/Main.tscn`.
 - **R** restarts the match. **Space** pauses.
-- Match settings (seed, time limit, ants per side, speed, sim speed) are in the Inspector on the `GameRunner` node.
+- Match settings (seed, time limit, ants per side, speed, sim speed) and each side's AI (**AI** group) are in the Inspector on the `GameRunner` node.
 - Headless run, which plays a full match in under a second:
   ```
   Godot_v4.7.2-stable_mono_win64_console.exe --headless --path . --fixed-fps 60 --quit-after 12000 res://scenes/Main.tscn
@@ -19,6 +19,7 @@ maps/arena.txt          Hand-built, left/right mirror-symmetric arena (text form
 scenes/Main.tscn        Main scene: GameRunner, MapView, AntView, Hud, Camera2D
 scripts/GameRunner.cs   Loads the map, creates the Simulation, steps it on a fixed clock, wires up the views
 scripts/Sim/            Game logic: plain C#, no nodes, no drawing
+scripts/Sim/Ai/         Team AIs and the interface they use to see and command the game
 scripts/View/           Drawing only: reads Sim state, never changes it
 ```
 
@@ -47,17 +48,31 @@ The main rule: **game logic (`Sim/`) is separate from rendering (`View/`).**
 | `InterceptBehavior.cs` | Hunt a specific enemy or the nearest enemy carrier anywhere on the map |
 | `Combat.cs` | Shared chase-and-bite and nearest-enemy helpers |
 
+### Sim/Ai/
+
+The strategy layer only picks **roles**; the role behaviors above do the pathfinding, picking up food, and biting.
+
+| File | Purpose |
+|---|---|
+| `WorldSnapshot.cs` | Read-only copy of what an AI may see: time, scores, win target, bites, its own ants (with orders), enemy ants (position/carrying/stunned, **not** their orders), food piles, nests, map, and a `PathCost` helper |
+| `ITeamController.cs` | `Decide(WorldSnapshot) → AntCommand(antId, RoleOrder)` list. Called every `DecisionSeconds` (0.5 s); orders go through `Simulation.AssignRole`, which ignores orders for enemy ants |
+| `BaselineController.cs` | The opponent to beat: every ant gathers from the cheapest pile, forever |
+| `FixedMixController.cs` | Fixed roles from the start (N interceptors, M nest defenders, rest gather); never adapts |
+| `Controllers.cs` | `ControllerKind` enum and factory used by the Inspector |
+
+Both sides' snapshots are taken before either side's orders are applied. `Simulation.RoleChanges` counts real role switches per side, and the `RoleChanged` event is printed to the output when **Log Role Changes** is on.
+
 ### View/
 
 | File | Purpose |
 |---|---|
 | `MapView.cs` | Draws terrain with shapes (lighter = higher ground, contour lines), nests, and food piles that shrink as they empty |
 | `AntView.cs` | Draws ants (team color, head shows direction, green dot = carrying, white ring = defender, yellow ring = interceptor, grey = stunned); smooths motion between ticks |
-| `Hud.cs` | Score, clock, info line, end-of-match banner |
+| `Hud.cs` | Score with each side's AI name, clock, info line, end-of-match banner |
 
 ## Game rules (defaults)
 
-- **3 ants per side**, spawned on their nest. Every ant starts in the **Gather** role.
+- **3 ants per side**, spawned on their nest. Every ant starts in the **Gather** role; each side's AI can change roles every 0.5 s.
 - Ants walk **3 cells/s** on flat ground. Each level climbed adds one normal step's cost to that step (climbing one level is twice as slow). Going downhill costs nothing extra. Carrying food slows an ant to **75%**.
 - **Win:** first side to deliver **more than half the map's food** (61 of 120 on the arena), or more deliveries when the **180 s** limit runs out. The match also ends once the map is empty and nobody is carrying food. Equal scores are a draw.
 - **Bite:** an empty-handed ant within **1.2 cells** of an enemy carrier steals its food. The victim is stunned for **1.5 s**. Each ant can bite once every **2 s**. Only Defend and Intercept ants bite.
@@ -75,8 +90,8 @@ The arena is mirror-symmetric, and the simulation is built so that identical AIs
 
 ## Status
 
-**Done:** map format and loader, shape rendering, fixed-tick simulation, grid pathfinding with climb costs, ants with gathering, two colonies with HUD and win condition, bite/steal combat, and the Gather / Defend / Intercept roles.
+**Done:** map format and loader, shape rendering, fixed-tick simulation, grid pathfinding with climb costs, ants with gathering, two colonies with HUD and win condition, bite/steal combat, the Gather / Defend / Intercept roles, and the team AI interface with Baseline and Fixed Mix controllers.
 
 **Not done yet:**
-- **Team AI.** Nothing assigns roles yet, so every ant gathers. Next is a `WorldSnapshot` (what an AI may see), an `ITeamController` called about twice a second that returns `RoleOrder`s through `Simulation.AssignRole`, a baseline controller (everyone gathers from the nearest pile), and an adaptive strategist.
+- **Strategist.** An adaptive controller that reassigns roles as the match changes.
 - **Batch evaluation.** A headless runner for many seeded matches with side swapping and CSV output.
