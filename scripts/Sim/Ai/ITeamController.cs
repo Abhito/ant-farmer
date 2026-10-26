@@ -2,13 +2,13 @@ using System.Collections.Generic;
 
 namespace AntFarmer.Sim.Ai;
 
-/// <summary>An order for one of the team's own ants.</summary>
-public readonly record struct AntCommand(int AntId, RoleOrder Order);
+/// <summary>An order for one of the team's own ants. Reason is optional and only used for logging.</summary>
+public readonly record struct AntCommand(int AntId, RoleOrder Order, string Reason = null);
 
 /// <summary>
-/// A team's strategy. The simulation calls <see cref="Decide"/> every
-/// <see cref="MatchSettings.DecisionSeconds"/> with a fresh <see cref="WorldSnapshot"/> and applies the
-/// returned orders through <see cref="Simulation.AssignRole"/>. The controller only picks roles;
+/// A team's strategy. The simulation calls Decide every half second (MatchSettings.DecisionSeconds)
+/// with a fresh WorldSnapshot and applies the
+/// returned orders through Simulation.AssignRole. The controller only picks roles;
 /// the role behaviors handle pathfinding, picking up food, and biting.
 ///
 /// Ants not mentioned keep their current order, and re-sending an unchanged order does nothing,

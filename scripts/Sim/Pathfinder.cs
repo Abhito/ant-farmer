@@ -4,7 +4,7 @@ using Godot;
 namespace AntFarmer.Sim;
 
 /// <summary>
-/// Shortest paths on the map grid, using Godot's <see cref="AStarGrid2D"/>.
+/// Shortest paths on the map grid, using Godot's AStarGrid2D.
 /// Rock blocks movement, ants may move diagonally (but not squeeze between two blocked corners),
 /// and moving uphill costs extra. Downhill and flat moves cost only the distance.
 /// </summary>
@@ -54,8 +54,7 @@ public partial class Pathfinder
     }
 
     /// <summary>
-    /// Cells to walk through to get from <paramref name="from"/> to <paramref name="to"/>,
-    /// not including the start cell. Empty if already there or if there is no route.
+    /// Cells to walk through to get from one cell to another, not including the start cell. Empty if already there or if there is no route.
     /// </summary>
     public List<Vector2I> FindPath(Vector2I from, Vector2I to)
     {
@@ -70,7 +69,20 @@ public partial class Pathfinder
         return path;
     }
 
-    /// <summary>Total <see cref="MoveCost"/> of walking <paramref name="path"/> starting at <paramref name="from"/>.</summary>
+    /// <summary>
+    /// Cost of the cheapest route between two cells: 0 if they are the same cell, infinity if there is
+    /// no route. This is the number gatherers and the strategist compare when choosing where to go.
+    /// </summary>
+    public float TravelCost(Vector2I from, Vector2I to)
+    {
+        if (from == to)
+            return 0f;
+
+        List<Vector2I> path = FindPath(from, to);
+        return path.Count == 0 ? float.PositiveInfinity : PathCost(from, path);
+    }
+
+    /// <summary>Total MoveCost of walking the given path from a starting cell.</summary>
     public float PathCost(Vector2I from, IReadOnlyList<Vector2I> path)
     {
         float cost = 0f;
@@ -83,7 +95,7 @@ public partial class Pathfinder
         return cost;
     }
 
-    /// <summary>AStarGrid2D with its step cost replaced by <see cref="MoveCost"/>.</summary>
+    /// <summary>AStarGrid2D with its step cost replaced by MoveCost.</summary>
     private partial class GridAStar : AStarGrid2D
     {
         private readonly Pathfinder _owner;

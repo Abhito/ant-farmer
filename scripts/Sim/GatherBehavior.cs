@@ -19,25 +19,40 @@ public static class GatherBehavior
     }
 
     /// <summary>
-    /// Walks a carrying ant to its nest and delivers on arrival. Other behaviors call this too, so an
-    /// ant that switches roles while holding food still brings it home first.
+    /// Walks a carrying ant to its nest and delivers on arrival. Also used for any ant that has to bring
+    /// food home before doing something else.
     /// </summary>
     public static void CarryHome(Ant ant, Simulation sim)
     {
-        List<Vector2I> nest = sim.Map.Nests[ant.Team];
-        ant.State = AntState.GoingHome;
+        HeadToNest(ant, sim);
 
-        // Plan a route home unless already on one (e.g. after picking up, or after a stun cleared the path).
+        // Any nest cell will do, even one it is only passing through on the way to another.
+        if (sim.IsAtNest(ant))
+            sim.DeliverCarried(ant);
+    }
+
+    /// <summary>
+    /// Walks an ant with a waiting role switch back to its nest, where the switch happens. Food it is
+    /// carrying gets delivered on the way in, so it arrives empty-handed for its new role.
+    /// </summary>
+    public static void ReturnHome(Ant ant, Simulation sim)
+    {
+        if (ant.CarryingFood)
+        {
+            CarryHome(ant, sim);
+            return;
+        }
+
+        ant.ChaseTarget = null;
+        HeadToNest(ant, sim);
+    }
+
+    /// <summary>Plans a route to the nearest cell of the ant's nest, unless it is already heading to one.</summary>
+    private static void HeadToNest(Ant ant, Simulation sim)
+    {
+        List<Vector2I> nest = sim.Map.Nests[ant.Team];
         if (ant.Destination is not Vector2I goal || !nest.Contains(goal))
             ant.GoTo(NearestCell(ant.Cell, nest, sim.Pathfinder), sim.Pathfinder);
-
-        if (ant.Arrived && nest.Contains(ant.Cell))
-        {
-            sim.Deliver(ant.Team);
-            ant.CarryingFood = false;
-            ant.TargetFood = null;
-            ant.State = AntState.GoingToFood;
-        }
     }
 
     private static void SeekFood(Ant ant, Simulation sim)
@@ -48,13 +63,11 @@ public static class GatherBehavior
             ant.TargetFood = ChooseFood(ant, sim);
             if (ant.TargetFood == null)
             {
-                ant.State = AntState.Idle;
                 ant.Stop();
                 return;
             }
         }
 
-        ant.State = AntState.GoingToFood;
         ant.GoTo(ant.TargetFood.Cell, sim.Pathfinder);
 
         if (ant.Arrived && ant.Cell == ant.TargetFood.Cell)
@@ -62,6 +75,7 @@ public static class GatherBehavior
             if (sim.TakeFood(ant.TargetFood))
             {
                 ant.CarryingFood = true;
+                ant.CarriedFrom = ant.TargetFood;
                 CarryHome(ant, sim);
             }
             else
@@ -79,7 +93,7 @@ public static class GatherBehavior
         {
             FoodPile ordered = sim.FoodById(id);
             if (ordered != null && ordered.Amount > 0 &&
-                !float.IsPositiveInfinity(PathCostOrInfinity(ant.Cell, ordered.Cell, sim.Pathfinder)))
+                !float.IsPositiveInfinity(sim.Pathfinder.TravelCost(ant.Cell, ordered.Cell)))
                 return ordered;
         }
 
@@ -97,7 +111,7 @@ public static class GatherBehavior
             if (pile.Amount <= 0)
                 continue;
 
-            float cost = PathCostOrInfinity(ant.Cell, pile.Cell, sim.Pathfinder);
+            float cost = sim.Pathfinder.TravelCost(ant.Cell, pile.Cell);
             if (IsCloser(ant.Cell, pile.Cell, cost, best?.Cell, bestCost))
             {
                 bestCost = cost;
@@ -108,7 +122,7 @@ public static class GatherBehavior
         return best;
     }
 
-    /// <summary>The cell in <paramref name="cells"/> with the cheapest path from <paramref name="from"/>.</summary>
+    /// <summary>The cell in the list with the cheapest path from the starting cell.</summary>
     private static Vector2I NearestCell(Vector2I from, List<Vector2I> cells, Pathfinder pathfinder)
     {
         Vector2I? best = null;
@@ -116,7 +130,7 @@ public static class GatherBehavior
 
         foreach (Vector2I cell in cells)
         {
-            float cost = PathCostOrInfinity(from, cell, pathfinder);
+            float cost = pathfinder.TravelCost(from, cell);
             if (IsCloser(from, cell, cost, best, bestCost))
             {
                 bestCost = cost;
@@ -128,32 +142,19 @@ public static class GatherBehavior
     }
 
     /// <summary>
-    /// True if <paramref name="candidate"/> (path cost <paramref name="cost"/>) beats the current best.
-    /// Costs within a small tolerance count as equal, because mirrored routes can add up their steps in a
-    /// different order and differ in the last decimal places. Equal costs fall back to straight-line
-    /// distance, which is the same on both halves of a mirrored map, instead of whichever target happens
-    /// to come first in the list.
+    /// True if the candidate cell, at the given path cost, beats the current best. Costs within
+    /// Simulation.TieTolerance count as equal and fall back to straight-line distance, which is the same on
+    /// both halves of a mirrored map, instead of whichever target happens to come first in the list.
     /// </summary>
     private static bool IsCloser(Vector2I from, Vector2I candidate, float cost, Vector2I? best, float bestCost)
     {
-        const float Tolerance = 0.001f;
-
         if (float.IsPositiveInfinity(cost))
             return false;
-        if (best == null || cost < bestCost - Tolerance)
+        if (best == null || cost < bestCost - Simulation.TieTolerance)
             return true;
-        if (cost > bestCost + Tolerance)
+        if (cost > bestCost + Simulation.TieTolerance)
             return false;
 
         return ((Vector2)from).DistanceSquaredTo(candidate) < ((Vector2)from).DistanceSquaredTo(best.Value);
-    }
-
-    private static float PathCostOrInfinity(Vector2I from, Vector2I to, Pathfinder pathfinder)
-    {
-        if (from == to)
-            return 0f;
-
-        List<Vector2I> path = pathfinder.FindPath(from, to);
-        return path.Count == 0 ? float.PositiveInfinity : pathfinder.PathCost(from, path);
     }
 }

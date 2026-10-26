@@ -20,18 +20,21 @@ public struct Cell
 {
     public Terrain Terrain;
 
-    /// <summary>Elevation, 0 = flat. Higher cells cost more to climb (used by pathfinding later).</summary>
+    /// <summary>Elevation, 0 = flat. Higher cells cost more to climb.</summary>
     public int Height;
 
     public readonly bool IsWalkable => Terrain != Terrain.Rock;
 }
 
 /// <summary>A pile of food that ants can carry home one unit at a time.</summary>
-public class FoodSource
+public class FoodPile
 {
     public int Id;
     public Vector2I Cell;
     public int Amount;
+
+    /// <summary>How much the pile held at the start of the match, so the view can shrink it as it empties.</summary>
+    public int StartAmount;
 }
 
 /// <summary>
@@ -52,7 +55,8 @@ public class MapData
         [Team.Blue] = new List<Vector2I>(),
     };
 
-    public List<FoodSource> Food { get; } = new();
+    /// <summary>The starting piles. Each match works on its own copy, so the map can be reused.</summary>
+    public List<FoodPile> Food { get; } = new();
 
     public MapData(int width, int height)
     {

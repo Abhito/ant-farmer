@@ -1,3 +1,4 @@
+using System;
 using Godot;
 
 namespace AntFarmer.Sim;
@@ -6,7 +7,7 @@ namespace AntFarmer.Sim;
 public static class Combat
 {
     /// <summary>
-    /// Bites <paramref name="target"/> if it is in range and the bite is ready; otherwise keeps closing in.
+    /// Bites the target if it is in range and the bite is ready; otherwise keeps closing in.
     /// Like all sensing of other ants, this uses where the target stood at the start of the tick.
     /// </summary>
     public static void ChaseAndBite(Ant ant, Ant target, Simulation sim)
@@ -16,30 +17,32 @@ public static class Combat
     }
 
     /// <summary>
-    /// The enemy ant carrying food that is closest to <paramref name="point"/>, ignoring any farther than
-    /// <paramref name="maxDistance"/> cells (straight line). Null if there is none.
+    /// The closest living enemy to the given point that the attacker is allowed to attack
+    /// (see Simulation.CanAttack), ignoring any more than maxDistance cells away in a straight line.
+    /// Null if there is none.
     /// </summary>
-    public static Ant NearestEnemyCarrier(Simulation sim, Team team, Vector2 point, float maxDistance = float.PositiveInfinity)
-        => NearestEnemy(sim, team, point, maxDistance, carriersOnly: true);
+    public static Ant NearestTarget(Simulation sim, Ant attacker, Vector2 point, float maxDistance = float.PositiveInfinity)
+        => NearestEnemy(sim, attacker.Team, point, maxDistance, other => Simulation.CanAttack(attacker, other));
 
-    /// <summary>The enemy ant closest to <paramref name="point"/>, carrying or not. Null if there is none.</summary>
-    public static Ant NearestEnemy(Simulation sim, Team team, Vector2 point, float maxDistance = float.PositiveInfinity, bool carriersOnly = false)
+    /// <summary>
+    /// The closest living enemy to the given point that passes the filter (any enemy if there is no
+    /// filter), ignoring any more than maxDistance cells away in a straight line. Null if there is none.
+    /// </summary>
+    public static Ant NearestEnemy(Simulation sim, Team team, Vector2 point, float maxDistance = float.PositiveInfinity, Func<Ant, bool> filter = null)
     {
-        const float Tolerance = 0.001f;
-
         Ant best = null;
-        float bestDistance = maxDistance + Tolerance;
+        float bestDistance = maxDistance + Simulation.TieTolerance;
 
         // Enemies are visited in id order, and each side's ants are numbered the same way, so on a
         // mirrored map both sides break distance ties identically.
         foreach (Ant other in sim.Ants)
         {
-            if (other.Team == team || (carriersOnly && !other.WasCarrying))
+            if (other.Team == team || other.IsDead || (filter != null && !filter(other)))
                 continue;
 
             // Other ants are sensed where they stood at the start of the tick.
             float distance = point.DistanceTo(other.PreviousPosition);
-            if (distance < bestDistance - Tolerance)
+            if (distance < bestDistance - Simulation.TieTolerance)
             {
                 best = other;
                 bestDistance = distance;

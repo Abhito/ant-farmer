@@ -6,10 +6,10 @@ using Godot;
 namespace AntFarmer.View;
 
 /// <summary>
-/// Draws a <see cref="MapData"/> with plain shapes, top-down.
+/// Draws a MapData with plain shapes, top-down.
 /// This is the one place that converts between grid cells and screen positions,
 /// so everything else (ants, overlays, the camera) should go through
-/// <see cref="GridToWorld"/> and <see cref="WorldToGrid"/>.
+/// GridToWorld.
 /// </summary>
 public partial class MapView : Node2D
 {
@@ -39,9 +39,12 @@ public partial class MapView : Node2D
     private int _maxHeight = 1;
     private IReadOnlyList<FoodPile> _food = Array.Empty<FoodPile>();
 
+    /// <summary>How far defenders may go from their nest, in cells. Drawn as a faint circle; 0 hides it.</summary>
+    public float DefendLeash { get; set; }
+
     /// <summary>
-    /// Sets what to draw. <paramref name="food"/> is the live food list from the simulation;
-    /// call <see cref="CanvasItem.QueueRedraw"/> after it changes.
+    /// Sets what to draw. The food list is the live one from the simulation;
+    /// call CanvasItem.QueueRedraw after it changes.
     /// </summary>
     public void SetMap(MapData map, IReadOnlyList<FoodPile> food)
     {
@@ -62,9 +65,6 @@ public partial class MapView : Node2D
     /// <summary>Center of a fractional grid position (for things moving between cells).</summary>
     public Vector2 GridToWorld(Vector2 gridPos) => (gridPos + new Vector2(0.5f, 0.5f)) * TileSize;
 
-    /// <summary>The cell under a point in this node's local coordinates.</summary>
-    public Vector2I WorldToGrid(Vector2 world) => (Vector2I)(world / TileSize).Floor();
-
     public override void _Draw()
     {
         if (Map == null)
@@ -72,6 +72,7 @@ public partial class MapView : Node2D
 
         DrawTerrain();
         DrawContours();
+        DrawLeash();
         DrawNests();
         DrawFood();
     }
@@ -137,6 +138,28 @@ public partial class MapView : Node2D
                 DrawRect(rect, color with { A = 0.55f });
                 DrawRect(rect.Grow(-2), color, filled: false, width: 2);
             }
+        }
+    }
+
+    /// <summary>
+    /// A faint circle around each nest showing where its defenders may go. The leash is measured from the
+    /// nearest nest cell, so the circle is centered on the nest and padded by half a cell.
+    /// </summary>
+    private void DrawLeash()
+    {
+        if (DefendLeash <= 0f)
+            return;
+
+        foreach ((Team team, var cells) in Map.Nests)
+        {
+            Vector2 center = Vector2.Zero;
+            foreach (Vector2I c in cells)
+                center += GridToWorld(c);
+            center /= cells.Count;
+
+            float radius = (DefendLeash + 0.5f) * TileSize;
+            DrawCircle(center, radius, TeamColor(team) with { A = 0.06f });
+            DrawArc(center, radius, 0, Mathf.Tau, 96, TeamColor(team) with { A = 0.35f }, 2f);
         }
     }
 

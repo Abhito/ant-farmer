@@ -5,7 +5,7 @@ namespace AntFarmer.Sim.Ai;
 
 /// <summary>
 /// The opponent to beat: every ant gathers from whichever pile is cheapest to reach, all match long.
-/// It never defends, never steals, and never changes its plan.
+/// It never defends, never attacks, and never changes its plan.
 /// </summary>
 public class BaselineController : ITeamController
 {

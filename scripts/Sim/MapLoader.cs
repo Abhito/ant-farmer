@@ -62,7 +62,7 @@ public static class MapLoader
                         cell.Height = c - '0';
                         break;
                     case 'F':
-                        map.Food.Add(new FoodSource { Id = map.Food.Count, Cell = pos, Amount = foodAmount });
+                        map.Food.Add(new FoodPile { Id = map.Food.Count, Cell = pos, Amount = foodAmount, StartAmount = foodAmount });
                         break;
                     case 'R':
                         map.Nests[Team.Red].Add(pos);
@@ -93,7 +93,7 @@ public static class MapLoader
     }
 
     /// <summary>
-    /// Orders cells from closest to the map's center outward (ties: top first).
+    /// Orders the cells from closest to the map's center outward (ties: top first).
     /// Reading order (top-left first) would give the left nest its outer cell first and the right nest
     /// its inner cell first; ordering by distance from the center gives mirrored nests mirrored orders,
     /// so ants spawn in matching spots on both sides.

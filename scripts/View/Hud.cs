@@ -5,7 +5,7 @@ namespace AntFarmer.View;
 
 /// <summary>
 /// On-screen score, clock, and end-of-match banner. Builds its own controls in code and reads
-/// everything it shows from the <see cref="Simulation"/> each frame.
+/// everything it shows from the Simulation each frame.
 /// </summary>
 public partial class Hud : CanvasLayer
 {

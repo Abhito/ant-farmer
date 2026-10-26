@@ -7,8 +7,8 @@ using Godot;
 namespace AntFarmer;
 
 /// <summary>
-/// Root node of the main scene. Loads the map, creates a <see cref="Simulation"/>, and steps it on a
-/// fixed clock (<see cref="MatchSettings.TicksPerSecond"/>) regardless of frame rate. Also hands the
+/// Root node of the main scene. Loads the map, creates a Simulation, and steps it on a
+/// fixed clock (MatchSettings.TicksPerSecond) regardless of frame rate. Also hands the
 /// state to the view and frames the camera.
 /// Keys: R restarts the match, Space pauses.
 /// </summary>
@@ -25,7 +25,7 @@ public partial class GameRunner : Node
     [ExportGroup("Match")]
     [Export] public int Seed { get; set; } = 1;
 
-    /// <summary>Ignore <see cref="Seed"/> and pick a new one each run.</summary>
+    /// <summary>Ignore Seed and pick a new one each run.</summary>
     [Export] public bool RandomizeSeed { get; set; }
 
     [Export] public float MatchSeconds { get; set; } = 180f;
@@ -33,10 +33,10 @@ public partial class GameRunner : Node
     /// <summary>Deliveries for an instant win. 0 = more than half the map's food.</summary>
     [Export] public int WinDeliveries { get; set; } = 0;
 
-    [Export] public int AntsPerTeam { get; set; } = 3;
+    [Export] public int AntsPerTeam { get; set; } = 5;
 
     /// <summary>Ant walking speed on flat ground, in cells per second.</summary>
-    [Export] public float AntSpeed { get; set; } = 3f;
+    [Export] public float AntSpeed { get; set; } = 5f;
 
     /// <summary>Game seconds per real second. 1 = normal speed, 4 = four times faster.</summary>
     [Export(PropertyHint.Range, "0,20,0.25")]
@@ -46,10 +46,10 @@ public partial class GameRunner : Node
     [Export] public ControllerKind RedController { get; set; } = ControllerKind.Baseline;
     [Export] public ControllerKind BlueController { get; set; } = ControllerKind.Baseline;
 
-    /// <summary>Defenders used by a <see cref="ControllerKind.FixedMix"/> side.</summary>
+    /// <summary>Defenders used by a side set to Fixed Mix.</summary>
     [Export] public int FixedDefenders { get; set; } = 0;
 
-    /// <summary>Interceptors used by a <see cref="ControllerKind.FixedMix"/> side.</summary>
+    /// <summary>Interceptors used by a side set to Fixed Mix.</summary>
     [Export] public int FixedInterceptors { get; set; } = 1;
 
     /// <summary>Print a line to the output every time an AI switches an ant to a new role.</summary>
@@ -96,11 +96,15 @@ public partial class GameRunner : Node
         Sim.SetController(Team.Blue, Controllers.Create(BlueController, FixedDefenders, FixedInterceptors));
         Sim.MatchEnded += OnMatchEnded;
         if (LogRoleChanges)
-            Sim.RoleChanged += OnRoleChanged;
+        {
+            Sim.RoleChanged += (sim, ant, reason) => LogRole(sim, ant, $"-> {ant.Order}", reason);
+            Sim.RoleQueued += (sim, ant, reason) => LogRole(sim, ant, $"heading home to switch to {ant.PendingOrder}", reason);
+        }
         _tickTimer = 0;
         _lastFoodRemaining = Sim.FoodRemaining;
         _paused = false;
 
+        MapView.DefendLeash = settings.DefendLeash;
         MapView.SetMap(Map, Sim.Food);
         AntView.SetSimulation(Sim);
         AntView.TickBlend = 1f;
@@ -157,9 +161,10 @@ public partial class GameRunner : Node
         }
     }
 
-    private void OnRoleChanged(Simulation sim, Ant ant)
+    private static void LogRole(Simulation sim, Ant ant, string what, string reason)
     {
-        GD.Print($"  t={sim.ElapsedSeconds:0.0}s  {ant.Team} ant {ant.Id} -> {ant.Order}");
+        string why = reason == null ? "" : $"  ({reason})";
+        GD.Print($"  t={sim.ElapsedSeconds:0.0}s  {ant.Team} ant {ant.Id} {what}{why}");
     }
 
     private void OnMatchEnded(Simulation sim)
@@ -167,7 +172,7 @@ public partial class GameRunner : Node
         string result = sim.Winner is Team winner ? $"{winner} wins" : "Draw";
         GD.Print($"Match over at t={sim.ElapsedSeconds:0.0}s: {result} " +
                  $"(red {sim.Deliveries[Team.Red]}, blue {sim.Deliveries[Team.Blue]}; " +
-                 $"bites red {sim.Bites[Team.Red]}, blue {sim.Bites[Team.Blue]}; " +
+                 $"kills red {sim.Kills[Team.Red]}, blue {sim.Kills[Team.Blue]}; " +
                  $"role changes red {sim.RoleChanges[Team.Red]}, blue {sim.RoleChanges[Team.Blue]}).");
     }
 

@@ -25,3 +25,34 @@ Godot is self-contained: extract the zip and run the executable. No installer is
 After the first import, the project appears in the Project Manager list. Double-click it (or select it and click **Edit**) to open it again.
 
 If Godot asks you to choose an editor version, pick **4.7 .NET**. Opening the project with a standard (non-.NET) editor will fail or disable C# features.
+
+## Run a match
+
+1. Click **Run Project** (or press **F5**). The main scene is `scenes/Main.tscn`.
+2. Two AI colonies, red and blue, play against each other. The match ends when one side delivers more than half the map's food, the map runs out of food, or the time limit is reached.
+
+Controls:
+
+| Key | Action |
+|---|---|
+| **R** | Restart the match |
+| **Space** | Pause / resume |
+
+## Change the match settings
+
+Select the **GameRunner** node in `scenes/Main.tscn` and edit its properties in the Inspector:
+
+- **Match**: seed, time limit, deliveries needed to win, ants per side, ant speed, and **Sim Speed** (game seconds per real second, e.g. 2 = double speed).
+- **AI**: which controller runs each side (**Baseline**, **Fixed Mix**, or **Strategist**), the role counts used by Fixed Mix, and **Log Role Changes**, which prints every role switch and its reason to the Output panel.
+
+## Run headless (no window)
+
+A full match can be played from the terminal in under a second. Results print to the console. Run this from the repository folder, using your own path to the Godot .NET **console** executable:
+
+```
+Godot_v4.7.2-stable_mono_win64_console.exe --headless --path . --fixed-fps 60 --quit-after 12000 res://scenes/Main.tscn
+```
+
+`--quit-after 12000` stops after 12,000 frames (200 seconds of game time at 60 frames per second), enough for a full match.
+
+See [docs/OVERVIEW.md](docs/OVERVIEW.md) for how the code is organized, and [docs/EXTENDING_AI.md](docs/EXTENDING_AI.md) for how to add AI rules, roles, and controllers.
