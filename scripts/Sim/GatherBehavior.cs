@@ -3,11 +3,7 @@ using Godot;
 
 namespace AntFarmer.Sim;
 
-/// <summary>
-/// Gathering loop for one ant: walk to a food pile, take one unit, carry it to the nearest cell of
-/// its own nest, deliver, repeat. The pile is the one named in the ant's order if it still has food,
-/// otherwise the cheapest one to reach.
-/// </summary>
+/// <summary>Walk to a pile, take one food, carry it home, repeat.</summary>
 public static class GatherBehavior
 {
     public static void Update(Ant ant, Simulation sim)
@@ -18,23 +14,16 @@ public static class GatherBehavior
             SeekFood(ant, sim);
     }
 
-    /// <summary>
-    /// Walks a carrying ant to its nest and delivers on arrival. Also used for any ant that has to bring
-    /// food home before doing something else.
-    /// </summary>
     public static void CarryHome(Ant ant, Simulation sim)
     {
         HeadToNest(ant, sim);
 
-        // Any nest cell will do, even one it is only passing through on the way to another.
+        // Any nest cell counts, even one it's just passing through.
         if (sim.IsAtNest(ant))
             sim.DeliverCarried(ant);
     }
 
-    /// <summary>
-    /// Walks an ant with a waiting role switch back to its nest, where the switch happens. Food it is
-    /// carrying gets delivered on the way in, so it arrives empty-handed for its new role.
-    /// </summary>
+    // For an ant walking home to switch roles. Drops off food on the way.
     public static void ReturnHome(Ant ant, Simulation sim)
     {
         if (ant.CarryingFood)
@@ -47,7 +36,6 @@ public static class GatherBehavior
         HeadToNest(ant, sim);
     }
 
-    /// <summary>Plans a route to the nearest cell of the ant's nest, unless it is already heading to one.</summary>
     private static void HeadToNest(Ant ant, Simulation sim)
     {
         List<Vector2I> nest = sim.Map.Nests[ant.Team];
@@ -57,7 +45,6 @@ public static class GatherBehavior
 
     private static void SeekFood(Ant ant, Simulation sim)
     {
-        // Pick a pile if we have none or ours ran out on the way.
         if (ant.TargetFood == null || ant.TargetFood.Amount <= 0)
         {
             ant.TargetFood = ChooseFood(ant, sim);
@@ -80,13 +67,13 @@ public static class GatherBehavior
             }
             else
             {
-                // Someone else took the last unit just before us.
+                // Someone took the last unit first.
                 ant.TargetFood = null;
             }
         }
     }
 
-    /// <summary>The pile from the ant's order if it still has food and can be reached, else the nearest pile.</summary>
+    // The ordered pile if it still has food and is reachable, otherwise the nearest one.
     private static FoodPile ChooseFood(Ant ant, Simulation sim)
     {
         if (ant.Order.FoodId is int id)
@@ -100,7 +87,6 @@ public static class GatherBehavior
         return NearestFood(ant, sim);
     }
 
-    /// <summary>The non-empty food pile with the cheapest path from the ant, or null if none is reachable.</summary>
     private static FoodPile NearestFood(Ant ant, Simulation sim)
     {
         FoodPile best = null;
@@ -122,7 +108,6 @@ public static class GatherBehavior
         return best;
     }
 
-    /// <summary>The cell in the list with the cheapest path from the starting cell.</summary>
     private static Vector2I NearestCell(Vector2I from, List<Vector2I> cells, Pathfinder pathfinder)
     {
         Vector2I? best = null;
@@ -141,11 +126,7 @@ public static class GatherBehavior
         return best ?? cells[0];
     }
 
-    /// <summary>
-    /// True if the candidate cell, at the given path cost, beats the current best. Costs within
-    /// Simulation.TieTolerance count as equal and fall back to straight-line distance, which is the same on
-    /// both halves of a mirrored map, instead of whichever target happens to come first in the list.
-    /// </summary>
+    // Near-equal path costs are broken by straight-line distance, which keeps mirrored sides identical.
     private static bool IsCloser(Vector2I from, Vector2I candidate, float cost, Vector2I? best, float bestCost)
     {
         if (float.IsPositiveInfinity(cost))

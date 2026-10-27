@@ -2,11 +2,7 @@ using System.Collections.Generic;
 
 namespace AntFarmer.Sim.Ai;
 
-/// <summary>
-/// Gives each ant a role at the start and never changes it: the first Interceptors ants
-/// intercept, the next Defenders guard the nest, and the rest gather. Useful as a
-/// comparison: it shows what a role mix is worth on its own, without any adapting.
-/// </summary>
+/// <summary>Fixed roles for the whole match: some interceptors, some defenders, the rest gather.</summary>
 public class FixedMixController : ITeamController
 {
     public int Defenders { get; }

@@ -1,11 +1,6 @@
 namespace AntFarmer.Sim;
 
-/// <summary>
-/// Hunt enemy carriers anywhere on the map. Chases the ant named in the order, or else the closest
-/// enemy carrying food. With no carriers around it shadows the closest enemy gatherer, so it is already
-/// nearby when that ant picks something up. Interceptors are attackers: they never pick up food, and a
-/// killed carrier's food goes back to its pile.
-/// </summary>
+/// <summary>Hunt enemy carriers anywhere. With none around, shadow the nearest enemy gatherer.</summary>
 public static class InterceptBehavior
 {
     public static void Update(Ant ant, Simulation sim)
@@ -19,9 +14,7 @@ public static class InterceptBehavior
                 target = ordered;
         }
 
-        // Without a named target, stay on the current carrier until it drops its food,
-        // instead of switching every time another carrier gets slightly closer.
-        // When shadowing, follow gatherers only: walking up to an enemy defender gets the interceptor killed.
+        // Stick with the current carrier rather than switching whenever another gets closer.
         target ??= ant.ChaseTarget is { WasCarrying: true, IsDead: false } current
             ? current
             : Combat.NearestTarget(sim, ant, ant.PreviousPosition)

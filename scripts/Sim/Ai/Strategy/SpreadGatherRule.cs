@@ -4,12 +4,8 @@ using System.Linq;
 namespace AntFarmer.Sim.Ai.Strategy;
 
 /// <summary>
-/// Decides which pile each free ant gathers from, spreading the gatherers out: a pile only takes as many
-/// ants as it has food left, so ants don't all walk to the same pile and arrive to find it empty.
-/// Each pile's score is the ant's trip cost (to the pile, then home) plus SafetyWeight times
-/// how much closer the pile is to our nest than to the enemy's; the lowest score wins. A positive weight
-/// takes contested piles first and saves safe ones near home for later. Testing found 0 (no saving)
-/// works best once the enemy can kill carriers, so that is the default.
+/// Sends each free ant to the pile with the cheapest round trip. A pile takes no more ants than it has food.
+/// SafetyWeight above 0 favors contested piles first; 0 tested best.
 /// </summary>
 public class SpreadGatherRule : IStrategyRule
 {
@@ -17,7 +13,6 @@ public class SpreadGatherRule : IStrategyRule
 
     public float SafetyWeight { get; set; } = 0f;
 
-    // Path costs from each pile to each nest never change during a match, so work them out once.
     private readonly Dictionary<int, (float Mine, float Theirs)> _nestCosts = new();
 
     public void Apply(WorldSnapshot world, StrategyPlan plan)
@@ -25,7 +20,6 @@ public class SpreadGatherRule : IStrategyRule
         if (world.Food.Count == 0)
             return;
 
-        // How many ants are already sent to each pile, so a nearly empty pile doesn't attract everyone.
         var sent = new Dictionary<int, int>();
 
         foreach (AntInfo ant in plan.FreeAnts.Where(a => !a.Dead).ToList())
@@ -39,12 +33,10 @@ public class SpreadGatherRule : IStrategyRule
                     continue;
 
                 (float mine, float theirs) = NestCosts(world, pile);
-                // Attackers sent back to gathering have to go home to switch first.
                 float trip = world.CostToStart(ant, Role.Gather, pile.Cell) + mine;
                 float score = trip + SafetyWeight * System.Math.Max(0f, theirs - mine);
 
-                // Equal scores go to the pile closer in a straight line, not to whichever is listed first,
-                // so the choice is the same for both sides of a mirrored map.
+                // Ties go to the closer pile in a straight line, so mirrored sides choose alike.
                 bool better = score < bestScore - Simulation.TieTolerance
                               || (score <= bestScore + Simulation.TieTolerance && best is FoodInfo current
                                   && ant.Cell.DistanceSquaredTo(pile.Cell) < ant.Cell.DistanceSquaredTo(current.Cell));

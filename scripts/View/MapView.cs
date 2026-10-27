@@ -5,12 +5,7 @@ using Godot;
 
 namespace AntFarmer.View;
 
-/// <summary>
-/// Draws a MapData with plain shapes, top-down.
-/// This is the one place that converts between grid cells and screen positions,
-/// so everything else (ants, overlays, the camera) should go through
-/// GridToWorld.
-/// </summary>
+/// <summary>Draws the map. All grid-to-screen conversion goes through GridToWorld.</summary>
 public partial class MapView : Node2D
 {
     [Export] public int TileSize { get; set; } = 32;
@@ -33,19 +28,14 @@ public partial class MapView : Node2D
 
     public MapData Map { get; private set; }
 
-    /// <summary>Size of the whole map in world (screen) units.</summary>
     public Vector2 WorldSize => Map == null ? Vector2.Zero : new Vector2(Map.Width, Map.Height) * TileSize;
 
     private int _maxHeight = 1;
     private IReadOnlyList<FoodPile> _food = Array.Empty<FoodPile>();
 
-    /// <summary>How far defenders may go from their nest, in cells. Drawn as a faint circle; 0 hides it.</summary>
+    // Drawn as a faint circle around each nest; 0 hides it.
     public float DefendLeash { get; set; }
 
-    /// <summary>
-    /// Sets what to draw. The food list is the live one from the simulation;
-    /// call CanvasItem.QueueRedraw after it changes.
-    /// </summary>
     public void SetMap(MapData map, IReadOnlyList<FoodPile> food)
     {
         Map = map;
@@ -59,10 +49,8 @@ public partial class MapView : Node2D
         QueueRedraw();
     }
 
-    /// <summary>Center of a cell in this node's local coordinates.</summary>
     public Vector2 GridToWorld(Vector2I cell) => (cell + new Vector2(0.5f, 0.5f)) * TileSize;
 
-    /// <summary>Center of a fractional grid position (for things moving between cells).</summary>
     public Vector2 GridToWorld(Vector2 gridPos) => (gridPos + new Vector2(0.5f, 0.5f)) * TileSize;
 
     public override void _Draw()
@@ -104,7 +92,7 @@ public partial class MapView : Node2D
         }
     }
 
-    /// <summary>Draws a dark line along every cell edge where the height changes.</summary>
+    // Dark lines where the height changes.
     private void DrawContours()
     {
         for (int y = 0; y < Map.Height; y++)
@@ -141,10 +129,6 @@ public partial class MapView : Node2D
         }
     }
 
-    /// <summary>
-    /// A faint circle around each nest showing where its defenders may go. The leash is measured from the
-    /// nearest nest cell, so the circle is centered on the nest and padded by half a cell.
-    /// </summary>
     private void DrawLeash()
     {
         if (DefendLeash <= 0f)

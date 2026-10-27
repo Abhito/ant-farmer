@@ -15,33 +15,24 @@ public enum Team
     Blue,
 }
 
-/// <summary>One grid square of the map.</summary>
 public struct Cell
 {
     public Terrain Terrain;
 
-    /// <summary>Elevation, 0 = flat. Higher cells cost more to climb.</summary>
-    public int Height;
+    public int Height; // 0 = flat
 
     public readonly bool IsWalkable => Terrain != Terrain.Rock;
 }
 
-/// <summary>A pile of food that ants can carry home one unit at a time.</summary>
 public class FoodPile
 {
     public int Id;
     public Vector2I Cell;
     public int Amount;
-
-    /// <summary>How much the pile held at the start of the match, so the view can shrink it as it empties.</summary>
     public int StartAmount;
 }
 
-/// <summary>
-/// The static layout of a map: terrain, heights, nests, and the starting food.
-/// Pure data with no nodes or drawing, so the simulation, AI, and a map
-/// generator can all use it without depending on how it is rendered.
-/// </summary>
+/// <summary>The static map layout: terrain, heights, nests, and starting food.</summary>
 public class MapData
 {
     public int Width { get; }
@@ -55,7 +46,6 @@ public class MapData
         [Team.Blue] = new List<Vector2I>(),
     };
 
-    /// <summary>The starting piles. Each match works on its own copy, so the map can be reused.</summary>
     public List<FoodPile> Food { get; } = new();
 
     public MapData(int width, int height)

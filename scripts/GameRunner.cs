@@ -6,12 +6,7 @@ using Godot;
 
 namespace AntFarmer;
 
-/// <summary>
-/// Root node of the main scene. Loads the map, creates a Simulation, and steps it on a
-/// fixed clock (MatchSettings.TicksPerSecond) regardless of frame rate. Also hands the
-/// state to the view and frames the camera.
-/// Keys: R restarts the match, Space pauses.
-/// </summary>
+/// <summary>Main scene: runs the simulation on a fixed clock and draws it. R restarts, Space pauses.</summary>
 public partial class GameRunner : Node
 {
     [Export(PropertyHint.File, "*.txt")]
@@ -25,20 +20,18 @@ public partial class GameRunner : Node
     [ExportGroup("Match")]
     [Export] public int Seed { get; set; } = 1;
 
-    /// <summary>Ignore Seed and pick a new one each run.</summary>
     [Export] public bool RandomizeSeed { get; set; }
 
     [Export] public float MatchSeconds { get; set; } = 180f;
 
-    /// <summary>Deliveries for an instant win. 0 = more than half the map's food.</summary>
+    // 0 = more than half the map's food.
     [Export] public int WinDeliveries { get; set; } = 0;
 
     [Export] public int AntsPerTeam { get; set; } = 5;
 
-    /// <summary>Ant walking speed on flat ground, in cells per second.</summary>
     [Export] public float AntSpeed { get; set; } = 5f;
 
-    /// <summary>Game seconds per real second. 1 = normal speed, 4 = four times faster.</summary>
+    // Game seconds per real second.
     [Export(PropertyHint.Range, "0,20,0.25")]
     public float SimSpeed { get; set; } = 1f;
 
@@ -46,16 +39,12 @@ public partial class GameRunner : Node
     [Export] public ControllerKind RedController { get; set; } = ControllerKind.Baseline;
     [Export] public ControllerKind BlueController { get; set; } = ControllerKind.Baseline;
 
-    /// <summary>Defenders used by a side set to Fixed Mix.</summary>
     [Export] public int FixedDefenders { get; set; } = 0;
 
-    /// <summary>Interceptors used by a side set to Fixed Mix.</summary>
     [Export] public int FixedInterceptors { get; set; } = 1;
 
-    /// <summary>Print a line to the output every time an AI switches an ant to a new role.</summary>
     [Export] public bool LogRoleChanges { get; set; } = true;
 
-    /// <summary>Fraction of the window the map fills, leaving a small border.</summary>
     [ExportGroup("View")]
     [Export(PropertyHint.Range, "0.5,1,0.01")]
     public float CameraFill { get; set; } = 0.95f;
@@ -122,7 +111,6 @@ public partial class GameRunner : Node
         if (Sim == null || Sim.IsOver || _paused)
             return;
 
-        // Run however many whole ticks fit into the time that has passed.
         // Leftover time carries over, so the tick rate stays exact on average.
         double tickLength = 1.0 / Sim.Settings.TicksPerSecond;
         _tickTimer += delta * SimSpeed;
@@ -176,10 +164,7 @@ public partial class GameRunner : Node
                  $"role changes red {sim.RoleChanges[Team.Red]}, blue {sim.RoleChanges[Team.Blue]}).");
     }
 
-    /// <summary>
-    /// Zooms so the whole map fits in the window between the HUD's top bar and bottom line,
-    /// and centers it in that space.
-    /// </summary>
+    // Fit the map between the HUD's top bar and bottom line.
     private void FitCameraToMap()
     {
         if (Camera == null || Map == null)

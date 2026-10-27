@@ -3,10 +3,7 @@ using Godot;
 
 namespace AntFarmer.Sim;
 
-/// <summary>
-/// One ant: where it is, where it is walking, and what it is carrying.
-/// Plain data plus movement; deciding *what* to do is up to the behavior for its Order.
-/// </summary>
+/// <summary>One ant: position, path, and what it carries. Its behavior decides what it does.</summary>
 public class Ant
 {
     public int Id { get; }
@@ -15,64 +12,40 @@ public class Ant
     public bool CarryingFood { get; set; }
     public FoodPile TargetFood { get; set; }
 
-    /// <summary>The pile the carried food came from. If the ant is killed, the food goes back there.</summary>
+    // Where the carried food goes back to if the ant is killed.
     public FoodPile CarriedFrom { get; set; }
 
-    /// <summary>The role this ant is carrying out. Every ant starts as a gatherer.</summary>
     public RoleOrder Order { get; private set; } = RoleOrder.Gather();
 
-    /// <summary>
-    /// A new role waiting to take effect. Ants can only change role at their nest, so until it gets
-    /// there the ant walks home and keeps Order. Null if no switch is waiting.
-    /// </summary>
+    // A role switch waiting until the ant reaches its nest.
     public RoleOrder? PendingOrder { get; set; }
-
-    /// <summary>Why the waiting order was given, for the log once the switch happens.</summary>
     public string PendingReason { get; set; }
 
-    /// <summary>The enemy this ant is currently chasing (Defend or Intercept), if any.</summary>
     public Ant ChaseTarget { get; set; }
 
-    /// <summary>Ticks until this ant respawns at its nest after being killed; 0 while alive.</summary>
     public int RespawnTicksLeft { get; set; }
-
-    /// <summary>Ticks until this ant can bite again.</summary>
     public int BiteCooldownLeft { get; set; }
 
     public bool IsDead => RespawnTicksLeft > 0;
 
-    /// <summary>The last cell the ant fully reached.</summary>
+    // The last cell the ant fully reached.
     public Vector2I Cell { get; private set; }
-
-    /// <summary>The cell the ant is walking to, or null if it has no destination.</summary>
     public Vector2I? Destination { get; private set; }
 
-    /// <summary>Exact position in grid units, partway between cells while walking.</summary>
     public Vector2 Position => IsMidStep ? ((Vector2)Cell).Lerp(_path[_pathIndex], _stepProgress) : Cell;
 
-    /// <summary>
-    /// Position at the start of the current tick. Other ants sense this ant here, so what they see doesn't
-    /// depend on update order; the view also blends from it to smooth movement between ticks.
-    /// </summary>
+    // State at the start of the tick. Other ants sense these, so update order doesn't matter.
     public Vector2 PreviousPosition { get; set; }
-
-    /// <summary>The cell the ant had reached at the start of the current tick (see PreviousPosition).</summary>
     public Vector2I PreviousCell { get; set; }
-
-    /// <summary>Whether the ant was carrying food at the start of the current tick (see PreviousPosition).</summary>
     public bool WasCarrying { get; set; }
 
-    /// <summary>Direction of the last step, for drawing which way the ant faces.</summary>
     public Vector2 Heading { get; private set; } = Vector2.Right;
 
-    /// <summary>True when the ant is standing on its destination (or has none).</summary>
     public bool Arrived => _pathIndex >= _path.Count;
 
     private List<Vector2I> _path = new();
     private int _pathIndex;
-
-    /// <summary>How far along the step from Cell to the next path cell, 0 to 1.</summary>
-    private float _stepProgress;
+    private float _stepProgress; // 0 to 1 along the step from Cell to the next path cell
 
     private bool IsMidStep => _pathIndex < _path.Count && _stepProgress > 0f;
 
@@ -85,12 +58,7 @@ public class Ant
         PreviousCell = cell;
     }
 
-    /// <summary>
-    /// Puts a new order into effect right now and clears any waiting one. Does nothing if the order is
-    /// unchanged, so an AI can re-send the same orders every decision without resetting what the ant is doing.
-    /// The rule that role changes only happen at the nest lives in Simulation.AssignRole.
-    /// Returns true if the order changed.
-    /// </summary>
+    /// <summary>Applies an order now and clears any waiting one. Returns true if the order changed.</summary>
     public bool SetOrder(RoleOrder order)
     {
         PendingOrder = null;
@@ -101,17 +69,13 @@ public class Ant
         Order = order;
         ChaseTarget = null;
 
-        // Keep any food already picked up; the new behavior will bring it home first.
         if (!CarryingFood)
             TargetFood = null;
 
         return true;
     }
 
-    /// <summary>
-    /// Plans a path to the goal cell. Does nothing if already heading there.
-    /// If the ant is between two cells it finishes that step first, so it never jumps backwards.
-    /// </summary>
+    /// <summary>Plans a path to the goal, finishing any half-taken step first.</summary>
     public void GoTo(Vector2I goal, Pathfinder pathfinder)
     {
         if (Destination == goal)
@@ -134,10 +98,7 @@ public class Ant
         _pathIndex = 0;
     }
 
-    /// <summary>
-    /// Kills the ant: it drops out of the match for the given number of ticks (any food it carried is
-    /// handled by the caller). It keeps its order, so it goes back to the same job.
-    /// </summary>
+    /// <summary>Removes the ant for a while. It keeps its order; the caller handles carried food.</summary>
     public void Kill(int respawnTicks)
     {
         RespawnTicksLeft = System.Math.Max(1, respawnTicks);
@@ -148,7 +109,6 @@ public class Ant
         Stop();
     }
 
-    /// <summary>Brings a dead ant back, standing on the given cell with nothing planned.</summary>
     public void Respawn(Vector2I cell)
     {
         RespawnTicksLeft = 0;
@@ -162,7 +122,7 @@ public class Ant
         _stepProgress = 0f;
     }
 
-    /// <summary>Clears the current destination; the ant stops at the end of its current step.</summary>
+    // The ant stops at the end of its current step.
     public void Stop()
     {
         Destination = null;
@@ -170,10 +130,7 @@ public class Ant
         _pathIndex = 0;
     }
 
-    /// <summary>
-    /// Walks along the path, spending the given distance in movement points.
-    /// Each step costs Pathfinder.MoveCost, so climbing is slower than flat ground.
-    /// </summary>
+    /// <summary>Walks along the path. Climbing steps cost more, so the ant covers less ground.</summary>
     public void Advance(float distance, Pathfinder pathfinder)
     {
         while (distance > 0f && _pathIndex < _path.Count)

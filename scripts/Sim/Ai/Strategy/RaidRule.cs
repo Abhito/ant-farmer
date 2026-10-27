@@ -2,21 +2,13 @@ using System.Linq;
 
 namespace AntFarmer.Sim.Ai.Strategy;
 
-/// <summary>
-/// Keep a few standing interceptors hunting enemy carriers. A kill sends the food back to its pile, so the
-/// enemy loses the whole trip, and the carrier is dead until it respawns (MatchSettings.RespawnSeconds).
-/// Because ants can only change role at the nest, raiding is planned rather than grabbed on the spot: the
-/// interceptors are picked once (at the start every ant is at the nest, so it costs nothing) and stay in role.
-/// How many to keep depends on the enemy: defenders kill interceptors, so fewer are sent against a defended team.
-/// </summary>
+/// <summary>Keep a few interceptors hunting enemy carriers. Fewer if the enemy has defenders.</summary>
 public class RaidRule : IStrategyRule
 {
     public string Name => "Raid";
 
-    /// <summary>Interceptors to keep while the enemy has no defenders.</summary>
     public int Raiders { get; set; } = 2;
 
-    /// <summary>Interceptors to keep while the enemy has at least one defender.</summary>
     public int RaidersVsDefenders { get; set; } = 1;
 
     public void Apply(WorldSnapshot world, StrategyPlan plan)
@@ -24,8 +16,7 @@ public class RaidRule : IStrategyRule
         bool defended = world.EnemyAnts.Any(e => e.Role == Role.Defend);
         int wanted = defended ? RaidersVsDefenders : Raiders;
 
-        // Ants already intercepting keep the job (dead ones too, they respawn in role); then whoever can
-        // switch soonest: dead ants and ants near the nest, preferring ones not carrying. Ties go to lower ids.
+        // Current interceptors keep the job; otherwise pick whoever can get home soonest.
         var raiders = plan.FreeAnts
             .OrderBy(a => a.NextOrder?.Role == Role.Intercept ? 0 : 1)
             .ThenBy(a => a.Carrying)

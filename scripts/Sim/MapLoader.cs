@@ -5,15 +5,11 @@ using Godot;
 
 namespace AntFarmer.Sim;
 
-/// <summary>
-/// Reads the plain-text map format (see maps/arena.txt for the legend).
-/// One character per cell; lines starting with ';' are comments.
-/// </summary>
+/// <summary>Reads the text map format. See maps/arena.txt for the legend.</summary>
 public static class MapLoader
 {
     public const int DefaultFoodAmount = 10;
 
-    /// <summary>Loads a map from a Godot path such as "res://maps/arena.txt".</summary>
     public static MapData LoadFile(string path, int foodAmount = DefaultFoodAmount)
     {
         if (!FileAccess.FileExists(path))
@@ -22,7 +18,6 @@ public static class MapLoader
         return Parse(FileAccess.GetFileAsString(path), foodAmount);
     }
 
-    /// <summary>Parses map text. Kept separate from file I/O so generated maps can be passed in as text.</summary>
     public static MapData Parse(string text, int foodAmount = DefaultFoodAmount)
     {
         List<string> rows = text
@@ -92,12 +87,7 @@ public static class MapLoader
         return map;
     }
 
-    /// <summary>
-    /// Orders the cells from closest to the map's center outward (ties: top first).
-    /// Reading order (top-left first) would give the left nest its outer cell first and the right nest
-    /// its inner cell first; ordering by distance from the center gives mirrored nests mirrored orders,
-    /// so ants spawn in matching spots on both sides.
-    /// </summary>
+    // Center-out order gives mirrored nests mirrored spawn spots.
     private static void SortFromCenterOut(List<Vector2I> cells, MapData map)
     {
         var center = new Vector2((map.Width - 1) / 2f, (map.Height - 1) / 2f);

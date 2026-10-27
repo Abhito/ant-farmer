@@ -2,32 +2,20 @@ using Godot;
 
 namespace AntFarmer.Sim;
 
-/// <summary>The job an ant is doing. Each role is carried out by its own behavior class.</summary>
 public enum Role
 {
-    /// <summary>Collect food and bring it home (GatherBehavior).</summary>
-    Gather,
-
-    /// <summary>Guard a spot and kill enemy carriers and interceptors that come near it (DefendBehavior).</summary>
-    Defend,
-
-    /// <summary>Chase down and kill enemy carriers anywhere on the map (InterceptBehavior).</summary>
-    Intercept,
+    Gather,     // collect food and bring it home
+    Defend,     // guard a spot near the nest
+    Intercept,  // hunt enemy carriers anywhere
 }
 
-/// <summary>
-/// A role plus its optional target. This is what a team's AI hands to an ant.
-/// Targets left null are filled in by the behavior itself (e.g. Gather with no pile = nearest pile).
-/// </summary>
+/// <summary>A role plus an optional target. Null targets are picked by the behavior.</summary>
 public readonly record struct RoleOrder(Role Role, int? FoodId = null, Vector2I? Post = null, int? TargetAntId = null)
 {
-    /// <summary>Gather from a specific pile, or from the cheapest-to-reach pile if foodId is null.</summary>
     public static RoleOrder Gather(int? foodId = null) => new(Role.Gather, FoodId: foodId);
 
-    /// <summary>Guard the given post, or the ant's own nest if there is none.</summary>
     public static RoleOrder Defend(Vector2I? post = null) => new(Role.Defend, Post: post);
 
-    /// <summary>Chase a specific enemy ant, or whichever enemy carrier is closest if null.</summary>
     public static RoleOrder Intercept(int? targetAntId = null) => new(Role.Intercept, TargetAntId: targetAntId);
 
     public override string ToString() => Role switch

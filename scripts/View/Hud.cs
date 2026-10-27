@@ -3,16 +3,11 @@ using Godot;
 
 namespace AntFarmer.View;
 
-/// <summary>
-/// On-screen score, clock, and end-of-match banner. Builds its own controls in code and reads
-/// everything it shows from the Simulation each frame.
-/// </summary>
+/// <summary>Score, clock, and end-of-match banner.</summary>
 public partial class Hud : CanvasLayer
 {
-    /// <summary>Height of the top bar in pixels. The camera keeps the map below it.</summary>
     public const float BarHeight = 44f;
 
-    /// <summary>Space kept free at the bottom for the info line.</summary>
     public const float BottomMargin = 30f;
 
     private Simulation _sim;
@@ -25,7 +20,6 @@ public partial class Hud : CanvasLayer
     private Label _bannerTitle;
     private Label _bannerDetail;
 
-    /// <summary>Set by the runner; shows a "Paused" note while true.</summary>
     public bool Paused { get; set; }
 
     public void SetSimulation(Simulation sim)
@@ -37,10 +31,7 @@ public partial class Hud : CanvasLayer
 
     public override void _Ready() => EnsureBuilt();
 
-    /// <summary>
-    /// Creates the controls the first time they are needed. The runner may hand us a simulation
-    /// before our own _Ready has run (it comes earlier in the scene), so this can't wait for _Ready.
-    /// </summary>
+    // Not in _Ready: the runner may hand us a simulation before our _Ready runs.
     private void EnsureBuilt()
     {
         if (_banner != null)

@@ -1,10 +1,6 @@
 namespace AntFarmer.Sim.Ai.Strategy;
 
-/// <summary>
-/// When we are ahead and close to winning, stop taking risks: every free ant gathers and the rules after
-/// this one are skipped. Fires when we are within NearWinMargin deliveries of the win
-/// target, or when we lead with less than LateSeconds left.
-/// </summary>
+/// <summary>When ahead and close to winning, everyone gathers and later rules are skipped.</summary>
 public class CloseOutRule : IStrategyRule
 {
     public string Name => "Close out";

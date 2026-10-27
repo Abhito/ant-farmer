@@ -35,10 +35,7 @@ using System.Linq;
 
 namespace AntFarmer.Sim.Ai.Strategy;
 
-/// <summary>
-/// Example rule: while the enemy has interceptors, keep one defender at the pile most of our
-/// gatherers are using, as long as that pile is inside our defender area.
-/// </summary>
+/// <summary>While the enemy has interceptors, guard the pile most of our gatherers use.</summary>
 public class GuardPileRule : IStrategyRule
 {
     public string Name => "Guard pile";
@@ -48,7 +45,6 @@ public class GuardPileRule : IStrategyRule
         if (!world.EnemyAnts.Any(e => e.Role == Role.Intercept))
             return;
 
-        // The pile with the most of our gatherers sent to it. Ties go to the lower pile id.
         int? busiestId = world.MyAnts
             .Where(a => a.Order is { Role: Role.Gather, FoodId: not null })
             .GroupBy(a => a.Order.Value.FoodId.Value)
@@ -62,7 +58,6 @@ public class GuardPileRule : IStrategyRule
         if (world.DistanceFromMyNest(pile.Cell) > world.Settings.DefendLeash)
             return;
 
-        // Whoever can start soonest: ants already defending go straight there, others walk home first.
         AntInfo? guard = plan.FreeAnts
             .Where(a => !a.Carrying)
             .OrderBy(a => world.CostToStart(a, Role.Defend, pile.Cell))
@@ -131,7 +126,7 @@ See [Testing a change](#testing-a-change). At minimum, play strategist vs. Basel
 A role is a new job in the game itself, so this touches the simulation. Using a hypothetical **Scout** role as the example:
 
 1. **`scripts/Sim/Role.cs`**
-   - Add `Scout` to the `Role` enum, with a summary comment.
+   - Add `Scout` to the `Role` enum.
    - Add a factory, e.g. `public static RoleOrder Scout(Vector2I? spot = null) => new(Role.Scout, Post: spot);`. Reuse `FoodId`, `Post` or `TargetAntId` for the target if one fits; add a field to `RoleOrder` only if none does.
    - Add a case to `RoleOrder.ToString()`.
 2. **Behavior:** create `scripts/Sim/ScoutBehavior.cs` with `public static void Update(Ant ant, Simulation sim)`, following `DefendBehavior` / `InterceptBehavior`. It runs every tick for every living ant with that role. Use `ant.GoTo(cell, sim.Pathfinder)` to move. Sense other ants only through `PreviousPosition`, `PreviousCell` and `WasCarrying` (start-of-tick values), so results don't depend on update order.
