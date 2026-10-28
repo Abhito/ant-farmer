@@ -45,7 +45,7 @@ public static class GatherBehavior
 
     private static void SeekFood(Ant ant, Simulation sim)
     {
-        if (ant.TargetFood == null || ant.TargetFood.Amount <= 0)
+        if (ant.TargetFood == null || !WorthVisiting(ant, ant.TargetFood))
         {
             ant.TargetFood = ChooseFood(ant, sim);
             if (ant.TargetFood == null)
@@ -57,29 +57,26 @@ public static class GatherBehavior
 
         ant.GoTo(ant.TargetFood.Cell, sim.Pathfinder);
 
-        if (ant.Arrived && ant.Cell == ant.TargetFood.Cell)
+        // An empty pile means waiting for it to regrow, or picking another one next tick.
+        if (ant.Arrived && ant.Cell == ant.TargetFood.Cell && sim.TakeFood(ant.TargetFood))
         {
-            if (sim.TakeFood(ant.TargetFood))
-            {
-                ant.CarryingFood = true;
-                ant.CarriedFrom = ant.TargetFood;
-                CarryHome(ant, sim);
-            }
-            else
-            {
-                // Someone took the last unit first.
-                ant.TargetFood = null;
-            }
+            ant.CarryingFood = true;
+            ant.CarriedFrom = ant.TargetFood;
+            CarryHome(ant, sim);
         }
     }
 
-    // The ordered pile if it still has food and is reachable, otherwise the nearest one.
+    // A pile with food, or the ordered pile while it regrows (the ant waits there).
+    private static bool WorthVisiting(Ant ant, FoodPile pile) =>
+        pile.Amount > 0 || (pile.IsRegrowing && ant.Order.FoodId == pile.Id);
+
+    // The ordered pile if it's worth visiting and reachable, otherwise the nearest pile with food.
     private static FoodPile ChooseFood(Ant ant, Simulation sim)
     {
         if (ant.Order.FoodId is int id)
         {
             FoodPile ordered = sim.FoodById(id);
-            if (ordered != null && ordered.Amount > 0 &&
+            if (ordered != null && WorthVisiting(ant, ordered) &&
                 !float.IsPositiveInfinity(sim.Pathfinder.TravelCost(ant.Cell, ordered.Cell)))
                 return ordered;
         }

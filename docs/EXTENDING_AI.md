@@ -51,7 +51,7 @@ public class GuardPileRule : IStrategyRule
             .OrderByDescending(g => g.Count()).ThenBy(g => g.Key)
             .Select(g => (int?)g.Key)
             .FirstOrDefault();
-        if (busiestId is not int id || world.Food.All(f => f.Id != id))
+        if (busiestId is not int id)
             return;
 
         FoodInfo pile = world.Food.First(f => f.Id == id);
@@ -75,8 +75,8 @@ public class GuardPileRule : IStrategyRule
 
 In `StrategistController.CreateDefaultRules()`, insert it where it belongs. **Earlier rules get first pick of the ants**: a rule can only claim ants no earlier rule took (first-applicable arbitration, Millington §5.8.5). The default order is:
 
-1. `GuardRule`: one defender per enemy interceptor (protect the economy first)
-2. `RaidRule`: standing interceptors
+1. `GuardRule`: defenders when our gatherers keep dying at home (protect the economy first)
+2. `RaidRule`: interceptors, adjusted by their kills and deaths
 3. `SpreadGatherRule`: everyone left gathers, spread across piles
 
 Ants that no rule claims gather.
@@ -94,6 +94,8 @@ See [Testing a change](#testing-a-change). At minimum, play strategist vs. Basel
 | `FreeAnts` | Our ants no earlier rule has claimed, in id order. Includes dead ants (check `Dead`) |
 | `Assign(antId, order, reason)` | Claim a free ant. Returns false if it was already taken. The reason is printed when the role changes (Inspector: **Log Role Changes**) |
 | `IsFree(antId)` | Whether an ant is still unclaimed |
+| `AttackerSlots` | How many more defenders/interceptors may be assigned while keeping `MinGatherers` (2) ants gathering. Respect it in attacker rules |
+| `Recent` | `RecentEvents`: `Kills(role)`, `Deaths(role)` and `GathererLossesAtHome` over the last `WindowSeconds` (20 s) |
 | `SkipRemainingRules = true` | Stop the rules after this one from running this decision (see `CloseOutRule`) |
 
 **`WorldSnapshot world`**
@@ -101,12 +103,13 @@ See [Testing a change](#testing-a-change). At minimum, play strategist vs. Basel
 | Member | Use |
 |---|---|
 | `MyAnts`, `EnemyAnts` | `AntInfo` for every ant: `Id`, `Position`, `Cell`, `Carrying`, `Dead`, `Role`. Own ants also have `Order`, `PendingOrder` (a switch it's walking home for) and `NextOrder` (whichever applies next) |
-| `Food` | `FoodInfo` for each pile that still has food: `Id`, `Cell`, `Amount`, `StartAmount` |
+| `MyAnts[i].Kills` | Enemy ants each of our ants has killed so far (own ants only) |
+| `Food` | `FoodInfo` for every pile: `Id`, `Cell`, `Amount`, `StartAmount`, `RegrowSecondsLeft` (0 unless the pile is empty and waiting to refill) |
 | `MyNest`, `EnemyNest` | Nest cells |
 | `MyDeliveries`, `EnemyDeliveries`, `ScoreDifference`, `WinTarget` | Score |
 | `MyKills`, `EnemyKills`, `MyCarriers`, `EnemyCarriers` | Combat and carrying counts |
 | `ElapsedSeconds`, `RemainingSeconds` | Clock |
-| `Settings` | All match rules (speeds, `DefendRadius`, `DefendLeash`, `RespawnSeconds`, ...) |
+| `Settings` | All match rules (speeds, `DefendLeash`, `RespawnSeconds`, ...) |
 | `PathCost(from, to)` | Walking cost between two cells, the same measure ants use. Cached for the rest of the decision |
 | `CostHome(ant)` | Cost for one of our ants to reach our nest |
 | `CostToStart(ant, role, target)` | Cost for an ant to begin a job, **including the walk home if it has to switch roles**. Use this to pick who gets a job |
@@ -115,10 +118,11 @@ See [Testing a change](#testing-a-change). At minimum, play strategist vs. Basel
 ### Tips
 
 - **Pick ants by `CostToStart`**, not plain distance. A gatherer next to a target still has to walk home before it can defend or intercept.
-- **Keep ants in role.** Every role change costs a trip home, so rules should prefer ants that already have the role (`a.NextOrder?.Role == ...`). Re-assign an ant's current order rather than a slightly different one if nothing important changed. `GuardRule` keeps a defender's post while the threat stays within reach for this reason. The controller also holds each new order for at least 2 s (`HoldSeconds`, hysteresis, Millington §6.4.2).
+- **Pick roles and places, not moves.** A post is where a defender rests; the defender behavior decides whom to chase inside its area. Don't steer ants by changing their target every decision.
+- **Keep ants in role.** Every role change costs a trip home, so rules should prefer ants that already have the role (`a.NextOrder?.Role == ...`). Re-assign an ant's current order rather than a slightly different one if nothing important changed. `GuardRule` and `RaidRule` keep an ant's current order for this reason. The controller also holds each new order for at least 2 s (`HoldSeconds`, hysteresis, Millington §6.4.2).
 - **Break ties by id** (`.ThenBy(a => a.Id)`), never by list position or a dictionary order. Each side's ants are numbered the same way, so this keeps mirrored matches mirrored.
 - **Handle dead ants on purpose.** A dead ant respawns at the nest after 3 s with its role. Including it in a rule keeps it in role; leaving it out means the controller sets it to gather.
-- **Write a reason** a viewer can understand ("enemy interceptor 6 near (11,5)"). It's what the log and the video show.
+- **Write a reason** a viewer can understand ("2 gatherer(s) lost at home in 20s"). It's what the log and the video show.
 - **A rule may keep state** between decisions (the strategist creates fresh rules each match), but anything it needs is usually already in the snapshot.
 
 ## Adding a new role
@@ -179,7 +183,7 @@ Run it with `Godot_v4.7.2-stable_mono_win64_console.exe --headless --path . res:
 
 **Sanity checks worth keeping in a test scene:**
 
-- Food is conserved: piles + carried + delivered always equals the starting total.
+- Food is only created by regrowth: an empty pile refills to its starting amount, never more.
 - No attacker (Defend or Intercept) ever holds food.
 - Every role change happens at the ant's nest or while it is dead (`Simulation.RoleChanged` event, `Simulation.IsAtNest`).
 - Defenders stay within `DefendLeash` of their nest.

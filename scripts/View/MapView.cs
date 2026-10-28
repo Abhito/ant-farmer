@@ -152,12 +152,17 @@ public partial class MapView : Node2D
         float maxRadius = TileSize * 0.38f;
         foreach (FoodPile food in _food)
         {
+            Vector2 center = GridToWorld(food.Cell);
+
+            // An empty pile shows as a faint ring until it regrows.
             if (food.Amount <= 0)
+            {
+                DrawArc(center, maxRadius, 0, Mathf.Tau, 24, FoodEdge, 2);
                 continue;
+            }
 
             // The circle shrinks as the pile is used up.
             float t = Mathf.Clamp(food.Amount / (float)food.StartAmount, 0.25f, 1f);
-            Vector2 center = GridToWorld(food.Cell);
             DrawCircle(center, maxRadius * t, FoodColor);
             DrawArc(center, maxRadius * t, 0, Mathf.Tau, 24, FoodEdge, 2);
         }

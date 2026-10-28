@@ -5,6 +5,7 @@ namespace AntFarmer.Sim.Ai.Strategy;
 
 /// <summary>
 /// Sends each free ant to the pile with the cheapest round trip. A pile takes no more ants than it has food.
+/// An empty pile counts if it will regrow soon, with any wait added to the trip.
 /// SafetyWeight above 0 favors contested piles first; 0 tested best.
 /// </summary>
 public class SpreadGatherRule : IStrategyRule
@@ -29,11 +30,14 @@ public class SpreadGatherRule : IStrategyRule
 
             foreach (FoodInfo pile in world.Food)
             {
-                if (sent.GetValueOrDefault(pile.Id) >= pile.Amount)
+                int food = pile.Amount > 0 ? pile.Amount : pile.StartAmount;
+                if (sent.GetValueOrDefault(pile.Id) >= food)
                     continue;
 
                 (float mine, float theirs) = NestCosts(world, pile);
-                float trip = world.CostToStart(ant, Role.Gather, pile.Cell) + mine;
+                float toPile = world.CostToStart(ant, Role.Gather, pile.Cell);
+                float wait = System.Math.Max(0f, pile.RegrowSecondsLeft * world.Settings.AntSpeed - toPile);
+                float trip = toPile + wait + mine;
                 float score = trip + SafetyWeight * System.Math.Max(0f, theirs - mine);
 
                 // Ties go to the closer pile in a straight line, so mirrored sides choose alike.
@@ -53,7 +57,8 @@ public class SpreadGatherRule : IStrategyRule
             sent[chosen.Id] = sent.GetValueOrDefault(chosen.Id) + 1;
             (float m, float t) = NestCosts(world, chosen);
             string kind = t - m < 4f ? "contested" : "safe";
-            plan.Assign(ant.Id, RoleOrder.Gather(chosen.Id), $"pile {chosen.Id} ({kind}, {chosen.Amount} left)");
+            string state = chosen.Amount > 0 ? $"{chosen.Amount} left" : $"regrows in {chosen.RegrowSecondsLeft:0}s";
+            plan.Assign(ant.Id, RoleOrder.Gather(chosen.Id), $"pile {chosen.Id} ({kind}, {state})");
         }
     }
 

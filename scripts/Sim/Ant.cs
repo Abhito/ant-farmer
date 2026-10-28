@@ -25,6 +25,7 @@ public class Ant
 
     public int RespawnTicksLeft { get; set; }
     public int BiteCooldownLeft { get; set; }
+    public int Kills { get; set; }
 
     public bool IsDead => RespawnTicksLeft > 0;
 

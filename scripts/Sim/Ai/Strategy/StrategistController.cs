@@ -10,6 +10,11 @@ public class StrategistController : ITeamController
 {
     public float HoldSeconds { get; set; } = 2f;
 
+    public int MinGatherers { get; set; } = 2;
+
+    // Rules judge results over this window (kills and deaths of our ants).
+    public RecentEvents Recent { get; } = new(20f);
+
     public IReadOnlyList<IStrategyRule> Rules { get; }
 
     public string Name => "Strategist";
@@ -30,7 +35,9 @@ public class StrategistController : ITeamController
 
     public IEnumerable<AntCommand> Decide(WorldSnapshot world)
     {
-        var plan = new StrategyPlan(world);
+        Recent.Update(world);
+
+        var plan = new StrategyPlan(world, Recent, MinGatherers);
         foreach (IStrategyRule rule in Rules)
         {
             plan.CurrentRule = rule;

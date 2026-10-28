@@ -1,4 +1,3 @@
-using System.Linq;
 using AntFarmer.Sim;
 using AntFarmer.Sim.Ai;
 using AntFarmer.View;
@@ -24,8 +23,7 @@ public partial class GameRunner : Node
 
     [Export] public float MatchSeconds { get; set; } = 180f;
 
-    // 0 = more than half the map's food.
-    [Export] public int WinDeliveries { get; set; } = 0;
+    [Export] public int WinDeliveries { get; set; } = 30;
 
     [Export] public int AntsPerTeam { get; set; } = 5;
 
@@ -102,7 +100,7 @@ public partial class GameRunner : Node
 
         GD.Print($"Match started: seed {settings.Seed}, {settings.TicksPerSecond} ticks/s, " +
                  $"{settings.MatchSeconds}s limit, first to {Sim.WinTarget} deliveries wins, " +
-                 $"{settings.AntsPerTeam} ant(s) per side. " +
+                 $"{settings.AntsPerTeam} ant(s) per side, piles of {Sim.PileSize} regrowing after {Sim.RegrowSeconds:0.0}s (up to {Sim.RegrowSeconds * settings.NearNestRegrowFactor:0.0}s near a nest). " +
                  $"Red: {Sim.Controller(Team.Red).Name}, Blue: {Sim.Controller(Team.Blue).Name}.");
     }
 
@@ -197,7 +195,7 @@ public partial class GameRunner : Node
 
         GD.Print($"Loaded {MapPath}: {Map.Width}x{Map.Height}, " +
                  $"{rockCells} rock cells, {hillCells} hill cells, " +
-                 $"{Map.Food.Count} food sources ({Map.Food.Sum(f => f.Amount)} food total), " +
+                 $"{Map.Food.Count} food sources, " +
                  $"red nest {Map.Nests[Team.Red].Count} cells, blue nest {Map.Nests[Team.Blue].Count} cells.");
     }
 }

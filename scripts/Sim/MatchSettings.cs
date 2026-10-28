@@ -9,8 +9,7 @@ public class MatchSettings
 
     public float MatchSeconds = 180f;
 
-    // Deliveries for an instant win. 0 means more than half the map's food.
-    public int WinDeliveries = 0;
+    public int WinDeliveries = 30;
 
     public int AntsPerTeam = 5;
 
@@ -35,10 +34,16 @@ public class MatchSettings
     public float BiteCooldownSeconds = 2f;
     public float RespawnSeconds = 3f;
 
-    // Defenders attack enemies this close to their post...
-    public float DefendRadius = 5f;
+    // Each match rolls one pile size and one regrow time from the seed, used for every pile.
+    public int MinPileSize = 3;
+    public int MaxPileSize = 6;
+    public float MinRegrowSeconds = 10f;
+    public float MaxRegrowSeconds = 20f;
 
-    // ...and never go farther than this from their nest.
+    // The pile closest to a nest takes this much longer to regrow; the farthest takes the base time.
+    public float NearNestRegrowFactor = 1.5f;
+
+    // Defenders attack enemies inside this distance from their nest, and never leave it.
     public float DefendLeash = 14f;
 
     // How often each side's AI gives new orders.

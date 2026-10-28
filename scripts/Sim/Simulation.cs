@@ -51,7 +51,11 @@ public class Simulation
     // Fires when an ant is given a new role away from its nest and starts walking home.
     public event Action<Simulation, Ant, string> RoleQueued;
 
-    public int WinTarget { get; }
+    public int WinTarget => Settings.WinDeliveries;
+
+    // Rolled from the seed. Piles near a nest regrow slower than RegrowSeconds.
+    public int PileSize { get; }
+    public float RegrowSeconds { get; }
 
     public bool IsOver { get; private set; }
 
@@ -66,15 +70,31 @@ public class Simulation
         Settings = settings;
         Pathfinder = new Pathfinder(map, settings.ClimbCost);
 
+        var rng = new Random(settings.Seed);
+        PileSize = rng.Next(settings.MinPileSize, settings.MaxPileSize + 1);
+        RegrowSeconds = Mathf.Lerp(settings.MinRegrowSeconds, settings.MaxRegrowSeconds, (float)rng.NextDouble());
+
         // Copy the food so the map can be reused for the next match.
         _food = map.Food
-            .Select(f => new FoodPile { Id = f.Id, Cell = f.Cell, Amount = f.Amount, StartAmount = f.Amount })
+            .Select(f => new FoodPile { Id = f.Id, Cell = f.Cell, Amount = PileSize, StartAmount = PileSize })
             .ToList();
-
-        int totalFood = _food.Sum(f => f.Amount);
-        WinTarget = settings.WinDeliveries > 0 ? settings.WinDeliveries : totalFood / 2 + 1;
+        SetRegrowTimes();
 
         SpawnAnts();
+    }
+
+    // Scales each pile's regrow time from the base (farthest from any nest) up to NearNestRegrowFactor (closest).
+    private void SetRegrowTimes()
+    {
+        float NestDistance(FoodPile pile) => Enum.GetValues<Team>().Min(team => DistanceFromNest(team, pile.Cell));
+        float nearest = _food.Min(NestDistance);
+        float farthest = _food.Max(NestDistance);
+
+        foreach (FoodPile pile in _food)
+        {
+            float closeness = farthest > nearest ? (farthest - NestDistance(pile)) / (farthest - nearest) : 0f;
+            pile.RegrowSeconds = RegrowSeconds * Mathf.Lerp(1f, Settings.NearNestRegrowFactor, closeness);
+        }
     }
 
     // Food still in piles, not counting food being carried.
@@ -104,6 +124,12 @@ public class Simulation
         Tick++;
 
         float distancePerTick = Settings.AntSpeed / Settings.TicksPerSecond;
+
+        foreach (FoodPile pile in _food)
+        {
+            if (pile.IsRegrowing && --pile.RegrowTicksLeft == 0)
+                pile.Amount = Math.Max(pile.Amount, pile.StartAmount);
+        }
 
         foreach (Ant ant in _ants)
         {
@@ -289,6 +315,7 @@ public class Simulation
                 continue;
 
             biter.BiteCooldownLeft = Ticks(Settings.BiteCooldownSeconds);
+            biter.Kills++;
             _kills[biter.Team]++;
 
             if (target.CarryingFood && target.CarriedFrom != null)
@@ -309,6 +336,9 @@ public class Simulation
             return false;
 
         pile.Amount--;
+        if (pile.Amount == 0 && !pile.IsRegrowing)
+            pile.RegrowTicksLeft = Ticks(pile.RegrowSeconds);
+
         return true;
     }
 
@@ -326,15 +356,7 @@ public class Simulation
 
     private void CheckForEnd()
     {
-        if (_deliveries.Values.Any(count => count >= WinTarget))
-        {
-            End(LeadingTeam());
-            return;
-        }
-
-        bool noFoodLeft = FoodRemaining == 0 && !_ants.Any(a => a.CarryingFood);
-
-        if (Tick >= Settings.MatchTicks || noFoodLeft)
+        if (_deliveries.Values.Any(count => count >= WinTarget) || Tick >= Settings.MatchTicks)
             End(LeadingTeam());
     }
 

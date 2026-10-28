@@ -4,14 +4,15 @@ using Godot;
 
 namespace AntFarmer.Sim.Ai;
 
-/// <summary>What an AI knows about one ant. Order and PendingOrder are only filled in for its own ants.</summary>
+/// <summary>What an AI knows about one ant. Order, PendingOrder and Kills are only filled in for its own ants.</summary>
 public readonly record struct AntInfo(int Id, Vector2 Position, Vector2I Cell, bool Carrying, bool Dead, Role Role,
-    RoleOrder? Order, RoleOrder? PendingOrder = null)
+    RoleOrder? Order, RoleOrder? PendingOrder = null, int Kills = 0)
 {
     public RoleOrder? NextOrder => PendingOrder ?? Order;
 }
 
-public readonly record struct FoodInfo(int Id, Vector2I Cell, int Amount, int StartAmount);
+// RegrowSecondsLeft is 0 unless the pile is empty and waiting to refill.
+public readonly record struct FoodInfo(int Id, Vector2I Cell, int Amount, int StartAmount, float RegrowSecondsLeft);
 
 /// <summary>Everything one side's AI can see, as of the start of the tick. Read-only.</summary>
 public class WorldSnapshot
@@ -32,7 +33,7 @@ public class WorldSnapshot
     public IReadOnlyList<AntInfo> MyAnts { get; private init; }
     public IReadOnlyList<AntInfo> EnemyAnts { get; private init; }
 
-    // Only piles that still have food.
+    // Every pile, including empty ones that are regrowing.
     public IReadOnlyList<FoodInfo> Food { get; private init; }
 
     public IReadOnlyList<Vector2I> MyNest { get; private init; }
@@ -95,8 +96,8 @@ public class WorldSnapshot
             MyAnts = sim.Ants.Where(a => a.Team == team).Select(a => Describe(a, true)).ToList(),
             EnemyAnts = sim.Ants.Where(a => a.Team == enemy).Select(a => Describe(a, false)).ToList(),
             Food = sim.Food
-                .Where(f => f.Amount > 0)
-                .Select(f => new FoodInfo(f.Id, f.Cell, f.Amount, f.StartAmount))
+                .Select(f => new FoodInfo(f.Id, f.Cell, f.Amount, f.StartAmount,
+                    f.RegrowTicksLeft / (float)sim.Settings.TicksPerSecond))
                 .ToList(),
             MyNest = sim.Map.Nests[team],
             EnemyNest = sim.Map.Nests[enemy],
@@ -108,5 +109,5 @@ public class WorldSnapshot
 
     private static AntInfo Describe(Ant ant, bool own) =>
         new(ant.Id, ant.PreviousPosition, ant.PreviousCell, ant.WasCarrying, ant.IsDead, ant.Order.Role,
-            own ? ant.Order : null, own ? ant.PendingOrder : null);
+            own ? ant.Order : null, own ? ant.PendingOrder : null, own ? ant.Kills : 0);
 }

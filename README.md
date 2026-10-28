@@ -29,7 +29,7 @@ If Godot asks you to choose an editor version, pick **4.7 .NET**. Opening the pr
 ## Run a match
 
 1. Click **Run Project** (or press **F5**). The main scene is `scenes/Main.tscn`.
-2. Two AI colonies, red and blue, play against each other. The match ends when one side delivers more than half the map's food, the map runs out of food, or the time limit is reached.
+2. Two AI colonies, red and blue, play against each other. The match ends when one side delivers 30 food, or the time limit is reached. Food piles start small and regrow after being emptied; pile size and regrow time come from the seed.
 
 Controls:
 

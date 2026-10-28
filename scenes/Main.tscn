@@ -15,6 +15,7 @@ Hud = NodePath("../Hud")
 Camera = NodePath("../Camera2D")
 RedController = 2
 BlueController = 1
+FixedDefenders = 1
 
 [node name="MapView" type="Node2D" parent="." unique_id=625746548]
 script = ExtResource("2_mapview")

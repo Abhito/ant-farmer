@@ -7,6 +7,8 @@ namespace AntFarmer.Sim.Ai.Strategy;
 public class StrategyPlan
 {
     public WorldSnapshot World { get; }
+    public RecentEvents Recent { get; }
+    public int MinGatherers { get; }
 
     public bool SkipRemainingRules { get; set; }
 
@@ -14,9 +16,18 @@ public class StrategyPlan
 
     private readonly Dictionary<int, (RoleOrder Order, string Reason)> _assigned = new();
 
-    public StrategyPlan(WorldSnapshot world) => World = world;
+    public StrategyPlan(WorldSnapshot world, RecentEvents recent, int minGatherers)
+    {
+        World = world;
+        Recent = recent;
+        MinGatherers = minGatherers;
+    }
 
     public IEnumerable<AntInfo> FreeAnts => World.MyAnts.Where(a => !_assigned.ContainsKey(a.Id));
+
+    // How many more attackers can be assigned while keeping MinGatherers ants gathering.
+    public int AttackerSlots => System.Math.Max(0,
+        World.MyAnts.Count - MinGatherers - _assigned.Values.Count(a => a.Order.Role != Role.Gather));
 
     public bool IsFree(int antId) => !_assigned.ContainsKey(antId);
 

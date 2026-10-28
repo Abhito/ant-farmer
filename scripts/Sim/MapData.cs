@@ -30,6 +30,12 @@ public class FoodPile
     public Vector2I Cell;
     public int Amount;
     public int StartAmount;
+
+    public float RegrowSeconds;
+
+    // An empty pile refills to StartAmount when this runs out.
+    public int RegrowTicksLeft;
+    public bool IsRegrowing => RegrowTicksLeft > 0;
 }
 
 /// <summary>The static map layout: terrain, heights, nests, and starting food.</summary>
