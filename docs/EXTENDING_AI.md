@@ -161,7 +161,7 @@ To let AIs see something new, add it to `WorldSnapshot.Capture`. Use start-of-ti
 
 ## Testing
 
-The same seed replays the same match, but seeds differ a lot. **Use many seeds (50+) from both sides**, and keep the evaluation seeds (1001-1100) separate from the ones you tune on.
+The same seed replays the same match, but seeds differ a lot. **Use many seeds (50+) from both sides**, and keep the evaluation seeds (1001-1070) separate from the ones you tune on.
 
 - **In the editor:** pick controllers on `GameRunner`, turn on **Log Role Changes**, press F5.
 - **Headless:** a small scene that plays matches without drawing:

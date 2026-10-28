@@ -13,6 +13,9 @@ public class RaidRule : IStrategyRule
 
     public int MaxRaiders { get; set; } = 2;
 
+    // Off: keep Raiders interceptors for the whole match. Used to measure what adapting is worth.
+    public bool Adaptive { get; set; } = true;
+
     // How far the results have moved the count away from the starting number.
     private int _adjustment;
     private float _lastAdjusted;
@@ -23,7 +26,7 @@ public class RaidRule : IStrategyRule
         int count = System.Math.Clamp(Raiders + _adjustment, 0, MaxRaiders);
 
         // Wait a full window after each change so the next judgment only sees the new setup.
-        if (world.ElapsedSeconds - _lastAdjusted >= plan.Recent.WindowSeconds)
+        if (Adaptive && world.ElapsedSeconds - _lastAdjusted >= plan.Recent.WindowSeconds)
         {
             int kills = plan.Recent.Kills(Role.Intercept);
             int deaths = plan.Recent.Deaths(Role.Intercept);

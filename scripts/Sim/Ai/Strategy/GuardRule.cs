@@ -15,6 +15,9 @@ public class GuardRule : IStrategyRule
     // Gatherers lost at home within the window for each defender.
     public int LossesPerDefender { get; set; } = 2;
 
+    // Off: never add defenders (the starting count of 0 for the whole match). Used to measure what adapting is worth.
+    public bool Adaptive { get; set; } = true;
+
     private int _count;
     private float _changed = float.NegativeInfinity;
 
@@ -30,7 +33,7 @@ public class GuardRule : IStrategyRule
         desired = System.Math.Min(desired, MaxDefenders);
 
         bool canDrop = world.ElapsedSeconds - _changed >= plan.Recent.WindowSeconds;
-        if (desired > _count || (desired < _count && canDrop))
+        if (Adaptive && (desired > _count || (desired < _count && canDrop)))
         {
             _count = desired;
             _changed = world.ElapsedSeconds;

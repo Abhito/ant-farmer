@@ -126,9 +126,9 @@ Against 1 defender + 1 interceptor, pile size decides most: the Strategist wins 
 
 | Run | Matches |
 |---|---|
-| **Main:** Strategist vs. all 5 opponents, seeds **1001-1100** (not the tuning seeds), both sides | 1,000 |
-| **Ablations:** adaptation off (Guard and Raid keep their starting counts), no Raid, no Guard | e.g. 30 seeds × both sides each |
-| **Sanity:** Strategist vs. Strategist (should be about even) | a few dozen |
+| **Main:** Strategist vs. all 5 opponents, seeds **1001-1070** (not the tuning seeds), both sides | 700 |
+| **Ablations:** adaptation off (`new GuardRule { Adaptive = false }` and `new RaidRule { Adaptive = false }`: 0 defenders and 1 interceptor all match), no Raid, no Guard (leave the rule out of the list passed to `new StrategistController(rules)`) | 3 variants × Baseline, Fixed 2I, Fixed 1D+1I × seeds 1001-1015 × both sides = 270 |
+| **Sanity:** Strategist vs. Strategist, seeds 1001-1015, both sides (should be about even) | 30 |
 
 Record for each match: seed, side, controllers, winner, scores, length, how it ended, kills, role switches, pile size, refill time, defender area. Report win rates with 95% confidence intervals.
 
