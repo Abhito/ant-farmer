@@ -24,3 +24,5 @@ builds/
 export/
 *.pck
 *.apk
+# Per-process evaluation output (merged into results/results.csv)
+results/raw/

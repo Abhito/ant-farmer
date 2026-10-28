@@ -120,9 +120,12 @@ Against 1 defender + 1 interceptor, pile size decides most: the Strategist wins 
 
 **Known quirks**
 - Interceptors are strong: carriers can't outrun them. Interceptor-heavy matches take about twice as long.
+- Interceptors have little safe ground against a team with a defender. The defender areas cover most of the map: only 12-35% of walkable cells (radius 16 vs. 12) and 3-7 of the 13 piles lie outside both areas. Carriers always head home into their own area, so an interceptor chasing one usually ends up near the enemy defender. In the evaluation, the Strategist did better against Fixed 1D+1I without its Raid rule (87% vs. 40%). Ideas for later: maps with more open ground (a map generator could vary this), or interceptors that avoid defended areas.
 - When two routes cost the same, A* picks the same one for both sides, so mirrored ants can walk different routes. Playing both sides evens this out.
 
 ## Evaluation plan
+
+Results and what they mean: [EVALUATION.md](EVALUATION.md).
 
 | Run | Matches |
 |---|---|
@@ -130,6 +133,6 @@ Against 1 defender + 1 interceptor, pile size decides most: the Strategist wins 
 | **Ablations:** adaptation off (`new GuardRule { Adaptive = false }` and `new RaidRule { Adaptive = false }`: 0 defenders and 1 interceptor all match), no Raid, no Guard (leave the rule out of the list passed to `new StrategistController(rules)`) | 3 variants × Baseline, Fixed 2I, Fixed 1D+1I × seeds 1001-1015 × both sides = 270 |
 | **Sanity:** Strategist vs. Strategist, seeds 1001-1015, both sides (should be about even) | 30 |
 
-Record for each match: seed, side, controllers, winner, scores, length, how it ended, kills, role switches, pile size, refill time, defender area. Report win rates with 95% confidence intervals.
+The runner is `scenes/BatchRunner.tscn` (`scripts/Tools/BatchRunner.cs`), started by `tools/run_evaluation.py`; see the README. It records for each match: seed, side, controllers, winner, scores, length, how it ended, kills, role switches, pile size, refill time, defender area. Report win rates with 95% confidence intervals.
 
 **Running many matches:** threads don't help (Godot runs the A* callbacks one at a time). Run several headless Godot processes, each with its own share of matches (pass it after `--`, read it with `OS.GetCmdlineUserArgs()`), and merge the output. 14 processes ran 200 matches in about 2 minutes. If the editor is open, run from a copy of the project folder.

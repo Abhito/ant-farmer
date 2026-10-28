@@ -55,4 +55,19 @@ Godot_v4.7.2-stable_mono_win64_console.exe --headless --path . --fixed-fps 60 --
 
 `--quit-after 12000` stops after 12,000 frames (200 seconds of game time at 60 frames per second), enough for a full match.
 
+## Run the evaluation (1,000 matches)
+
+Needs Python 3 and the .NET SDK. Close the Godot editor first (or run from a copy of the project folder), then from the repository folder:
+
+```
+python tools/run_evaluation.py --godot PATH/TO/Godot_v4.7.2-stable_mono_win64_console.exe
+```
+
+It builds the project, plays the matches in parallel headless processes (about 3 minutes with 14 processes), and writes:
+
+- `results/results.csv`: one row per match
+- `results/summary.md`: the tables (win rates with 95% confidence intervals, pile-size breakdown, ablations, side check)
+
+What the results show: [docs/EVALUATION.md](docs/EVALUATION.md). To redo the tables from an existing CSV: `python tools/summarize_results.py results/results.csv`. The list of matches is in `scripts/Tools/BatchRunner.cs`.
+
 See [docs/OVERVIEW.md](docs/OVERVIEW.md) for how the code is organized, and [docs/EXTENDING_AI.md](docs/EXTENDING_AI.md) for how to add AI rules, roles, and controllers.

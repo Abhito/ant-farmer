@@ -1,0 +1,1001 @@
+index,run,variant,opponent,seed,strategist_side,winner,strategist_score,opponent_score,seconds,end_reason,strategist_kills,opponent_kills,strategist_role_switches,opponent_role_switches,pile_size,regrow_seconds,defend_leash
+0,main,Full,Baseline,1001,red,strategist,30,18,55.7,target,26,0,1,0,5,15.29,13.82
+1,main,Full,Baseline,1001,blue,strategist,30,19,52.9,target,22,0,1,0,5,15.29,13.82
+2,main,Full,Baseline,1002,red,strategist,30,18,58.9,target,25,0,1,0,3,18.23,12.62
+3,main,Full,Baseline,1002,blue,strategist,30,19,63.0,target,26,0,1,0,3,18.23,12.62
+4,main,Full,Baseline,1003,red,strategist,30,21,52.5,target,21,0,1,0,5,11.16,15.41
+5,main,Full,Baseline,1003,blue,strategist,30,20,50.5,target,20,0,1,0,5,11.16,15.41
+6,main,Full,Baseline,1004,red,strategist,30,18,55.5,target,23,0,1,0,3,14.10,14.21
+7,main,Full,Baseline,1004,blue,strategist,30,19,55.5,target,22,0,1,0,3,14.10,14.21
+8,main,Full,Baseline,1005,red,strategist,30,20,51.2,target,21,0,1,0,6,17.03,13.00
+9,main,Full,Baseline,1005,blue,strategist,30,18,51.2,target,21,0,1,0,6,17.03,13.00
+10,main,Full,Baseline,1006,red,strategist,30,19,51.9,target,22,0,1,0,4,19.96,15.80
+11,main,Full,Baseline,1006,blue,strategist,30,19,55.3,target,25,0,1,0,4,19.96,15.80
+12,main,Full,Baseline,1007,red,strategist,30,16,50.8,target,26,0,1,0,6,12.90,14.60
+13,main,Full,Baseline,1007,blue,strategist,30,18,52.2,target,25,0,1,0,6,12.90,14.60
+14,main,Full,Baseline,1008,red,strategist,30,22,54.6,target,21,0,1,0,4,15.83,13.39
+15,main,Full,Baseline,1008,blue,strategist,30,16,52.5,target,26,0,1,0,4,15.83,13.39
+16,main,Full,Baseline,1009,red,strategist,31,17,53.1,target,25,0,1,0,6,18.77,12.19
+17,main,Full,Baseline,1009,blue,strategist,31,21,53.1,target,22,0,1,0,6,18.77,12.19
+18,main,Full,Baseline,1010,red,strategist,30,21,50.3,target,18,0,1,0,4,11.70,14.98
+19,main,Full,Baseline,1010,blue,strategist,30,23,52.5,target,18,0,1,0,4,11.70,14.98
+20,main,Full,Baseline,1011,red,strategist,30,18,51.6,target,23,0,1,0,6,14.64,13.78
+21,main,Full,Baseline,1011,blue,strategist,30,21,48.3,target,17,0,1,0,6,14.64,13.78
+22,main,Full,Baseline,1012,red,strategist,30,22,52.2,target,18,0,1,0,4,17.57,12.58
+23,main,Full,Baseline,1012,blue,strategist,30,23,52.1,target,16,0,1,0,4,17.57,12.58
+24,main,Full,Baseline,1013,red,strategist,30,21,51.5,target,19,0,1,0,6,10.50,15.37
+25,main,Full,Baseline,1013,blue,strategist,30,19,51.5,target,23,0,1,0,6,10.50,15.37
+26,main,Full,Baseline,1014,red,strategist,30,21,53.4,target,17,0,1,0,4,13.44,14.17
+27,main,Full,Baseline,1014,blue,strategist,30,22,53.4,target,18,0,1,0,4,13.44,14.17
+28,main,Full,Baseline,1015,red,strategist,30,24,49.2,target,13,0,1,0,6,16.37,12.96
+29,main,Full,Baseline,1015,blue,strategist,30,18,51.3,target,23,0,1,0,6,16.37,12.96
+30,main,Full,Baseline,1016,red,strategist,30,20,54.1,target,23,0,1,0,5,19.31,15.76
+31,main,Full,Baseline,1016,blue,strategist,30,22,54.0,target,19,0,1,0,5,19.31,15.76
+32,main,Full,Baseline,1017,red,strategist,30,21,60.7,target,21,0,1,0,3,12.24,14.56
+33,main,Full,Baseline,1017,blue,strategist,30,21,60.7,target,21,0,1,0,3,12.24,14.56
+34,main,Full,Baseline,1018,red,strategist,30,14,54.3,target,31,0,1,0,5,15.17,13.35
+35,main,Full,Baseline,1018,blue,strategist,30,14,52.9,target,30,0,1,0,5,15.17,13.35
+36,main,Full,Baseline,1019,red,strategist,30,20,63.2,target,26,0,1,0,3,18.11,12.15
+37,main,Full,Baseline,1019,blue,strategist,30,19,63.2,target,28,0,1,0,3,18.11,12.15
+38,main,Full,Baseline,1020,red,strategist,30,19,52.8,target,23,0,1,0,5,11.04,14.94
+39,main,Full,Baseline,1020,blue,strategist,30,21,50.5,target,19,0,1,0,5,11.04,14.94
+40,main,Full,Baseline,1021,red,strategist,30,19,55.5,target,23,0,1,0,3,13.98,13.74
+41,main,Full,Baseline,1021,blue,strategist,30,19,56.6,target,23,0,1,0,3,13.98,13.74
+42,main,Full,Baseline,1022,red,strategist,30,17,54.0,target,26,0,1,0,5,16.91,12.54
+43,main,Full,Baseline,1022,blue,strategist,30,18,54.6,target,25,0,1,0,5,16.91,12.54
+44,main,Full,Baseline,1023,red,strategist,30,23,65.3,target,22,0,1,0,3,19.85,15.33
+45,main,Full,Baseline,1023,blue,strategist,30,20,61.2,target,21,0,1,0,3,19.85,15.33
+46,main,Full,Baseline,1024,red,strategist,30,19,53.1,target,24,0,1,0,5,12.78,14.13
+47,main,Full,Baseline,1024,blue,strategist,30,19,53.1,target,24,0,1,0,5,12.78,14.13
+48,main,Full,Baseline,1025,red,strategist,31,21,62.3,target,24,0,1,0,3,15.71,12.92
+49,main,Full,Baseline,1025,blue,strategist,31,22,57.6,target,18,0,1,0,3,15.71,12.92
+50,main,Full,Baseline,1026,red,strategist,30,17,54.4,target,26,0,1,0,5,18.65,15.72
+51,main,Full,Baseline,1026,blue,strategist,30,23,54.5,target,19,0,1,0,5,18.65,15.72
+52,main,Full,Baseline,1027,red,strategist,30,22,51.5,target,18,0,1,0,4,11.58,14.51
+53,main,Full,Baseline,1027,blue,strategist,30,24,51.5,target,15,0,1,0,4,11.58,14.51
+54,main,Full,Baseline,1028,red,strategist,31,22,54.4,target,22,0,1,0,6,14.52,13.31
+55,main,Full,Baseline,1028,blue,strategist,30,18,51.4,target,23,0,1,0,6,14.52,13.31
+56,main,Full,Baseline,1029,red,strategist,30,19,55.4,target,24,0,1,0,4,17.45,12.11
+57,main,Full,Baseline,1029,blue,strategist,30,19,55.4,target,24,0,1,0,4,17.45,12.11
+58,main,Full,Baseline,1030,red,strategist,30,18,50.3,target,23,0,1,0,6,10.39,14.90
+59,main,Full,Baseline,1030,blue,strategist,30,21,48.0,target,17,0,1,0,6,10.39,14.90
+60,main,Full,Baseline,1031,red,strategist,30,23,53.3,target,17,0,1,0,4,13.32,13.70
+61,main,Full,Baseline,1031,blue,strategist,30,19,51.9,target,19,0,1,0,4,13.32,13.70
+62,main,Full,Baseline,1032,red,strategist,30,22,51.4,target,19,0,1,0,6,16.25,12.49
+63,main,Full,Baseline,1032,blue,strategist,30,18,50.6,target,23,0,1,0,6,16.25,12.49
+64,main,Full,Baseline,1033,red,strategist,30,21,52.2,target,18,0,1,0,4,19.19,15.29
+65,main,Full,Baseline,1033,blue,strategist,30,21,52.2,target,17,0,1,0,4,19.19,15.29
+66,main,Full,Baseline,1034,red,strategist,30,19,51.4,target,22,0,1,0,6,12.12,14.09
+67,main,Full,Baseline,1034,blue,strategist,30,20,49.4,target,19,0,1,0,6,12.12,14.09
+68,main,Full,Baseline,1035,red,strategist,30,22,52.3,target,19,0,1,0,4,15.06,12.88
+69,main,Full,Baseline,1035,blue,strategist,30,23,54.7,target,20,0,1,0,4,15.06,12.88
+70,main,Full,Baseline,1036,red,strategist,30,17,51.9,target,26,0,1,0,6,17.99,15.68
+71,main,Full,Baseline,1036,blue,strategist,31,18,51.8,target,23,0,1,0,6,17.99,15.68
+72,main,Full,Baseline,1037,red,strategist,30,23,53.5,target,19,0,1,0,4,10.92,14.47
+73,main,Full,Baseline,1037,blue,strategist,30,23,53.4,target,20,0,1,0,4,10.92,14.47
+74,main,Full,Baseline,1038,red,strategist,31,21,59.4,target,23,0,1,0,3,13.86,13.27
+75,main,Full,Baseline,1038,blue,strategist,30,19,55.8,target,22,0,1,0,3,13.86,13.27
+76,main,Full,Baseline,1039,red,strategist,30,18,54.6,target,23,0,1,0,5,16.79,12.07
+77,main,Full,Baseline,1039,blue,strategist,30,18,54.6,target,23,0,1,0,5,16.79,12.07
+78,main,Full,Baseline,1040,red,strategist,30,19,59.6,target,23,0,1,0,3,19.73,14.86
+79,main,Full,Baseline,1040,blue,strategist,30,20,61.0,target,23,0,1,0,3,19.73,14.86
+80,main,Full,Baseline,1041,red,strategist,30,18,51.6,target,22,0,1,0,5,12.66,13.66
+81,main,Full,Baseline,1041,blue,strategist,30,19,53.4,target,22,0,1,0,5,12.66,13.66
+82,main,Full,Baseline,1042,red,strategist,30,19,57.3,target,22,0,1,0,3,15.60,12.45
+83,main,Full,Baseline,1042,blue,strategist,30,16,57.4,target,26,0,1,0,3,15.60,12.45
+84,main,Full,Baseline,1043,red,strategist,30,16,52.8,target,27,0,1,0,5,18.53,15.25
+85,main,Full,Baseline,1043,blue,strategist,30,13,54.1,target,31,0,1,0,5,18.53,15.25
+86,main,Full,Baseline,1044,red,strategist,30,24,57.6,target,20,0,1,0,3,11.46,14.05
+87,main,Full,Baseline,1044,blue,strategist,30,21,55.9,target,22,0,1,0,3,11.46,14.05
+88,main,Full,Baseline,1045,red,strategist,30,16,53.5,target,28,0,1,0,5,14.40,12.84
+89,main,Full,Baseline,1045,blue,strategist,30,17,52.6,target,24,0,1,0,5,14.40,12.84
+90,main,Full,Baseline,1046,red,strategist,31,23,61.4,target,18,0,1,0,3,17.33,15.64
+91,main,Full,Baseline,1046,blue,strategist,30,19,59.6,target,24,0,1,0,3,17.33,15.64
+92,main,Full,Baseline,1047,red,strategist,30,21,52.3,target,22,0,1,0,5,10.27,14.43
+93,main,Full,Baseline,1047,blue,strategist,31,23,52.8,target,20,0,1,0,5,10.27,14.43
+94,main,Full,Baseline,1048,red,strategist,30,21,55.8,target,19,0,1,0,3,13.20,13.23
+95,main,Full,Baseline,1048,blue,strategist,30,21,56.6,target,21,0,1,0,3,13.20,13.23
+96,main,Full,Baseline,1049,red,strategist,30,18,51.3,target,24,0,1,0,6,16.13,12.03
+97,main,Full,Baseline,1049,blue,strategist,30,20,51.4,target,21,0,1,0,6,16.13,12.03
+98,main,Full,Baseline,1050,red,strategist,30,20,54.5,target,21,0,1,0,4,19.07,14.82
+99,main,Full,Baseline,1050,blue,strategist,30,20,54.1,target,21,0,1,0,4,19.07,14.82
+100,main,Full,Baseline,1051,red,strategist,30,18,49.4,target,21,0,1,0,6,12.00,13.62
+101,main,Full,Baseline,1051,blue,strategist,30,23,51.3,target,18,0,1,0,6,12.00,13.62
+102,main,Full,Baseline,1052,red,strategist,30,21,51.8,target,19,0,1,0,4,14.94,12.41
+103,main,Full,Baseline,1052,blue,strategist,30,23,54.5,target,20,0,1,0,4,14.94,12.41
+104,main,Full,Baseline,1053,red,strategist,31,21,54.1,target,22,0,1,0,6,17.87,15.21
+105,main,Full,Baseline,1053,blue,strategist,30,19,51.7,target,23,0,1,0,6,17.87,15.21
+106,main,Full,Baseline,1054,red,strategist,30,22,50.1,target,16,0,1,0,4,10.81,14.01
+107,main,Full,Baseline,1054,blue,strategist,30,23,50.2,target,16,0,1,0,4,10.81,14.01
+108,main,Full,Baseline,1055,red,strategist,31,19,53.3,target,24,0,1,0,6,13.74,12.80
+109,main,Full,Baseline,1055,blue,strategist,32,22,53.4,target,22,0,1,0,6,13.74,12.80
+110,main,Full,Baseline,1056,red,strategist,30,21,56.1,target,22,0,1,0,4,16.67,15.60
+111,main,Full,Baseline,1056,blue,strategist,30,21,56.2,target,22,0,1,0,4,16.67,15.60
+112,main,Full,Baseline,1057,red,strategist,30,21,53.6,target,22,0,1,0,6,19.61,14.39
+113,main,Full,Baseline,1057,blue,strategist,30,19,53.8,target,23,0,1,0,6,19.61,14.39
+114,main,Full,Baseline,1058,red,strategist,30,22,52.3,target,18,0,1,0,4,12.54,13.19
+115,main,Full,Baseline,1058,blue,strategist,30,22,52.7,target,18,0,1,0,4,12.54,13.19
+116,main,Full,Baseline,1059,red,strategist,30,20,52.7,target,23,0,1,0,6,15.48,15.99
+117,main,Full,Baseline,1059,blue,strategist,30,22,52.0,target,22,0,1,0,6,15.48,15.99
+118,main,Full,Baseline,1060,red,strategist,30,15,52.1,target,25,0,1,0,4,18.41,14.78
+119,main,Full,Baseline,1060,blue,strategist,30,24,54.1,target,17,0,1,0,4,18.41,14.78
+120,main,Full,Baseline,1061,red,strategist,30,20,55.3,target,21,0,1,0,3,11.34,13.58
+121,main,Full,Baseline,1061,blue,strategist,30,20,55.5,target,22,0,1,0,3,11.34,13.58
+122,main,Full,Baseline,1062,red,strategist,30,22,52.5,target,19,0,1,0,5,14.28,12.37
+123,main,Full,Baseline,1062,blue,strategist,30,22,53.6,target,19,0,1,0,5,14.28,12.37
+124,main,Full,Baseline,1063,red,strategist,30,20,60.5,target,24,0,1,0,3,17.21,15.17
+125,main,Full,Baseline,1063,blue,strategist,30,20,60.5,target,24,0,1,0,3,17.21,15.17
+126,main,Full,Baseline,1064,red,strategist,30,19,52.3,target,22,0,1,0,5,10.15,13.96
+127,main,Full,Baseline,1064,blue,strategist,30,25,52.8,target,19,0,1,0,5,10.15,13.96
+128,main,Full,Baseline,1065,red,strategist,30,19,58.2,target,24,0,1,0,3,13.08,12.76
+129,main,Full,Baseline,1065,blue,strategist,30,21,56.0,target,20,0,1,0,3,13.08,12.76
+130,main,Full,Baseline,1066,red,strategist,30,17,54.2,target,25,0,1,0,5,16.02,15.56
+131,main,Full,Baseline,1066,blue,strategist,30,17,54.6,target,25,0,1,0,5,16.02,15.56
+132,main,Full,Baseline,1067,red,strategist,30,19,59.3,target,25,0,1,0,3,18.95,14.35
+133,main,Full,Baseline,1067,blue,strategist,31,20,64.6,target,27,0,1,0,3,18.95,14.35
+134,main,Full,Baseline,1068,red,strategist,31,22,53.5,target,20,0,1,0,5,11.88,13.15
+135,main,Full,Baseline,1068,blue,strategist,30,20,52.8,target,20,0,1,0,5,11.88,13.15
+136,main,Full,Baseline,1069,red,strategist,30,22,60.8,target,23,0,1,0,3,14.82,15.94
+137,main,Full,Baseline,1069,blue,strategist,30,20,56.1,target,20,0,1,0,3,14.82,15.94
+138,main,Full,Baseline,1070,red,strategist,30,15,51.6,target,26,0,1,0,5,17.75,14.74
+139,main,Full,Baseline,1070,blue,strategist,30,17,54.6,target,25,0,1,0,5,17.75,14.74
+140,main,Full,Fixed 1I,1001,red,strategist,30,25,95.7,target,45,10,8,0,5,15.29,13.82
+141,main,Full,Fixed 1I,1001,blue,strategist,30,25,90.2,target,40,9,6,0,5,15.29,13.82
+142,main,Full,Fixed 1I,1002,red,strategist,30,24,99.0,target,45,9,9,0,3,18.23,12.62
+143,main,Full,Fixed 1I,1002,blue,strategist,30,18,94.9,target,47,8,6,0,3,18.23,12.62
+144,main,Full,Fixed 1I,1003,red,strategist,30,24,94.8,target,48,10,8,0,5,11.16,15.41
+145,main,Full,Fixed 1I,1003,blue,strategist,30,11,76.1,target,48,7,6,0,5,11.16,15.41
+146,main,Full,Fixed 1I,1004,red,strategist,30,11,93.8,target,60,8,7,0,3,14.10,14.21
+147,main,Full,Fixed 1I,1004,blue,strategist,30,10,90.2,target,59,7,7,0,3,14.10,14.21
+148,main,Full,Fixed 1I,1005,red,strategist,30,26,82.4,target,36,8,7,0,6,17.03,13.00
+149,main,Full,Fixed 1I,1005,blue,strategist,30,29,95.3,target,43,10,8,0,6,17.03,13.00
+150,main,Full,Fixed 1I,1006,red,strategist,30,27,97.2,target,42,9,8,0,4,19.96,15.80
+151,main,Full,Fixed 1I,1006,blue,strategist,30,18,74.3,target,34,5,5,0,4,19.96,15.80
+152,main,Full,Fixed 1I,1007,red,strategist,30,23,92.6,target,47,9,7,0,6,12.90,14.60
+153,main,Full,Fixed 1I,1007,blue,strategist,30,21,75.6,target,35,7,7,0,6,12.90,14.60
+154,main,Full,Fixed 1I,1008,red,strategist,30,13,87.6,target,54,8,4,0,4,15.83,13.39
+155,main,Full,Fixed 1I,1008,blue,strategist,30,14,81.8,target,48,7,4,0,4,15.83,13.39
+156,main,Full,Fixed 1I,1009,red,strategist,30,12,83.3,target,52,8,6,0,6,18.77,12.19
+157,main,Full,Fixed 1I,1009,blue,strategist,30,11,81.7,target,52,6,5,0,6,18.77,12.19
+158,main,Full,Fixed 1I,1010,red,strategist,30,23,100.7,target,50,12,6,0,4,11.70,14.98
+159,main,Full,Fixed 1I,1010,blue,strategist,30,28,102.8,target,46,11,10,0,4,11.70,14.98
+160,main,Full,Fixed 1I,1011,red,strategist,30,19,88.6,target,46,8,8,0,6,14.64,13.78
+161,main,Full,Fixed 1I,1011,blue,strategist,30,20,92.1,target,48,10,8,0,6,14.64,13.78
+162,main,Full,Fixed 1I,1012,red,opponent,27,30,99.7,target,40,12,10,0,4,17.57,12.58
+163,main,Full,Fixed 1I,1012,blue,strategist,30,29,102.1,target,41,12,9,0,4,17.57,12.58
+164,main,Full,Fixed 1I,1013,red,strategist,30,21,79.5,target,38,7,6,0,6,10.50,15.37
+165,main,Full,Fixed 1I,1013,blue,strategist,30,13,84.9,target,54,9,6,0,6,10.50,15.37
+166,main,Full,Fixed 1I,1014,red,strategist,30,21,87.9,target,44,8,8,0,4,13.44,14.17
+167,main,Full,Fixed 1I,1014,blue,strategist,30,15,81.5,target,44,8,6,0,4,13.44,14.17
+168,main,Full,Fixed 1I,1015,red,strategist,30,12,85.2,target,54,9,6,0,6,16.37,12.96
+169,main,Full,Fixed 1I,1015,blue,strategist,30,12,74.5,target,46,5,5,0,6,16.37,12.96
+170,main,Full,Fixed 1I,1016,red,strategist,30,13,83.9,target,51,6,5,0,5,19.31,15.76
+171,main,Full,Fixed 1I,1016,blue,strategist,30,23,92.3,target,43,9,8,0,5,19.31,15.76
+172,main,Full,Fixed 1I,1017,red,strategist,30,14,95.0,target,57,9,6,0,3,12.24,14.56
+173,main,Full,Fixed 1I,1017,blue,strategist,30,13,97.6,target,59,9,8,0,3,12.24,14.56
+174,main,Full,Fixed 1I,1018,red,strategist,31,12,91.8,target,59,9,6,0,5,15.17,13.35
+175,main,Full,Fixed 1I,1018,blue,strategist,30,19,96.2,target,51,11,8,0,5,15.17,13.35
+176,main,Full,Fixed 1I,1019,red,strategist,30,24,100.9,target,42,10,11,0,3,18.11,12.15
+177,main,Full,Fixed 1I,1019,blue,strategist,30,27,108.7,target,48,13,9,0,3,18.11,12.15
+178,main,Full,Fixed 1I,1020,red,strategist,30,21,89.6,target,44,8,7,0,5,11.04,14.94
+179,main,Full,Fixed 1I,1020,blue,strategist,30,11,74.1,target,46,5,5,0,5,11.04,14.94
+180,main,Full,Fixed 1I,1021,red,strategist,30,22,89.7,target,40,7,8,0,3,13.98,13.74
+181,main,Full,Fixed 1I,1021,blue,opponent,29,30,86.5,target,28,7,7,0,3,13.98,13.74
+182,main,Full,Fixed 1I,1022,red,strategist,30,25,94.4,target,45,9,9,0,5,16.91,12.54
+183,main,Full,Fixed 1I,1022,blue,strategist,30,11,77.9,target,48,6,5,0,5,16.91,12.54
+184,main,Full,Fixed 1I,1023,red,strategist,30,13,93.5,target,56,8,6,0,3,19.85,15.33
+185,main,Full,Fixed 1I,1023,blue,strategist,30,10,95.7,target,63,8,7,0,3,19.85,15.33
+186,main,Full,Fixed 1I,1024,red,strategist,30,14,86.7,target,52,9,8,0,5,12.78,14.13
+187,main,Full,Fixed 1I,1024,blue,strategist,30,14,86.7,target,52,9,8,0,5,12.78,14.13
+188,main,Full,Fixed 1I,1025,red,opponent,28,30,91.0,target,31,8,8,0,3,15.71,12.92
+189,main,Full,Fixed 1I,1025,blue,strategist,30,20,104.8,target,56,10,7,0,3,15.71,12.92
+190,main,Full,Fixed 1I,1026,red,strategist,30,15,88.1,target,53,8,4,0,5,18.65,15.72
+191,main,Full,Fixed 1I,1026,blue,strategist,30,21,80.9,target,38,6,4,0,5,18.65,15.72
+192,main,Full,Fixed 1I,1027,red,strategist,30,17,90.7,target,52,9,8,0,4,11.58,14.51
+193,main,Full,Fixed 1I,1027,blue,opponent,29,30,93.4,target,35,10,12,0,4,11.58,14.51
+194,main,Full,Fixed 1I,1028,red,strategist,30,16,79.0,target,44,7,6,0,6,14.52,13.31
+195,main,Full,Fixed 1I,1028,blue,strategist,30,29,82.3,target,32,7,7,0,6,14.52,13.31
+196,main,Full,Fixed 1I,1029,red,strategist,30,14,89.6,target,55,8,6,0,4,17.45,12.11
+197,main,Full,Fixed 1I,1029,blue,strategist,30,14,89.8,target,55,8,6,0,4,17.45,12.11
+198,main,Full,Fixed 1I,1030,red,strategist,30,11,83.7,target,55,8,6,0,6,10.39,14.90
+199,main,Full,Fixed 1I,1030,blue,strategist,30,14,77.5,target,44,7,6,0,6,10.39,14.90
+200,main,Full,Fixed 1I,1031,red,strategist,30,28,88.7,target,36,9,9,0,4,13.32,13.70
+201,main,Full,Fixed 1I,1031,blue,strategist,30,21,93.5,target,50,8,8,0,4,13.32,13.70
+202,main,Full,Fixed 1I,1032,red,strategist,30,23,86.6,target,37,9,6,0,6,16.25,12.49
+203,main,Full,Fixed 1I,1032,blue,strategist,30,22,89.6,target,46,8,6,0,6,16.25,12.49
+204,main,Full,Fixed 1I,1033,red,strategist,30,26,91.5,target,38,9,6,0,4,19.19,15.29
+205,main,Full,Fixed 1I,1033,blue,strategist,30,21,87.1,target,41,7,8,0,4,19.19,15.29
+206,main,Full,Fixed 1I,1034,red,strategist,30,26,85.2,target,36,9,8,0,6,12.12,14.09
+207,main,Full,Fixed 1I,1034,blue,strategist,30,12,81.1,target,52,8,6,0,6,12.12,14.09
+208,main,Full,Fixed 1I,1035,red,strategist,30,20,87.9,target,45,8,6,0,4,15.06,12.88
+209,main,Full,Fixed 1I,1035,blue,strategist,30,20,86.7,target,47,8,6,0,4,15.06,12.88
+210,main,Full,Fixed 1I,1036,red,strategist,30,27,93.3,target,40,10,9,0,6,17.99,15.68
+211,main,Full,Fixed 1I,1036,blue,strategist,30,29,87.0,target,35,8,10,0,6,17.99,15.68
+212,main,Full,Fixed 1I,1037,red,strategist,30,23,93.2,target,45,10,6,0,4,10.92,14.47
+213,main,Full,Fixed 1I,1037,blue,strategist,30,10,81.0,target,52,7,4,0,4,10.92,14.47
+214,main,Full,Fixed 1I,1038,red,strategist,30,14,98.5,target,59,9,8,0,3,13.86,13.27
+215,main,Full,Fixed 1I,1038,blue,strategist,30,24,90.3,target,39,8,6,0,3,13.86,13.27
+216,main,Full,Fixed 1I,1039,red,strategist,30,14,76.1,target,39,6,5,0,5,16.79,12.07
+217,main,Full,Fixed 1I,1039,blue,strategist,30,19,90.2,target,48,9,7,0,5,16.79,12.07
+218,main,Full,Fixed 1I,1040,red,strategist,30,14,94.7,target,55,8,6,0,3,19.73,14.86
+219,main,Full,Fixed 1I,1040,blue,opponent,28,30,101.3,target,37,9,9,0,3,19.73,14.86
+220,main,Full,Fixed 1I,1041,red,strategist,30,20,80.7,target,38,7,6,0,5,12.66,13.66
+221,main,Full,Fixed 1I,1041,blue,strategist,30,22,76.2,target,32,6,5,0,5,12.66,13.66
+222,main,Full,Fixed 1I,1042,red,strategist,30,18,96.4,target,50,9,10,0,3,15.60,12.45
+223,main,Full,Fixed 1I,1042,blue,strategist,30,16,86.1,target,44,7,6,0,3,15.60,12.45
+224,main,Full,Fixed 1I,1043,red,strategist,30,22,93.5,target,46,9,9,0,5,18.53,15.25
+225,main,Full,Fixed 1I,1043,blue,strategist,30,12,81.2,target,50,6,6,0,5,18.53,15.25
+226,main,Full,Fixed 1I,1044,red,strategist,30,14,89.4,target,54,6,4,0,3,11.46,14.05
+227,main,Full,Fixed 1I,1044,blue,strategist,30,28,96.7,target,44,7,9,0,3,11.46,14.05
+228,main,Full,Fixed 1I,1045,red,strategist,30,23,97.8,target,48,11,11,0,5,14.40,12.84
+229,main,Full,Fixed 1I,1045,blue,strategist,30,19,88.7,target,47,9,6,0,5,14.40,12.84
+230,main,Full,Fixed 1I,1046,red,strategist,30,10,87.1,target,56,7,4,0,3,17.33,15.64
+231,main,Full,Fixed 1I,1046,blue,strategist,30,27,99.3,target,38,9,8,0,3,17.33,15.64
+232,main,Full,Fixed 1I,1047,red,strategist,31,19,84.4,target,42,8,7,0,5,10.27,14.43
+233,main,Full,Fixed 1I,1047,blue,strategist,30,21,88.4,target,45,9,10,0,5,10.27,14.43
+234,main,Full,Fixed 1I,1048,red,strategist,30,24,99.7,target,45,11,11,0,3,13.20,13.23
+235,main,Full,Fixed 1I,1048,blue,strategist,30,21,87.0,target,42,7,6,0,3,13.20,13.23
+236,main,Full,Fixed 1I,1049,red,strategist,30,22,98.3,target,49,12,9,0,6,16.13,12.03
+237,main,Full,Fixed 1I,1049,blue,strategist,30,17,82.0,target,45,7,4,0,6,16.13,12.03
+238,main,Full,Fixed 1I,1050,red,strategist,30,25,90.3,target,38,8,9,0,4,19.07,14.82
+239,main,Full,Fixed 1I,1050,blue,strategist,30,16,83.2,target,46,5,3,0,4,19.07,14.82
+240,main,Full,Fixed 1I,1051,red,strategist,30,11,85.9,target,55,8,4,0,6,12.00,13.62
+241,main,Full,Fixed 1I,1051,blue,strategist,30,12,72.5,target,45,6,4,0,6,12.00,13.62
+242,main,Full,Fixed 1I,1052,red,strategist,30,13,89.8,target,57,8,4,0,4,14.94,12.41
+243,main,Full,Fixed 1I,1052,blue,strategist,30,10,84.1,target,54,7,5,0,4,14.94,12.41
+244,main,Full,Fixed 1I,1053,red,strategist,30,13,75.9,target,44,6,5,0,6,17.87,15.21
+245,main,Full,Fixed 1I,1053,blue,strategist,30,15,77.6,target,46,5,5,0,6,17.87,15.21
+246,main,Full,Fixed 1I,1054,red,opponent,29,30,92.9,target,36,10,13,0,4,10.81,14.01
+247,main,Full,Fixed 1I,1054,blue,strategist,30,18,94.3,target,53,10,8,0,4,10.81,14.01
+248,main,Full,Fixed 1I,1055,red,strategist,30,21,93.6,target,50,10,7,0,6,13.74,12.80
+249,main,Full,Fixed 1I,1055,blue,opponent,26,30,88.6,target,36,10,8,0,6,13.74,12.80
+250,main,Full,Fixed 1I,1056,red,opponent,29,30,101.6,target,42,12,15,0,4,16.67,15.60
+251,main,Full,Fixed 1I,1056,blue,opponent,24,30,83.9,target,28,9,10,0,4,16.67,15.60
+252,main,Full,Fixed 1I,1057,red,strategist,30,16,84.0,target,46,8,4,0,6,19.61,14.39
+253,main,Full,Fixed 1I,1057,blue,strategist,30,23,92.4,target,44,10,8,0,6,19.61,14.39
+254,main,Full,Fixed 1I,1058,red,strategist,30,17,80.5,target,41,7,4,0,4,12.54,13.19
+255,main,Full,Fixed 1I,1058,blue,strategist,31,20,96.9,target,49,11,11,0,4,12.54,13.19
+256,main,Full,Fixed 1I,1059,red,strategist,30,19,75.5,target,36,6,5,0,6,15.48,15.99
+257,main,Full,Fixed 1I,1059,blue,strategist,30,11,75.3,target,49,5,5,0,6,15.48,15.99
+258,main,Full,Fixed 1I,1060,red,strategist,30,21,87.0,target,42,8,9,0,4,18.41,14.78
+259,main,Full,Fixed 1I,1060,blue,strategist,30,13,89.1,target,56,8,6,0,4,18.41,14.78
+260,main,Full,Fixed 1I,1061,red,strategist,30,24,105.0,target,50,11,10,0,3,11.34,13.58
+261,main,Full,Fixed 1I,1061,blue,strategist,30,18,89.6,target,44,7,4,0,3,11.34,13.58
+262,main,Full,Fixed 1I,1062,red,strategist,30,20,83.9,target,42,7,6,0,5,14.28,12.37
+263,main,Full,Fixed 1I,1062,blue,strategist,30,15,80.9,target,47,5,5,0,5,14.28,12.37
+264,main,Full,Fixed 1I,1063,red,opponent,25,30,87.4,target,28,9,7,0,3,17.21,15.17
+265,main,Full,Fixed 1I,1063,blue,opponent,25,30,87.4,target,28,9,7,0,3,17.21,15.17
+266,main,Full,Fixed 1I,1064,red,strategist,30,21,79.3,target,36,7,5,0,5,10.15,13.96
+267,main,Full,Fixed 1I,1064,blue,strategist,30,11,86.7,target,53,8,6,0,5,10.15,13.96
+268,main,Full,Fixed 1I,1065,red,strategist,30,24,104.4,target,50,12,10,0,3,13.08,12.76
+269,main,Full,Fixed 1I,1065,blue,strategist,30,18,81.6,target,37,6,5,0,3,13.08,12.76
+270,main,Full,Fixed 1I,1066,red,strategist,30,20,85.4,target,43,7,8,0,5,16.02,15.56
+271,main,Full,Fixed 1I,1066,blue,strategist,30,26,84.2,target,34,7,8,0,5,16.02,15.56
+272,main,Full,Fixed 1I,1067,red,strategist,30,18,97.8,target,51,9,10,0,3,18.95,14.35
+273,main,Full,Fixed 1I,1067,blue,strategist,30,23,99.4,target,47,7,8,0,3,18.95,14.35
+274,main,Full,Fixed 1I,1068,red,strategist,30,22,81.0,target,37,7,5,0,5,11.88,13.15
+275,main,Full,Fixed 1I,1068,blue,strategist,30,27,91.1,target,37,10,10,0,5,11.88,13.15
+276,main,Full,Fixed 1I,1069,red,strategist,30,25,96.3,target,41,8,7,0,3,14.82,15.94
+277,main,Full,Fixed 1I,1069,blue,strategist,30,18,95.6,target,52,9,8,0,3,14.82,15.94
+278,main,Full,Fixed 1I,1070,red,strategist,30,13,82.1,target,50,6,6,0,5,17.75,14.74
+279,main,Full,Fixed 1I,1070,blue,strategist,30,18,83.5,target,43,7,6,0,5,17.75,14.74
+280,main,Full,Fixed 2I,1001,red,strategist,30,16,125.3,target,67,17,11,0,5,15.29,13.82
+281,main,Full,Fixed 2I,1001,blue,strategist,30,13,107.9,target,59,12,9,0,5,15.29,13.82
+282,main,Full,Fixed 2I,1002,red,strategist,30,20,121.6,target,59,16,10,0,3,18.23,12.62
+283,main,Full,Fixed 2I,1002,blue,strategist,30,17,124.6,target,62,16,12,0,3,18.23,12.62
+284,main,Full,Fixed 2I,1003,red,strategist,30,23,127.4,target,63,18,13,0,5,11.16,15.41
+285,main,Full,Fixed 2I,1003,blue,strategist,30,14,113.6,target,63,14,5,0,5,11.16,15.41
+286,main,Full,Fixed 2I,1004,red,strategist,30,15,117.9,target,64,14,9,0,3,14.10,14.21
+287,main,Full,Fixed 2I,1004,blue,strategist,30,15,143.0,target,81,21,10,0,3,14.10,14.21
+288,main,Full,Fixed 2I,1005,red,strategist,30,18,124.5,target,68,16,12,0,6,17.03,13.00
+289,main,Full,Fixed 2I,1005,blue,strategist,30,17,117.1,target,67,14,7,0,6,17.03,13.00
+290,main,Full,Fixed 2I,1006,red,strategist,30,17,122.0,target,64,16,13,0,4,19.96,15.80
+291,main,Full,Fixed 2I,1006,blue,strategist,30,11,125.1,target,75,17,8,0,4,19.96,15.80
+292,main,Full,Fixed 2I,1007,red,strategist,30,11,109.5,target,68,13,4,0,6,12.90,14.60
+293,main,Full,Fixed 2I,1007,blue,strategist,30,16,106.6,target,57,14,7,0,6,12.90,14.60
+294,main,Full,Fixed 2I,1008,red,strategist,30,18,118.5,target,59,17,13,0,4,15.83,13.39
+295,main,Full,Fixed 2I,1008,blue,strategist,30,16,116.4,target,61,14,8,0,4,15.83,13.39
+296,main,Full,Fixed 2I,1009,red,strategist,30,20,104.4,target,50,11,9,0,6,18.77,12.19
+297,main,Full,Fixed 2I,1009,blue,strategist,30,14,113.9,target,66,14,8,0,6,18.77,12.19
+298,main,Full,Fixed 2I,1010,red,strategist,30,13,96.9,target,52,11,8,0,4,11.70,14.98
+299,main,Full,Fixed 2I,1010,blue,strategist,30,22,113.0,target,54,13,12,0,4,11.70,14.98
+300,main,Full,Fixed 2I,1011,red,strategist,30,16,116.0,target,64,13,9,0,6,14.64,13.78
+301,main,Full,Fixed 2I,1011,blue,strategist,30,10,110.2,target,68,13,4,0,6,14.64,13.78
+302,main,Full,Fixed 2I,1012,red,strategist,30,12,99.4,target,51,12,10,0,4,17.57,12.58
+303,main,Full,Fixed 2I,1012,blue,strategist,30,18,119.9,target,58,16,10,0,4,17.57,12.58
+304,main,Full,Fixed 2I,1013,red,strategist,30,11,124.8,target,75,18,10,0,6,10.50,15.37
+305,main,Full,Fixed 2I,1013,blue,strategist,30,10,99.9,target,60,11,6,0,6,10.50,15.37
+306,main,Full,Fixed 2I,1014,red,strategist,30,13,107.3,target,57,14,7,0,4,13.44,14.17
+307,main,Full,Fixed 2I,1014,blue,strategist,30,22,108.7,target,48,14,12,0,4,13.44,14.17
+308,main,Full,Fixed 2I,1015,red,strategist,30,15,116.6,target,67,14,6,0,6,16.37,12.96
+309,main,Full,Fixed 2I,1015,blue,strategist,30,22,106.5,target,49,14,13,0,6,16.37,12.96
+310,main,Full,Fixed 2I,1016,red,strategist,30,20,124.0,target,63,18,13,0,5,19.31,15.76
+311,main,Full,Fixed 2I,1016,blue,strategist,30,14,105.0,target,55,14,10,0,5,19.31,15.76
+312,main,Full,Fixed 2I,1017,red,strategist,31,15,115.4,target,62,15,8,0,3,12.24,14.56
+313,main,Full,Fixed 2I,1017,blue,strategist,30,11,106.5,target,61,13,5,0,3,12.24,14.56
+314,main,Full,Fixed 2I,1018,red,strategist,30,13,119.5,target,67,17,8,0,5,15.17,13.35
+315,main,Full,Fixed 2I,1018,blue,strategist,30,15,116.0,target,66,16,9,0,5,15.17,13.35
+316,main,Full,Fixed 2I,1019,red,strategist,30,18,127.9,target,66,17,9,0,3,18.11,12.15
+317,main,Full,Fixed 2I,1019,blue,strategist,30,13,105.6,target,58,9,5,0,3,18.11,12.15
+318,main,Full,Fixed 2I,1020,red,strategist,30,19,111.4,target,55,15,11,0,5,11.04,14.94
+319,main,Full,Fixed 2I,1020,blue,strategist,30,17,108.8,target,57,14,8,0,5,11.04,14.94
+320,main,Full,Fixed 2I,1021,red,strategist,30,14,127.4,target,72,16,6,0,3,13.98,13.74
+321,main,Full,Fixed 2I,1021,blue,strategist,30,22,134.5,target,63,20,18,0,3,13.98,13.74
+322,main,Full,Fixed 2I,1022,red,strategist,30,16,112.3,target,59,15,10,0,5,16.91,12.54
+323,main,Full,Fixed 2I,1022,blue,strategist,30,14,123.8,target,70,16,7,0,5,16.91,12.54
+324,main,Full,Fixed 2I,1023,red,strategist,30,17,128.0,target,63,17,13,0,3,19.85,15.33
+325,main,Full,Fixed 2I,1023,blue,strategist,30,24,141.2,target,65,21,17,0,3,19.85,15.33
+326,main,Full,Fixed 2I,1024,red,strategist,30,18,118.7,target,62,16,11,0,5,12.78,14.13
+327,main,Full,Fixed 2I,1024,blue,strategist,30,18,118.7,target,62,16,11,0,5,12.78,14.13
+328,main,Full,Fixed 2I,1025,red,strategist,30,22,124.8,target,59,17,14,0,3,15.71,12.92
+329,main,Full,Fixed 2I,1025,blue,strategist,30,18,128.9,target,67,15,8,0,3,15.71,12.92
+330,main,Full,Fixed 2I,1026,red,strategist,30,9,103.7,target,65,11,5,0,5,18.65,15.72
+331,main,Full,Fixed 2I,1026,blue,strategist,31,19,103.8,target,48,12,9,0,5,18.65,15.72
+332,main,Full,Fixed 2I,1027,red,strategist,30,20,114.3,target,54,14,12,0,4,11.58,14.51
+333,main,Full,Fixed 2I,1027,blue,strategist,30,17,106.6,target,53,12,8,0,4,11.58,14.51
+334,main,Full,Fixed 2I,1028,red,strategist,30,20,113.9,target,58,14,11,0,6,14.52,13.31
+335,main,Full,Fixed 2I,1028,blue,strategist,30,13,108.8,target,64,13,3,0,6,14.52,13.31
+336,main,Full,Fixed 2I,1029,red,strategist,30,16,115.5,target,61,14,9,0,4,17.45,12.11
+337,main,Full,Fixed 2I,1029,blue,strategist,30,11,127.2,target,77,19,10,0,4,17.45,12.11
+338,main,Full,Fixed 2I,1030,red,strategist,30,14,108.8,target,63,13,7,0,6,10.39,14.90
+339,main,Full,Fixed 2I,1030,blue,strategist,30,11,108.8,target,67,14,3,0,6,10.39,14.90
+340,main,Full,Fixed 2I,1031,red,strategist,30,17,93.0,target,46,8,7,0,4,13.32,13.70
+341,main,Full,Fixed 2I,1031,blue,strategist,30,23,130.8,target,64,18,11,0,4,13.32,13.70
+342,main,Full,Fixed 2I,1032,red,strategist,30,15,126.9,target,72,17,9,0,6,16.25,12.49
+343,main,Full,Fixed 2I,1032,blue,strategist,30,20,128.9,target,68,18,10,0,6,16.25,12.49
+344,main,Full,Fixed 2I,1033,red,strategist,30,18,120.3,target,58,17,12,0,4,19.19,15.29
+345,main,Full,Fixed 2I,1033,blue,strategist,30,15,112.8,target,63,13,4,0,4,19.19,15.29
+346,main,Full,Fixed 2I,1034,red,strategist,30,21,120.4,target,62,16,12,0,6,12.12,14.09
+347,main,Full,Fixed 2I,1034,blue,strategist,30,10,99.5,target,60,11,5,0,6,12.12,14.09
+348,main,Full,Fixed 2I,1035,red,strategist,30,14,111.0,target,61,14,7,0,4,15.06,12.88
+349,main,Full,Fixed 2I,1035,blue,strategist,30,13,101.3,target,57,10,3,0,4,15.06,12.88
+350,main,Full,Fixed 2I,1036,red,strategist,30,19,113.2,target,57,15,9,0,6,17.99,15.68
+351,main,Full,Fixed 2I,1036,blue,strategist,30,10,115.5,target,72,14,4,0,6,17.99,15.68
+352,main,Full,Fixed 2I,1037,red,strategist,30,19,116.3,target,59,15,7,0,4,10.92,14.47
+353,main,Full,Fixed 2I,1037,blue,strategist,30,17,101.8,target,51,11,8,0,4,10.92,14.47
+354,main,Full,Fixed 2I,1038,red,strategist,30,16,121.1,target,66,14,4,0,3,13.86,13.27
+355,main,Full,Fixed 2I,1038,blue,strategist,30,24,147.2,target,71,20,13,0,3,13.86,13.27
+356,main,Full,Fixed 2I,1039,red,strategist,30,10,111.1,target,64,14,6,0,5,16.79,12.07
+357,main,Full,Fixed 2I,1039,blue,strategist,30,17,133.8,target,72,20,11,0,5,16.79,12.07
+358,main,Full,Fixed 2I,1040,red,strategist,30,18,119.9,target,57,15,9,0,3,19.73,14.86
+359,main,Full,Fixed 2I,1040,blue,strategist,30,15,121.1,target,69,14,7,0,3,19.73,14.86
+360,main,Full,Fixed 2I,1041,red,strategist,30,14,114.5,target,62,14,6,0,5,12.66,13.66
+361,main,Full,Fixed 2I,1041,blue,strategist,30,19,107.1,target,51,12,11,0,5,12.66,13.66
+362,main,Full,Fixed 2I,1042,red,strategist,30,14,117.2,target,62,14,10,0,3,15.60,12.45
+363,main,Full,Fixed 2I,1042,blue,strategist,30,19,143.3,target,75,21,10,0,3,15.60,12.45
+364,main,Full,Fixed 2I,1043,red,strategist,30,14,101.9,target,52,12,10,0,5,18.53,15.25
+365,main,Full,Fixed 2I,1043,blue,strategist,30,17,113.5,target,59,14,10,0,5,18.53,15.25
+366,main,Full,Fixed 2I,1044,red,strategist,30,24,126.2,target,60,16,10,0,3,11.46,14.05
+367,main,Full,Fixed 2I,1044,blue,strategist,30,17,127.6,target,68,16,8,0,3,11.46,14.05
+368,main,Full,Fixed 2I,1045,red,strategist,30,14,111.0,target,62,15,8,0,5,14.40,12.84
+369,main,Full,Fixed 2I,1045,blue,strategist,30,21,129.7,target,67,18,12,0,5,14.40,12.84
+370,main,Full,Fixed 2I,1046,red,strategist,30,18,104.1,target,47,10,10,0,3,17.33,15.64
+371,main,Full,Fixed 2I,1046,blue,strategist,30,20,132.8,target,65,18,11,0,3,17.33,15.64
+372,main,Full,Fixed 2I,1047,red,strategist,30,13,109.8,target,61,14,8,0,5,10.27,14.43
+373,main,Full,Fixed 2I,1047,blue,strategist,30,15,98.5,target,51,10,9,0,5,10.27,14.43
+374,main,Full,Fixed 2I,1048,red,strategist,30,19,127.0,target,64,18,13,0,3,13.20,13.23
+375,main,Full,Fixed 2I,1048,blue,strategist,30,14,117.9,target,66,14,9,0,3,13.20,13.23
+376,main,Full,Fixed 2I,1049,red,strategist,30,20,121.4,target,62,16,14,0,6,16.13,12.03
+377,main,Full,Fixed 2I,1049,blue,strategist,30,17,114.8,target,61,14,8,0,6,16.13,12.03
+378,main,Full,Fixed 2I,1050,red,strategist,30,17,101.6,target,50,12,13,0,4,19.07,14.82
+379,main,Full,Fixed 2I,1050,blue,strategist,30,18,98.4,target,47,12,12,0,4,19.07,14.82
+380,main,Full,Fixed 2I,1051,red,strategist,30,9,100.1,target,64,12,5,0,6,12.00,13.62
+381,main,Full,Fixed 2I,1051,blue,strategist,30,17,117.0,target,66,14,8,0,6,12.00,13.62
+382,main,Full,Fixed 2I,1052,red,strategist,30,27,126.9,target,53,20,15,0,4,14.94,12.41
+383,main,Full,Fixed 2I,1052,blue,strategist,30,10,88.3,target,49,7,5,0,4,14.94,12.41
+384,main,Full,Fixed 2I,1053,red,strategist,30,10,107.3,target,66,13,3,0,6,17.87,15.21
+385,main,Full,Fixed 2I,1053,blue,strategist,30,14,105.9,target,59,11,7,0,6,17.87,15.21
+386,main,Full,Fixed 2I,1054,red,strategist,30,21,107.9,target,52,12,11,0,4,10.81,14.01
+387,main,Full,Fixed 2I,1054,blue,strategist,30,17,113.5,target,59,13,12,0,4,10.81,14.01
+388,main,Full,Fixed 2I,1055,red,strategist,30,19,124.7,target,65,17,11,0,6,13.74,12.80
+389,main,Full,Fixed 2I,1055,blue,strategist,30,17,109.8,target,59,13,9,0,6,13.74,12.80
+390,main,Full,Fixed 2I,1056,red,strategist,30,15,115.6,target,62,14,9,0,4,16.67,15.60
+391,main,Full,Fixed 2I,1056,blue,strategist,30,20,98.7,target,45,9,12,0,4,16.67,15.60
+392,main,Full,Fixed 2I,1057,red,strategist,30,18,115.5,target,59,15,11,0,6,19.61,14.39
+393,main,Full,Fixed 2I,1057,blue,strategist,30,16,114.7,target,62,17,12,0,6,19.61,14.39
+394,main,Full,Fixed 2I,1058,red,strategist,30,13,108.3,target,60,13,8,0,4,12.54,13.19
+395,main,Full,Fixed 2I,1058,blue,strategist,30,18,115.4,target,60,14,10,0,4,12.54,13.19
+396,main,Full,Fixed 2I,1059,red,strategist,30,19,91.7,target,43,10,9,0,6,15.48,15.99
+397,main,Full,Fixed 2I,1059,blue,strategist,30,15,116.2,target,65,13,8,0,6,15.48,15.99
+398,main,Full,Fixed 2I,1060,red,strategist,30,15,107.5,target,53,13,11,0,4,18.41,14.78
+399,main,Full,Fixed 2I,1060,blue,strategist,30,15,115.5,target,61,15,9,0,4,18.41,14.78
+400,main,Full,Fixed 2I,1061,red,strategist,30,20,121.4,target,60,15,13,0,3,11.34,13.58
+401,main,Full,Fixed 2I,1061,blue,strategist,30,25,147.4,target,71,21,16,0,3,11.34,13.58
+402,main,Full,Fixed 2I,1062,red,strategist,30,19,111.0,target,53,15,12,0,5,14.28,12.37
+403,main,Full,Fixed 2I,1062,blue,strategist,30,24,121.3,target,57,17,11,0,5,14.28,12.37
+404,main,Full,Fixed 2I,1063,red,strategist,30,16,123.9,target,65,16,10,0,3,17.21,15.17
+405,main,Full,Fixed 2I,1063,blue,strategist,30,17,126.0,target,64,17,13,0,3,17.21,15.17
+406,main,Full,Fixed 2I,1064,red,strategist,30,18,121.0,target,64,17,8,0,5,10.15,13.96
+407,main,Full,Fixed 2I,1064,blue,strategist,30,16,113.0,target,62,15,7,0,5,10.15,13.96
+408,main,Full,Fixed 2I,1065,red,strategist,30,16,122.7,target,63,14,11,0,3,13.08,12.76
+409,main,Full,Fixed 2I,1065,blue,strategist,30,19,121.0,target,59,16,10,0,3,13.08,12.76
+410,main,Full,Fixed 2I,1066,red,strategist,30,14,103.7,target,53,12,11,0,5,16.02,15.56
+411,main,Full,Fixed 2I,1066,blue,strategist,30,9,113.4,target,69,14,3,0,5,16.02,15.56
+412,main,Full,Fixed 2I,1067,red,strategist,30,18,122.9,target,62,14,11,0,3,18.95,14.35
+413,main,Full,Fixed 2I,1067,blue,strategist,30,21,129.5,target,64,17,11,0,3,18.95,14.35
+414,main,Full,Fixed 2I,1068,red,strategist,30,15,109.9,target,61,14,7,0,5,11.88,13.15
+415,main,Full,Fixed 2I,1068,blue,strategist,30,11,108.5,target,66,13,8,0,5,11.88,13.15
+416,main,Full,Fixed 2I,1069,red,strategist,30,17,118.9,target,62,14,9,0,3,14.82,15.94
+417,main,Full,Fixed 2I,1069,blue,strategist,30,15,125.0,target,69,16,5,0,3,14.82,15.94
+418,main,Full,Fixed 2I,1070,red,strategist,30,18,102.1,target,52,10,10,0,5,17.75,14.74
+419,main,Full,Fixed 2I,1070,blue,strategist,30,14,108.5,target,56,14,11,0,5,17.75,14.74
+420,main,Full,Fixed 1D+1I,1001,red,strategist,30,28,59.1,target,6,9,5,0,5,15.29,13.82
+421,main,Full,Fixed 1D+1I,1001,blue,strategist,30,28,59.7,target,6,9,5,0,5,15.29,13.82
+422,main,Full,Fixed 1D+1I,1002,red,opponent,26,30,61.2,target,4,8,4,0,3,18.23,12.62
+423,main,Full,Fixed 1D+1I,1002,blue,opponent,23,30,65.7,target,6,10,5,0,3,18.23,12.62
+424,main,Full,Fixed 1D+1I,1003,red,draw,30,30,58.5,target,6,9,5,0,5,11.16,15.41
+425,main,Full,Fixed 1D+1I,1003,blue,opponent,26,30,55.4,target,4,8,5,0,5,11.16,15.41
+426,main,Full,Fixed 1D+1I,1004,red,opponent,26,30,62.2,target,5,10,6,0,3,14.10,14.21
+427,main,Full,Fixed 1D+1I,1004,blue,opponent,29,30,62.2,target,6,8,5,0,3,14.10,14.21
+428,main,Full,Fixed 1D+1I,1005,red,opponent,27,30,59.3,target,7,9,5,0,6,17.03,13.00
+429,main,Full,Fixed 1D+1I,1005,blue,opponent,25,30,59.5,target,7,9,5,0,6,17.03,13.00
+430,main,Full,Fixed 1D+1I,1006,red,opponent,27,30,63.8,target,5,11,7,0,4,19.96,15.80
+431,main,Full,Fixed 1D+1I,1006,blue,strategist,30,26,61.7,target,7,8,5,0,4,19.96,15.80
+432,main,Full,Fixed 1D+1I,1007,red,opponent,23,30,55.4,target,4,9,5,0,6,12.90,14.60
+433,main,Full,Fixed 1D+1I,1007,blue,opponent,29,30,57.5,target,5,9,6,0,6,12.90,14.60
+434,main,Full,Fixed 1D+1I,1008,red,strategist,30,29,62.3,target,6,9,6,0,4,15.83,13.39
+435,main,Full,Fixed 1D+1I,1008,blue,strategist,30,29,60.7,target,5,10,6,0,4,15.83,13.39
+436,main,Full,Fixed 1D+1I,1009,red,strategist,30,29,57.8,target,5,9,6,0,6,18.77,12.19
+437,main,Full,Fixed 1D+1I,1009,blue,opponent,25,30,54.7,target,3,9,7,0,6,18.77,12.19
+438,main,Full,Fixed 1D+1I,1010,red,strategist,30,28,58.7,target,5,9,5,0,4,11.70,14.98
+439,main,Full,Fixed 1D+1I,1010,blue,opponent,29,30,60.4,target,5,10,5,0,4,11.70,14.98
+440,main,Full,Fixed 1D+1I,1011,red,strategist,30,29,56.7,target,5,8,5,0,6,14.64,13.78
+441,main,Full,Fixed 1D+1I,1011,blue,opponent,28,30,52.8,target,3,8,5,0,6,14.64,13.78
+442,main,Full,Fixed 1D+1I,1012,red,opponent,27,30,63.7,target,5,11,7,0,4,17.57,12.58
+443,main,Full,Fixed 1D+1I,1012,blue,strategist,30,29,64.9,target,6,10,7,0,4,17.57,12.58
+444,main,Full,Fixed 1D+1I,1013,red,opponent,24,30,57.0,target,5,9,5,0,6,10.50,15.37
+445,main,Full,Fixed 1D+1I,1013,blue,opponent,26,30,59.3,target,6,11,8,0,6,10.50,15.37
+446,main,Full,Fixed 1D+1I,1014,red,strategist,30,27,58.8,target,6,9,5,0,4,13.44,14.17
+447,main,Full,Fixed 1D+1I,1014,blue,strategist,30,27,56.3,target,4,8,5,0,4,13.44,14.17
+448,main,Full,Fixed 1D+1I,1015,red,strategist,30,27,51.8,target,3,7,5,0,6,16.37,12.96
+449,main,Full,Fixed 1D+1I,1015,blue,opponent,26,30,52.9,target,3,9,5,0,6,16.37,12.96
+450,main,Full,Fixed 1D+1I,1016,red,opponent,28,30,57.9,target,4,9,5,0,5,19.31,15.76
+451,main,Full,Fixed 1D+1I,1016,blue,opponent,29,30,63.1,target,6,10,8,0,5,19.31,15.76
+452,main,Full,Fixed 1D+1I,1017,red,opponent,25,30,57.6,target,3,9,5,0,3,12.24,14.56
+453,main,Full,Fixed 1D+1I,1017,blue,opponent,27,30,57.5,target,5,7,4,0,3,12.24,14.56
+454,main,Full,Fixed 1D+1I,1018,red,opponent,27,30,58.5,target,5,11,6,0,5,15.17,13.35
+455,main,Full,Fixed 1D+1I,1018,blue,strategist,30,28,58.6,target,6,7,4,0,5,15.17,13.35
+456,main,Full,Fixed 1D+1I,1019,red,opponent,29,30,65.7,target,5,10,7,0,3,18.11,12.15
+457,main,Full,Fixed 1D+1I,1019,blue,opponent,21,30,65.7,target,6,10,6,0,3,18.11,12.15
+458,main,Full,Fixed 1D+1I,1020,red,opponent,29,30,58.4,target,5,9,5,0,5,11.04,14.94
+459,main,Full,Fixed 1D+1I,1020,blue,opponent,29,30,60.1,target,7,9,6,0,5,11.04,14.94
+460,main,Full,Fixed 1D+1I,1021,red,opponent,23,30,57.5,target,3,9,7,0,3,13.98,13.74
+461,main,Full,Fixed 1D+1I,1021,blue,opponent,24,30,57.6,target,3,8,6,0,3,13.98,13.74
+462,main,Full,Fixed 1D+1I,1022,red,strategist,30,26,57.4,target,6,7,6,0,5,16.91,12.54
+463,main,Full,Fixed 1D+1I,1022,blue,strategist,30,29,59.7,target,6,9,5,0,5,16.91,12.54
+464,main,Full,Fixed 1D+1I,1023,red,opponent,26,30,70.5,target,7,10,7,0,3,19.85,15.33
+465,main,Full,Fixed 1D+1I,1023,blue,strategist,30,27,67.0,target,5,9,6,0,3,19.85,15.33
+466,main,Full,Fixed 1D+1I,1024,red,strategist,30,29,57.8,target,6,8,5,0,5,12.78,14.13
+467,main,Full,Fixed 1D+1I,1024,blue,strategist,30,29,57.8,target,6,8,5,0,5,12.78,14.13
+468,main,Full,Fixed 1D+1I,1025,red,opponent,28,30,70.5,target,7,11,6,0,3,15.71,12.92
+469,main,Full,Fixed 1D+1I,1025,blue,opponent,28,30,65.7,target,6,10,7,0,3,15.71,12.92
+470,main,Full,Fixed 1D+1I,1026,red,opponent,29,30,62.0,target,6,10,5,0,5,18.65,15.72
+471,main,Full,Fixed 1D+1I,1026,blue,strategist,30,29,58.6,target,5,10,5,0,5,18.65,15.72
+472,main,Full,Fixed 1D+1I,1027,red,opponent,26,30,60.1,target,6,9,6,0,4,11.58,14.51
+473,main,Full,Fixed 1D+1I,1027,blue,opponent,25,30,60.0,target,6,11,5,0,4,11.58,14.51
+474,main,Full,Fixed 1D+1I,1028,red,opponent,27,30,52.9,target,3,9,5,0,6,14.52,13.31
+475,main,Full,Fixed 1D+1I,1028,blue,opponent,25,30,58.1,target,5,10,7,0,6,14.52,13.31
+476,main,Full,Fixed 1D+1I,1029,red,opponent,29,30,66.4,target,6,13,7,0,4,17.45,12.11
+477,main,Full,Fixed 1D+1I,1029,blue,strategist,30,28,61.2,target,5,11,6,0,4,17.45,12.11
+478,main,Full,Fixed 1D+1I,1030,red,opponent,26,30,56.9,target,5,9,5,0,6,10.39,14.90
+479,main,Full,Fixed 1D+1I,1030,blue,opponent,29,30,57.1,target,5,9,7,0,6,10.39,14.90
+480,main,Full,Fixed 1D+1I,1031,red,opponent,25,30,63.8,target,6,10,7,0,4,13.32,13.70
+481,main,Full,Fixed 1D+1I,1031,blue,opponent,28,30,62.5,target,5,11,7,0,4,13.32,13.70
+482,main,Full,Fixed 1D+1I,1032,red,opponent,25,30,52.9,target,3,10,6,0,6,16.25,12.49
+483,main,Full,Fixed 1D+1I,1032,blue,opponent,22,30,52.9,target,3,11,7,0,6,16.25,12.49
+484,main,Full,Fixed 1D+1I,1033,red,opponent,29,30,66.9,target,5,11,7,0,4,19.19,15.29
+485,main,Full,Fixed 1D+1I,1033,blue,strategist,30,28,63.1,target,5,10,6,0,4,19.19,15.29
+486,main,Full,Fixed 1D+1I,1034,red,strategist,30,29,53.3,target,5,8,5,0,6,12.12,14.09
+487,main,Full,Fixed 1D+1I,1034,blue,opponent,28,30,52.8,target,4,7,3,0,6,12.12,14.09
+488,main,Full,Fixed 1D+1I,1035,red,opponent,25,30,63.1,target,5,12,9,0,4,15.06,12.88
+489,main,Full,Fixed 1D+1I,1035,blue,opponent,27,31,63.7,target,5,11,8,0,4,15.06,12.88
+490,main,Full,Fixed 1D+1I,1036,red,opponent,27,30,57.9,target,5,9,7,0,6,17.99,15.68
+491,main,Full,Fixed 1D+1I,1036,blue,opponent,27,30,54.8,target,4,8,6,0,6,17.99,15.68
+492,main,Full,Fixed 1D+1I,1037,red,opponent,26,30,63.2,target,6,12,8,0,4,10.92,14.47
+493,main,Full,Fixed 1D+1I,1037,blue,strategist,30,29,60.0,target,5,10,5,0,4,10.92,14.47
+494,main,Full,Fixed 1D+1I,1038,red,opponent,27,30,57.5,target,4,7,5,0,3,13.86,13.27
+495,main,Full,Fixed 1D+1I,1038,blue,opponent,25,30,57.6,target,4,9,6,0,3,13.86,13.27
+496,main,Full,Fixed 1D+1I,1039,red,opponent,27,30,63.9,target,6,11,7,0,5,16.79,12.07
+497,main,Full,Fixed 1D+1I,1039,blue,opponent,27,30,63.9,target,6,11,7,0,5,16.79,12.07
+498,main,Full,Fixed 1D+1I,1040,red,opponent,24,30,64.4,target,4,10,8,0,3,19.73,14.86
+499,main,Full,Fixed 1D+1I,1040,blue,opponent,26,30,64.4,target,4,10,6,0,3,19.73,14.86
+500,main,Full,Fixed 1D+1I,1041,red,strategist,30,29,60.1,target,5,10,5,0,5,12.66,13.66
+501,main,Full,Fixed 1D+1I,1041,blue,strategist,30,29,60.0,target,5,10,5,0,5,12.66,13.66
+502,main,Full,Fixed 1D+1I,1042,red,opponent,28,30,65.8,target,5,9,4,0,3,15.60,12.45
+503,main,Full,Fixed 1D+1I,1042,blue,opponent,27,30,65.0,target,5,10,6,0,3,15.60,12.45
+504,main,Full,Fixed 1D+1I,1043,red,strategist,30,29,58.8,target,5,9,5,0,5,18.53,15.25
+505,main,Full,Fixed 1D+1I,1043,blue,strategist,30,28,58.4,target,6,7,5,0,5,18.53,15.25
+506,main,Full,Fixed 1D+1I,1044,red,opponent,25,30,57.6,target,3,10,6,0,3,11.46,14.05
+507,main,Full,Fixed 1D+1I,1044,blue,opponent,26,30,57.6,target,4,8,5,0,3,11.46,14.05
+508,main,Full,Fixed 1D+1I,1045,red,opponent,25,30,59.9,target,5,12,6,0,5,14.40,12.84
+509,main,Full,Fixed 1D+1I,1045,blue,opponent,24,30,63.1,target,7,12,7,0,5,14.40,12.84
+510,main,Full,Fixed 1D+1I,1046,red,opponent,24,30,65.7,target,5,9,7,0,3,17.33,15.64
+511,main,Full,Fixed 1D+1I,1046,blue,opponent,25,30,67.6,target,7,9,5,0,3,17.33,15.64
+512,main,Full,Fixed 1D+1I,1047,red,strategist,30,29,58.6,target,5,8,5,0,5,10.27,14.43
+513,main,Full,Fixed 1D+1I,1047,blue,strategist,30,27,52.4,target,5,8,5,0,5,10.27,14.43
+514,main,Full,Fixed 1D+1I,1048,red,opponent,26,30,57.5,target,4,9,6,0,3,13.20,13.23
+515,main,Full,Fixed 1D+1I,1048,blue,opponent,26,30,57.6,target,4,8,3,0,3,13.20,13.23
+516,main,Full,Fixed 1D+1I,1049,red,strategist,30,29,56.8,target,5,9,5,0,6,16.13,12.03
+517,main,Full,Fixed 1D+1I,1049,blue,opponent,28,30,52.8,target,4,8,5,0,6,16.13,12.03
+518,main,Full,Fixed 1D+1I,1050,red,strategist,30,29,62.6,target,5,10,6,0,4,19.07,14.82
+519,main,Full,Fixed 1D+1I,1050,blue,strategist,30,26,57.5,target,6,8,5,0,4,19.07,14.82
+520,main,Full,Fixed 1D+1I,1051,red,opponent,27,30,52.9,target,4,9,7,0,6,12.00,13.62
+521,main,Full,Fixed 1D+1I,1051,blue,opponent,27,30,52.8,target,4,8,5,0,6,12.00,13.62
+522,main,Full,Fixed 1D+1I,1052,red,strategist,30,29,61.0,target,6,8,5,0,4,14.94,12.41
+523,main,Full,Fixed 1D+1I,1052,blue,strategist,30,28,63.0,target,6,11,7,0,4,14.94,12.41
+524,main,Full,Fixed 1D+1I,1053,red,opponent,28,30,54.7,target,3,8,5,0,6,17.87,15.21
+525,main,Full,Fixed 1D+1I,1053,blue,opponent,29,30,54.8,target,3,9,5,0,6,17.87,15.21
+526,main,Full,Fixed 1D+1I,1054,red,strategist,30,29,65.9,target,8,11,8,0,4,10.81,14.01
+527,main,Full,Fixed 1D+1I,1054,blue,opponent,27,30,62.8,target,5,10,8,0,4,10.81,14.01
+528,main,Full,Fixed 1D+1I,1055,red,opponent,27,30,58.0,target,5,10,6,0,6,13.74,12.80
+529,main,Full,Fixed 1D+1I,1055,blue,strategist,30,29,56.6,target,4,9,5,0,6,13.74,12.80
+530,main,Full,Fixed 1D+1I,1056,red,opponent,28,30,62.1,target,4,11,7,0,4,16.67,15.60
+531,main,Full,Fixed 1D+1I,1056,blue,opponent,29,30,63.4,target,5,10,6,0,4,16.67,15.60
+532,main,Full,Fixed 1D+1I,1057,red,opponent,28,30,54.7,target,3,9,5,0,6,19.61,14.39
+533,main,Full,Fixed 1D+1I,1057,blue,strategist,30,27,53.3,target,4,7,5,0,6,19.61,14.39
+534,main,Full,Fixed 1D+1I,1058,red,opponent,28,30,62.6,target,6,11,4,0,4,12.54,13.19
+535,main,Full,Fixed 1D+1I,1058,blue,strategist,30,25,54.3,target,6,6,4,0,4,12.54,13.19
+536,main,Full,Fixed 1D+1I,1059,red,strategist,30,29,54.0,target,5,9,5,0,6,15.48,15.99
+537,main,Full,Fixed 1D+1I,1059,blue,opponent,28,30,52.8,target,4,7,6,0,6,15.48,15.99
+538,main,Full,Fixed 1D+1I,1060,red,opponent,27,30,62.6,target,5,11,8,0,4,18.41,14.78
+539,main,Full,Fixed 1D+1I,1060,blue,opponent,29,30,62.9,target,5,10,6,0,4,18.41,14.78
+540,main,Full,Fixed 1D+1I,1061,red,opponent,26,30,57.6,target,4,9,3,0,3,11.34,13.58
+541,main,Full,Fixed 1D+1I,1061,blue,opponent,29,30,57.6,target,4,7,4,0,3,11.34,13.58
+542,main,Full,Fixed 1D+1I,1062,red,strategist,30,27,55.3,target,5,8,5,0,5,14.28,12.37
+543,main,Full,Fixed 1D+1I,1062,blue,opponent,29,30,59.9,target,6,9,6,0,5,14.28,12.37
+544,main,Full,Fixed 1D+1I,1063,red,opponent,25,30,65.6,target,5,11,8,0,3,17.21,15.17
+545,main,Full,Fixed 1D+1I,1063,blue,opponent,25,30,65.6,target,5,11,8,0,3,17.21,15.17
+546,main,Full,Fixed 1D+1I,1064,red,opponent,29,30,56.7,target,5,9,5,0,5,10.15,13.96
+547,main,Full,Fixed 1D+1I,1064,blue,strategist,30,28,54.5,target,5,8,5,0,5,10.15,13.96
+548,main,Full,Fixed 1D+1I,1065,red,opponent,25,30,57.6,target,3,9,5,0,3,13.08,12.76
+549,main,Full,Fixed 1D+1I,1065,blue,opponent,23,30,62.7,target,5,11,5,0,3,13.08,12.76
+550,main,Full,Fixed 1D+1I,1066,red,opponent,29,30,60.4,target,5,9,5,0,5,16.02,15.56
+551,main,Full,Fixed 1D+1I,1066,blue,opponent,28,30,58.8,target,4,10,5,0,5,16.02,15.56
+552,main,Full,Fixed 1D+1I,1067,red,strategist,30,28,71.4,target,7,10,8,0,3,18.95,14.35
+553,main,Full,Fixed 1D+1I,1067,blue,opponent,22,30,65.7,target,4,13,7,0,3,18.95,14.35
+554,main,Full,Fixed 1D+1I,1068,red,strategist,30,29,59.5,target,4,11,5,0,5,11.88,13.15
+555,main,Full,Fixed 1D+1I,1068,blue,strategist,30,27,58.8,target,7,10,5,0,5,11.88,13.15
+556,main,Full,Fixed 1D+1I,1069,red,opponent,27,30,65.7,target,5,10,7,0,3,14.82,15.94
+557,main,Full,Fixed 1D+1I,1069,blue,opponent,26,30,65.7,target,6,11,7,0,3,14.82,15.94
+558,main,Full,Fixed 1D+1I,1070,red,strategist,30,28,58.6,target,6,9,5,0,5,17.75,14.74
+559,main,Full,Fixed 1D+1I,1070,blue,strategist,30,28,57.5,target,5,8,5,0,5,17.75,14.74
+560,main,Full,Fixed 1D,1001,red,strategist,30,26,43.9,target,1,2,2,0,5,15.29,13.82
+561,main,Full,Fixed 1D,1001,blue,strategist,30,26,43.6,target,1,2,2,0,5,15.29,13.82
+562,main,Full,Fixed 1D,1002,red,strategist,30,29,55.1,target,0,3,2,0,3,18.23,12.62
+563,main,Full,Fixed 1D,1002,blue,strategist,30,29,53.4,target,0,3,2,0,3,18.23,12.62
+564,main,Full,Fixed 1D,1003,red,strategist,31,26,41.7,target,1,2,2,0,5,11.16,15.41
+565,main,Full,Fixed 1D,1003,blue,strategist,30,28,42.2,target,0,2,2,0,5,11.16,15.41
+566,main,Full,Fixed 1D,1004,red,strategist,30,29,52.6,target,1,2,2,0,3,14.10,14.21
+567,main,Full,Fixed 1D,1004,blue,strategist,31,29,51.8,target,0,3,2,0,3,14.10,14.21
+568,main,Full,Fixed 1D,1005,red,strategist,30,27,42.8,target,1,2,2,0,6,17.03,13.00
+569,main,Full,Fixed 1D,1005,blue,strategist,30,27,42.8,target,1,2,2,0,6,17.03,13.00
+570,main,Full,Fixed 1D,1006,red,strategist,30,27,45.8,target,0,2,2,0,4,19.96,15.80
+571,main,Full,Fixed 1D,1006,blue,strategist,31,27,45.8,target,0,2,2,0,4,19.96,15.80
+572,main,Full,Fixed 1D,1007,red,strategist,30,26,42.2,target,1,2,1,0,6,12.90,14.60
+573,main,Full,Fixed 1D,1007,blue,strategist,30,26,42.0,target,1,2,1,0,6,12.90,14.60
+574,main,Full,Fixed 1D,1008,red,strategist,30,28,44.2,target,0,2,2,0,4,15.83,13.39
+575,main,Full,Fixed 1D,1008,blue,strategist,30,28,45.3,target,0,2,2,0,4,15.83,13.39
+576,main,Full,Fixed 1D,1009,red,strategist,31,28,44.7,target,1,2,2,0,6,18.77,12.19
+577,main,Full,Fixed 1D,1009,blue,strategist,31,29,44.7,target,1,2,2,0,6,18.77,12.19
+578,main,Full,Fixed 1D,1010,red,strategist,30,28,41.3,target,0,2,2,0,4,11.70,14.98
+579,main,Full,Fixed 1D,1010,blue,strategist,30,28,41.1,target,0,2,1,0,4,11.70,14.98
+580,main,Full,Fixed 1D,1011,red,strategist,31,27,42.6,target,1,2,1,0,6,14.64,13.78
+581,main,Full,Fixed 1D,1011,blue,strategist,30,27,41.4,target,1,2,1,0,6,14.64,13.78
+582,main,Full,Fixed 1D,1012,red,strategist,30,28,43.5,target,0,2,2,0,4,17.57,12.58
+583,main,Full,Fixed 1D,1012,blue,strategist,30,28,43.8,target,0,2,2,0,4,17.57,12.58
+584,main,Full,Fixed 1D,1013,red,strategist,30,28,41.8,target,0,2,1,0,6,10.50,15.37
+585,main,Full,Fixed 1D,1013,blue,strategist,30,28,41.2,target,0,2,1,0,6,10.50,15.37
+586,main,Full,Fixed 1D,1014,red,strategist,30,28,44.4,target,0,2,2,0,4,13.44,14.17
+587,main,Full,Fixed 1D,1014,blue,strategist,30,26,44.0,target,1,2,2,0,4,13.44,14.17
+588,main,Full,Fixed 1D,1015,red,strategist,30,26,41.7,target,1,2,1,0,6,16.37,12.96
+589,main,Full,Fixed 1D,1015,blue,strategist,30,28,42.9,target,1,2,1,0,6,16.37,12.96
+590,main,Full,Fixed 1D,1016,red,strategist,30,28,45.6,target,0,2,2,0,5,19.31,15.76
+591,main,Full,Fixed 1D,1016,blue,strategist,30,27,45.5,target,0,2,2,0,5,19.31,15.76
+592,main,Full,Fixed 1D,1017,red,strategist,30,28,48.9,target,1,2,2,0,3,12.24,14.56
+593,main,Full,Fixed 1D,1017,blue,strategist,30,28,49.0,target,0,3,2,0,3,12.24,14.56
+594,main,Full,Fixed 1D,1018,red,strategist,30,26,43.1,target,1,2,2,0,5,15.17,13.35
+595,main,Full,Fixed 1D,1018,blue,strategist,31,26,43.4,target,1,2,2,0,5,15.17,13.35
+596,main,Full,Fixed 1D,1019,red,strategist,30,29,55.4,target,1,3,2,0,3,18.11,12.15
+597,main,Full,Fixed 1D,1019,blue,strategist,30,28,54.2,target,1,3,2,0,3,18.11,12.15
+598,main,Full,Fixed 1D,1020,red,strategist,31,27,42.3,target,1,2,2,0,5,11.04,14.94
+599,main,Full,Fixed 1D,1020,blue,strategist,30,27,42.1,target,1,2,2,0,5,11.04,14.94
+600,main,Full,Fixed 1D,1021,red,opponent,29,30,54.7,target,0,3,2,0,3,13.98,13.74
+601,main,Full,Fixed 1D,1021,blue,strategist,31,29,52.5,target,0,3,2,0,3,13.98,13.74
+602,main,Full,Fixed 1D,1022,red,strategist,30,27,44.7,target,1,2,2,0,5,16.91,12.54
+603,main,Full,Fixed 1D,1022,blue,strategist,31,27,44.9,target,1,2,2,0,5,16.91,12.54
+604,main,Full,Fixed 1D,1023,red,strategist,30,28,54.7,target,1,3,2,0,3,19.85,15.33
+605,main,Full,Fixed 1D,1023,blue,strategist,30,27,52.7,target,0,3,2,0,3,19.85,15.33
+606,main,Full,Fixed 1D,1024,red,strategist,31,24,42.3,target,1,2,1,0,5,12.78,14.13
+607,main,Full,Fixed 1D,1024,blue,strategist,31,24,42.3,target,1,2,1,0,5,12.78,14.13
+608,main,Full,Fixed 1D,1025,red,strategist,30,29,51.0,target,0,3,2,0,3,15.71,12.92
+609,main,Full,Fixed 1D,1025,blue,strategist,30,29,52.0,target,0,3,2,0,3,15.71,12.92
+610,main,Full,Fixed 1D,1026,red,strategist,31,24,43.1,target,0,2,1,0,5,18.65,15.72
+611,main,Full,Fixed 1D,1026,blue,strategist,30,28,46.4,target,1,2,2,0,5,18.65,15.72
+612,main,Full,Fixed 1D,1027,red,strategist,30,28,40.9,target,0,2,1,0,4,11.58,14.51
+613,main,Full,Fixed 1D,1027,blue,strategist,30,28,41.0,target,0,2,1,0,4,11.58,14.51
+614,main,Full,Fixed 1D,1028,red,strategist,30,28,43.8,target,1,2,2,0,6,14.52,13.31
+615,main,Full,Fixed 1D,1028,blue,strategist,30,27,42.6,target,1,2,2,0,6,14.52,13.31
+616,main,Full,Fixed 1D,1029,red,strategist,30,28,43.6,target,0,2,2,0,4,17.45,12.11
+617,main,Full,Fixed 1D,1029,blue,strategist,30,28,43.6,target,0,2,2,0,4,17.45,12.11
+618,main,Full,Fixed 1D,1030,red,strategist,31,27,41.7,target,1,2,1,0,6,10.39,14.90
+619,main,Full,Fixed 1D,1030,blue,strategist,30,27,40.4,target,1,2,1,0,6,10.39,14.90
+620,main,Full,Fixed 1D,1031,red,strategist,30,28,43.1,target,0,2,1,0,4,13.32,13.70
+621,main,Full,Fixed 1D,1031,blue,strategist,30,28,42.8,target,0,2,2,0,4,13.32,13.70
+622,main,Full,Fixed 1D,1032,red,strategist,30,28,42.8,target,1,2,2,0,6,16.25,12.49
+623,main,Full,Fixed 1D,1032,blue,strategist,30,26,42.0,target,2,2,1,0,6,16.25,12.49
+624,main,Full,Fixed 1D,1033,red,strategist,30,27,45.7,target,0,2,2,0,4,19.19,15.29
+625,main,Full,Fixed 1D,1033,blue,strategist,30,27,45.7,target,0,2,2,0,4,19.19,15.29
+626,main,Full,Fixed 1D,1034,red,strategist,30,28,41.4,target,1,2,1,0,6,12.12,14.09
+627,main,Full,Fixed 1D,1034,blue,strategist,30,28,41.2,target,1,2,1,0,6,12.12,14.09
+628,main,Full,Fixed 1D,1035,red,strategist,30,28,42.8,target,0,2,2,0,4,15.06,12.88
+629,main,Full,Fixed 1D,1035,blue,strategist,30,28,44.3,target,0,2,2,0,4,15.06,12.88
+630,main,Full,Fixed 1D,1036,red,strategist,30,28,43.1,target,0,2,2,0,6,17.99,15.68
+631,main,Full,Fixed 1D,1036,blue,strategist,30,28,43.0,target,0,2,2,0,6,17.99,15.68
+632,main,Full,Fixed 1D,1037,red,strategist,30,28,42.9,target,0,2,2,0,4,10.92,14.47
+633,main,Full,Fixed 1D,1037,blue,strategist,30,27,44.7,target,1,2,2,0,4,10.92,14.47
+634,main,Full,Fixed 1D,1038,red,strategist,30,29,52.1,target,0,3,2,0,3,13.86,13.27
+635,main,Full,Fixed 1D,1038,blue,strategist,30,27,49.8,target,1,3,2,0,3,13.86,13.27
+636,main,Full,Fixed 1D,1039,red,strategist,32,27,44.7,target,1,2,2,0,5,16.79,12.07
+637,main,Full,Fixed 1D,1039,blue,strategist,32,27,44.7,target,1,2,2,0,5,16.79,12.07
+638,main,Full,Fixed 1D,1040,red,strategist,30,28,52.0,target,1,3,2,0,3,19.73,14.86
+639,main,Full,Fixed 1D,1040,blue,strategist,30,28,53.2,target,0,3,2,0,3,19.73,14.86
+640,main,Full,Fixed 1D,1041,red,strategist,30,27,43.3,target,1,2,2,0,5,12.66,13.66
+641,main,Full,Fixed 1D,1041,blue,strategist,30,28,43.5,target,1,2,1,0,5,12.66,13.66
+642,main,Full,Fixed 1D,1042,red,strategist,31,29,50.8,target,0,3,2,0,3,15.60,12.45
+643,main,Full,Fixed 1D,1042,blue,strategist,30,27,48.7,target,0,3,2,0,3,15.60,12.45
+644,main,Full,Fixed 1D,1043,red,strategist,30,28,47.1,target,2,3,2,0,5,18.53,15.25
+645,main,Full,Fixed 1D,1043,blue,strategist,30,29,46.5,target,0,2,2,0,5,18.53,15.25
+646,main,Full,Fixed 1D,1044,red,strategist,30,27,47.7,target,1,2,2,0,3,11.46,14.05
+647,main,Full,Fixed 1D,1044,blue,strategist,30,28,47.9,target,0,2,2,0,3,11.46,14.05
+648,main,Full,Fixed 1D,1045,red,strategist,30,26,43.1,target,1,2,2,0,5,14.40,12.84
+649,main,Full,Fixed 1D,1045,blue,strategist,31,27,44.3,target,1,2,2,0,5,14.40,12.84
+650,main,Full,Fixed 1D,1046,red,strategist,30,28,53.8,target,1,2,2,0,3,17.33,15.64
+651,main,Full,Fixed 1D,1046,blue,strategist,30,29,53.5,target,0,3,2,0,3,17.33,15.64
+652,main,Full,Fixed 1D,1047,red,strategist,30,25,41.4,target,1,2,1,0,5,10.27,14.43
+653,main,Full,Fixed 1D,1047,blue,strategist,30,25,41.4,target,1,2,1,0,5,10.27,14.43
+654,main,Full,Fixed 1D,1048,red,strategist,30,25,46.8,target,0,2,2,0,3,13.20,13.23
+655,main,Full,Fixed 1D,1048,blue,strategist,31,27,50.6,target,1,3,2,0,3,13.20,13.23
+656,main,Full,Fixed 1D,1049,red,strategist,30,28,42.9,target,1,2,1,0,6,16.13,12.03
+657,main,Full,Fixed 1D,1049,blue,strategist,30,28,42.3,target,1,2,2,0,6,16.13,12.03
+658,main,Full,Fixed 1D,1050,red,strategist,30,25,43.6,target,0,2,2,0,4,19.07,14.82
+659,main,Full,Fixed 1D,1050,blue,strategist,30,26,45.3,target,0,2,2,0,4,19.07,14.82
+660,main,Full,Fixed 1D,1051,red,strategist,30,28,41.2,target,1,2,1,0,6,12.00,13.62
+661,main,Full,Fixed 1D,1051,blue,strategist,30,28,41.4,target,1,2,1,0,6,12.00,13.62
+662,main,Full,Fixed 1D,1052,red,strategist,30,28,43.7,target,0,2,2,0,4,14.94,12.41
+663,main,Full,Fixed 1D,1052,blue,strategist,30,28,43.7,target,0,2,2,0,4,14.94,12.41
+664,main,Full,Fixed 1D,1053,red,strategist,32,28,43.2,target,0,2,2,0,6,17.87,15.21
+665,main,Full,Fixed 1D,1053,blue,strategist,30,28,43.1,target,0,2,2,0,6,17.87,15.21
+666,main,Full,Fixed 1D,1054,red,strategist,30,28,42.1,target,0,2,1,0,4,10.81,14.01
+667,main,Full,Fixed 1D,1054,blue,strategist,30,28,42.0,target,0,2,1,0,4,10.81,14.01
+668,main,Full,Fixed 1D,1055,red,strategist,30,27,43.2,target,1,2,2,0,6,13.74,12.80
+669,main,Full,Fixed 1D,1055,blue,strategist,30,29,43.8,target,1,2,2,0,6,13.74,12.80
+670,main,Full,Fixed 1D,1056,red,strategist,30,28,45.3,target,0,2,2,0,4,16.67,15.60
+671,main,Full,Fixed 1D,1056,blue,strategist,30,28,41.5,target,0,2,1,0,4,16.67,15.60
+672,main,Full,Fixed 1D,1057,red,strategist,30,25,41.9,target,1,2,1,0,6,19.61,14.39
+673,main,Full,Fixed 1D,1057,blue,strategist,30,28,43.7,target,1,2,2,0,6,19.61,14.39
+674,main,Full,Fixed 1D,1058,red,strategist,30,28,42.3,target,0,2,2,0,4,12.54,13.19
+675,main,Full,Fixed 1D,1058,blue,strategist,30,28,42.8,target,0,2,2,0,4,12.54,13.19
+676,main,Full,Fixed 1D,1059,red,strategist,30,27,42.3,target,1,2,1,0,6,15.48,15.99
+677,main,Full,Fixed 1D,1059,blue,strategist,30,28,42.4,target,0,2,2,0,6,15.48,15.99
+678,main,Full,Fixed 1D,1060,red,strategist,30,28,43.5,target,0,2,2,0,4,18.41,14.78
+679,main,Full,Fixed 1D,1060,blue,strategist,30,28,43.8,target,0,2,2,0,4,18.41,14.78
+680,main,Full,Fixed 1D,1061,red,strategist,30,28,48.3,target,0,2,2,0,3,11.34,13.58
+681,main,Full,Fixed 1D,1061,blue,strategist,30,29,49.4,target,0,3,2,0,3,11.34,13.58
+682,main,Full,Fixed 1D,1062,red,strategist,31,26,43.3,target,2,2,1,0,5,14.28,12.37
+683,main,Full,Fixed 1D,1062,blue,strategist,30,26,43.2,target,2,2,1,0,5,14.28,12.37
+684,main,Full,Fixed 1D,1063,red,strategist,30,27,51.5,target,1,3,2,0,3,17.21,15.17
+685,main,Full,Fixed 1D,1063,blue,strategist,30,27,51.5,target,1,3,2,0,3,17.21,15.17
+686,main,Full,Fixed 1D,1064,red,strategist,30,28,43.4,target,1,2,2,0,5,10.15,13.96
+687,main,Full,Fixed 1D,1064,blue,strategist,30,27,42.5,target,1,2,1,0,5,10.15,13.96
+688,main,Full,Fixed 1D,1065,red,strategist,31,28,50.7,target,0,3,2,0,3,13.08,12.76
+689,main,Full,Fixed 1D,1065,blue,strategist,30,27,50.5,target,1,3,2,0,3,13.08,12.76
+690,main,Full,Fixed 1D,1066,red,strategist,30,27,43.8,target,0,2,2,0,5,16.02,15.56
+691,main,Full,Fixed 1D,1066,blue,strategist,31,27,43.6,target,0,2,2,0,5,16.02,15.56
+692,main,Full,Fixed 1D,1067,red,strategist,30,29,52.0,target,0,3,2,0,3,18.95,14.35
+693,main,Full,Fixed 1D,1067,blue,strategist,30,27,51.4,target,0,2,2,0,3,18.95,14.35
+694,main,Full,Fixed 1D,1068,red,strategist,30,24,42.6,target,1,2,1,0,5,11.88,13.15
+695,main,Full,Fixed 1D,1068,blue,strategist,32,27,42.8,target,1,2,2,0,5,11.88,13.15
+696,main,Full,Fixed 1D,1069,red,opponent,29,30,53.8,target,0,3,2,0,3,14.82,15.94
+697,main,Full,Fixed 1D,1069,blue,strategist,30,28,50.7,target,0,3,2,0,3,14.82,15.94
+698,main,Full,Fixed 1D,1070,red,strategist,30,27,45.7,target,1,2,2,0,5,17.75,14.74
+699,main,Full,Fixed 1D,1070,blue,strategist,30,28,46.5,target,1,2,2,0,5,17.75,14.74
+700,ablation,Adaptation off,Baseline,1001,red,strategist,31,24,47.8,target,14,0,0,0,5,15.29,13.82
+701,ablation,Adaptation off,Baseline,1001,blue,strategist,30,22,46.7,target,14,0,0,0,5,15.29,13.82
+702,ablation,Adaptation off,Baseline,1002,red,strategist,31,21,53.7,target,17,0,0,0,3,18.23,12.62
+703,ablation,Adaptation off,Baseline,1002,blue,strategist,30,21,53.2,target,17,0,0,0,3,18.23,12.62
+704,ablation,Adaptation off,Baseline,1003,red,strategist,30,23,47.0,target,14,0,0,0,5,11.16,15.41
+705,ablation,Adaptation off,Baseline,1003,blue,strategist,30,24,46.4,target,11,0,0,0,5,11.16,15.41
+706,ablation,Adaptation off,Baseline,1004,red,strategist,30,23,54.1,target,14,0,0,0,3,14.10,14.21
+707,ablation,Adaptation off,Baseline,1004,blue,strategist,30,23,53.6,target,14,0,0,0,3,14.10,14.21
+708,ablation,Adaptation off,Baseline,1005,red,strategist,30,22,46.0,target,13,0,0,0,6,17.03,13.00
+709,ablation,Adaptation off,Baseline,1005,blue,strategist,30,22,45.1,target,13,0,0,0,6,17.03,13.00
+710,ablation,Adaptation off,Baseline,1006,red,strategist,30,24,46.8,target,11,0,0,0,4,19.96,15.80
+711,ablation,Adaptation off,Baseline,1006,blue,strategist,30,24,47.0,target,11,0,0,0,4,19.96,15.80
+712,ablation,Adaptation off,Baseline,1007,red,strategist,30,22,44.6,target,11,0,0,0,6,12.90,14.60
+713,ablation,Adaptation off,Baseline,1007,blue,strategist,30,27,44.8,target,9,0,0,0,6,12.90,14.60
+714,ablation,Adaptation off,Baseline,1008,red,strategist,30,23,47.4,target,13,0,0,0,4,15.83,13.39
+715,ablation,Adaptation off,Baseline,1008,blue,strategist,30,23,47.4,target,12,0,0,0,4,15.83,13.39
+716,ablation,Adaptation off,Baseline,1009,red,strategist,30,23,44.7,target,13,0,0,0,6,18.77,12.19
+717,ablation,Adaptation off,Baseline,1009,blue,strategist,30,23,44.7,target,13,0,0,0,6,18.77,12.19
+718,ablation,Adaptation off,Baseline,1010,red,strategist,32,21,46.6,target,13,0,0,0,4,11.70,14.98
+719,ablation,Adaptation off,Baseline,1010,blue,strategist,32,22,46.2,target,12,0,0,0,4,11.70,14.98
+720,ablation,Adaptation off,Baseline,1011,red,strategist,30,21,42.6,target,12,0,0,0,6,14.64,13.78
+721,ablation,Adaptation off,Baseline,1011,blue,strategist,30,22,44.8,target,12,0,0,0,6,14.64,13.78
+722,ablation,Adaptation off,Baseline,1012,red,strategist,30,24,47.0,target,11,0,0,0,4,17.57,12.58
+723,ablation,Adaptation off,Baseline,1012,blue,strategist,30,23,46.2,target,11,0,0,0,4,17.57,12.58
+724,ablation,Adaptation off,Baseline,1013,red,strategist,30,20,41.4,target,11,0,0,0,6,10.50,15.37
+725,ablation,Adaptation off,Baseline,1013,blue,strategist,30,23,41.5,target,11,0,0,0,6,10.50,15.37
+726,ablation,Adaptation off,Baseline,1014,red,strategist,30,24,47.2,target,12,0,0,0,4,13.44,14.17
+727,ablation,Adaptation off,Baseline,1014,blue,strategist,30,25,48.9,target,12,0,0,0,4,13.44,14.17
+728,ablation,Adaptation off,Baseline,1015,red,strategist,30,24,44.4,target,11,0,0,0,6,16.37,12.96
+729,ablation,Adaptation off,Baseline,1015,blue,strategist,30,19,43.2,target,14,0,0,0,6,16.37,12.96
+730,ablation,Adaptation off,Fixed 2I,1001,red,opponent,12,30,150.6,target,45,91,0,0,5,15.29,13.82
+731,ablation,Adaptation off,Fixed 2I,1001,blue,opponent,6,30,141.3,target,41,94,0,0,5,15.29,13.82
+732,ablation,Adaptation off,Fixed 2I,1002,red,opponent,12,30,143.2,target,38,83,0,0,3,18.23,12.62
+733,ablation,Adaptation off,Fixed 2I,1002,blue,opponent,13,30,172.4,target,53,100,0,0,3,18.23,12.62
+734,ablation,Adaptation off,Fixed 2I,1003,red,opponent,9,30,124.4,target,33,76,0,0,5,11.16,15.41
+735,ablation,Adaptation off,Fixed 2I,1003,blue,opponent,6,30,137.6,target,40,94,0,0,5,11.16,15.41
+736,ablation,Adaptation off,Fixed 2I,1004,red,opponent,7,30,180.0,target,58,116,0,0,3,14.10,14.21
+737,ablation,Adaptation off,Fixed 2I,1004,blue,opponent,10,30,170.9,target,53,106,0,0,3,14.10,14.21
+738,ablation,Adaptation off,Fixed 2I,1005,red,opponent,4,30,140.7,target,41,96,0,0,6,17.03,13.00
+739,ablation,Adaptation off,Fixed 2I,1005,blue,opponent,4,30,143.8,target,43,98,0,0,6,17.03,13.00
+740,ablation,Adaptation off,Fixed 2I,1006,red,opponent,14,31,153.2,target,44,90,0,0,4,19.96,15.80
+741,ablation,Adaptation off,Fixed 2I,1006,blue,opponent,17,30,149.7,target,43,84,0,0,4,19.96,15.80
+742,ablation,Adaptation off,Fixed 2I,1007,red,opponent,14,30,125.3,target,33,70,0,0,6,12.90,14.60
+743,ablation,Adaptation off,Fixed 2I,1007,blue,opponent,23,30,125.1,target,33,57,0,0,6,12.90,14.60
+744,ablation,Adaptation off,Fixed 2I,1008,red,opponent,16,30,126.5,target,33,62,0,0,4,15.83,13.39
+745,ablation,Adaptation off,Fixed 2I,1008,blue,opponent,10,30,158.8,target,48,97,0,0,4,15.83,13.39
+746,ablation,Adaptation off,Fixed 2I,1009,red,opponent,4,30,137.4,target,40,94,0,0,6,18.77,12.19
+747,ablation,Adaptation off,Fixed 2I,1009,blue,opponent,9,30,164.9,target,53,102,0,0,6,18.77,12.19
+748,ablation,Adaptation off,Fixed 2I,1010,red,opponent,20,30,144.8,target,41,76,0,0,4,11.70,14.98
+749,ablation,Adaptation off,Fixed 2I,1010,blue,opponent,16,30,150.3,target,45,83,0,0,4,11.70,14.98
+750,ablation,Adaptation off,Fixed 2I,1011,red,opponent,9,30,129.8,target,34,80,0,0,6,14.64,13.78
+751,ablation,Adaptation off,Fixed 2I,1011,blue,opponent,5,30,142.4,target,41,96,0,0,6,14.64,13.78
+752,ablation,Adaptation off,Fixed 2I,1012,red,opponent,7,30,152.1,target,44,99,0,0,4,17.57,12.58
+753,ablation,Adaptation off,Fixed 2I,1012,blue,opponent,12,30,149.4,target,43,87,0,0,4,17.57,12.58
+754,ablation,Adaptation off,Fixed 2I,1013,red,opponent,4,30,129.7,target,37,90,0,0,6,10.50,15.37
+755,ablation,Adaptation off,Fixed 2I,1013,blue,opponent,5,30,130.2,target,36,90,0,0,6,10.50,15.37
+756,ablation,Adaptation off,Fixed 2I,1014,red,opponent,20,30,170.7,target,54,93,0,0,4,13.44,14.17
+757,ablation,Adaptation off,Fixed 2I,1014,blue,opponent,6,30,148.1,target,43,100,0,0,4,13.44,14.17
+758,ablation,Adaptation off,Fixed 2I,1015,red,opponent,10,30,143.1,target,43,93,0,0,6,16.37,12.96
+759,ablation,Adaptation off,Fixed 2I,1015,blue,opponent,5,30,127.8,target,34,88,0,0,6,16.37,12.96
+760,ablation,Adaptation off,Fixed 1D+1I,1001,red,opponent,18,30,62.6,target,2,26,0,0,5,15.29,13.82
+761,ablation,Adaptation off,Fixed 1D+1I,1001,blue,opponent,21,30,62.7,target,3,22,0,0,5,15.29,13.82
+762,ablation,Adaptation off,Fixed 1D+1I,1002,red,opponent,19,30,66.3,target,1,24,0,0,3,18.23,12.62
+763,ablation,Adaptation off,Fixed 1D+1I,1002,blue,opponent,19,30,67.1,target,2,24,0,0,3,18.23,12.62
+764,ablation,Adaptation off,Fixed 1D+1I,1003,red,opponent,19,30,57.7,target,1,22,0,0,5,11.16,15.41
+765,ablation,Adaptation off,Fixed 1D+1I,1003,blue,opponent,19,30,60.5,target,2,23,0,0,5,11.16,15.41
+766,ablation,Adaptation off,Fixed 1D+1I,1004,red,opponent,17,30,57.6,target,0,22,0,0,3,14.10,14.21
+767,ablation,Adaptation off,Fixed 1D+1I,1004,blue,opponent,16,30,57.6,target,0,23,0,0,3,14.10,14.21
+768,ablation,Adaptation off,Fixed 1D+1I,1005,red,opponent,18,30,54.3,target,0,22,0,0,6,17.03,13.00
+769,ablation,Adaptation off,Fixed 1D+1I,1005,blue,opponent,19,30,54.3,target,0,19,0,0,6,17.03,13.00
+770,ablation,Adaptation off,Fixed 1D+1I,1006,red,opponent,18,30,64.1,target,1,25,0,0,4,19.96,15.80
+771,ablation,Adaptation off,Fixed 1D+1I,1006,blue,opponent,19,30,66.5,target,2,25,0,0,4,19.96,15.80
+772,ablation,Adaptation off,Fixed 1D+1I,1007,red,opponent,21,30,57.6,target,1,23,0,0,6,12.90,14.60
+773,ablation,Adaptation off,Fixed 1D+1I,1007,blue,opponent,21,30,57.7,target,1,23,0,0,6,12.90,14.60
+774,ablation,Adaptation off,Fixed 1D+1I,1008,red,opponent,22,30,63.4,target,1,23,0,0,4,15.83,13.39
+775,ablation,Adaptation off,Fixed 1D+1I,1008,blue,opponent,21,30,63.3,target,1,23,0,0,4,15.83,13.39
+776,ablation,Adaptation off,Fixed 1D+1I,1009,red,opponent,17,30,59.5,target,2,26,0,0,6,18.77,12.19
+777,ablation,Adaptation off,Fixed 1D+1I,1009,blue,opponent,19,30,58.5,target,1,24,0,0,6,18.77,12.19
+778,ablation,Adaptation off,Fixed 1D+1I,1010,red,opponent,23,30,61.6,target,2,21,0,0,4,11.70,14.98
+779,ablation,Adaptation off,Fixed 1D+1I,1010,blue,opponent,21,30,64.9,target,3,25,0,0,4,11.70,14.98
+780,ablation,Adaptation off,Fixed 1D+1I,1011,red,opponent,22,30,60.8,target,2,23,0,0,6,14.64,13.78
+781,ablation,Adaptation off,Fixed 1D+1I,1011,blue,opponent,21,30,60.7,target,2,24,0,0,6,14.64,13.78
+782,ablation,Adaptation off,Fixed 1D+1I,1012,red,opponent,24,30,73.3,target,4,26,0,0,4,17.57,12.58
+783,ablation,Adaptation off,Fixed 1D+1I,1012,blue,opponent,19,30,66.1,target,2,25,0,0,4,17.57,12.58
+784,ablation,Adaptation off,Fixed 1D+1I,1013,red,opponent,19,30,57.0,target,1,23,0,0,6,10.50,15.37
+785,ablation,Adaptation off,Fixed 1D+1I,1013,blue,opponent,20,30,56.7,target,1,21,0,0,6,10.50,15.37
+786,ablation,Adaptation off,Fixed 1D+1I,1014,red,opponent,22,30,65.6,target,3,23,0,0,4,13.44,14.17
+787,ablation,Adaptation off,Fixed 1D+1I,1014,blue,opponent,21,30,61.9,target,0,23,0,0,4,13.44,14.17
+788,ablation,Adaptation off,Fixed 1D+1I,1015,red,opponent,19,30,57.3,target,1,23,0,0,6,16.37,12.96
+789,ablation,Adaptation off,Fixed 1D+1I,1015,blue,opponent,20,30,57.4,target,1,21,0,0,6,16.37,12.96
+790,ablation,No Raid,Baseline,1001,red,opponent,29,30,35.5,target,0,0,0,0,5,15.29,13.82
+791,ablation,No Raid,Baseline,1001,blue,opponent,29,30,35.5,target,0,0,0,0,5,15.29,13.82
+792,ablation,No Raid,Baseline,1002,red,opponent,29,30,47.1,target,0,0,0,0,3,18.23,12.62
+793,ablation,No Raid,Baseline,1002,blue,strategist,31,29,46.9,target,0,0,0,0,3,18.23,12.62
+794,ablation,No Raid,Baseline,1003,red,opponent,29,30,34.0,target,0,0,0,0,5,11.16,15.41
+795,ablation,No Raid,Baseline,1003,blue,opponent,27,30,34.0,target,0,0,0,0,5,11.16,15.41
+796,ablation,No Raid,Baseline,1004,red,strategist,30,29,45.2,target,0,0,0,0,3,14.10,14.21
+797,ablation,No Raid,Baseline,1004,blue,strategist,30,29,45.2,target,0,0,0,0,3,14.10,14.21
+798,ablation,No Raid,Baseline,1005,red,opponent,29,30,38.2,target,0,0,0,0,6,17.03,13.00
+799,ablation,No Raid,Baseline,1005,blue,strategist,30,26,36.2,target,0,0,0,0,6,17.03,13.00
+800,ablation,No Raid,Baseline,1006,red,strategist,30,27,41.0,target,0,0,0,0,4,19.96,15.80
+801,ablation,No Raid,Baseline,1006,blue,strategist,30,27,40.3,target,0,0,0,0,4,19.96,15.80
+802,ablation,No Raid,Baseline,1007,red,strategist,30,28,35.9,target,0,0,0,0,6,12.90,14.60
+803,ablation,No Raid,Baseline,1007,blue,strategist,30,28,36.3,target,0,0,0,0,6,12.90,14.60
+804,ablation,No Raid,Baseline,1008,red,strategist,30,29,40.3,target,0,0,0,0,4,15.83,13.39
+805,ablation,No Raid,Baseline,1008,blue,strategist,30,29,40.3,target,0,0,0,0,4,15.83,13.39
+806,ablation,No Raid,Baseline,1009,red,strategist,30,27,37.9,target,0,0,0,0,6,18.77,12.19
+807,ablation,No Raid,Baseline,1009,blue,strategist,30,27,37.7,target,0,0,0,0,6,18.77,12.19
+808,ablation,No Raid,Baseline,1010,red,opponent,28,30,37.9,target,0,0,0,0,4,11.70,14.98
+809,ablation,No Raid,Baseline,1010,blue,opponent,28,30,37.9,target,0,0,0,0,4,11.70,14.98
+810,ablation,No Raid,Baseline,1011,red,strategist,30,27,37.9,target,0,0,0,0,6,14.64,13.78
+811,ablation,No Raid,Baseline,1011,blue,strategist,30,27,36.3,target,0,0,0,0,6,14.64,13.78
+812,ablation,No Raid,Baseline,1012,red,strategist,30,28,40.8,target,0,0,0,0,4,17.57,12.58
+813,ablation,No Raid,Baseline,1012,blue,strategist,30,28,40.8,target,0,0,0,0,4,17.57,12.58
+814,ablation,No Raid,Baseline,1013,red,strategist,30,27,35.8,target,0,0,0,0,6,10.50,15.37
+815,ablation,No Raid,Baseline,1013,blue,strategist,30,27,35.9,target,0,0,0,0,6,10.50,15.37
+816,ablation,No Raid,Baseline,1014,red,strategist,30,29,41.2,target,0,0,0,0,4,13.44,14.17
+817,ablation,No Raid,Baseline,1014,blue,strategist,30,29,39.9,target,0,0,0,0,4,13.44,14.17
+818,ablation,No Raid,Baseline,1015,red,strategist,30,26,36.3,target,0,0,0,0,6,16.37,12.96
+819,ablation,No Raid,Baseline,1015,blue,strategist,30,27,37.9,target,0,0,0,0,6,16.37,12.96
+820,ablation,No Raid,Fixed 2I,1001,red,opponent,26,30,57.0,target,8,10,6,0,5,15.29,13.82
+821,ablation,No Raid,Fixed 2I,1001,blue,opponent,28,30,58.9,target,10,8,3,0,5,15.29,13.82
+822,ablation,No Raid,Fixed 2I,1002,red,opponent,23,30,61.2,target,9,9,3,0,3,18.23,12.62
+823,ablation,No Raid,Fixed 2I,1002,blue,opponent,27,30,61.2,target,8,6,4,0,3,18.23,12.62
+824,ablation,No Raid,Fixed 2I,1003,red,opponent,27,30,55.5,target,8,7,3,0,5,11.16,15.41
+825,ablation,No Raid,Fixed 2I,1003,blue,opponent,25,30,55.4,target,8,9,3,0,5,11.16,15.41
+826,ablation,No Raid,Fixed 2I,1004,red,opponent,23,30,57.6,target,6,11,6,0,3,14.10,14.21
+827,ablation,No Raid,Fixed 2I,1004,blue,opponent,23,30,57.6,target,8,9,6,0,3,14.10,14.21
+828,ablation,No Raid,Fixed 2I,1005,red,opponent,26,30,54.3,target,6,9,5,0,6,17.03,13.00
+829,ablation,No Raid,Fixed 2I,1005,blue,opponent,24,30,54.3,target,7,10,6,0,6,17.03,13.00
+830,ablation,No Raid,Fixed 2I,1006,red,opponent,28,30,63.8,target,8,10,4,0,4,19.96,15.80
+831,ablation,No Raid,Fixed 2I,1006,blue,opponent,26,30,63.6,target,10,9,3,0,4,19.96,15.80
+832,ablation,No Raid,Fixed 2I,1007,red,opponent,25,30,55.4,target,7,10,6,0,6,12.90,14.60
+833,ablation,No Raid,Fixed 2I,1007,blue,opponent,26,30,55.5,target,8,9,6,0,6,12.90,14.60
+834,ablation,No Raid,Fixed 2I,1008,red,strategist,30,28,60.6,target,9,8,4,0,4,15.83,13.39
+835,ablation,No Raid,Fixed 2I,1008,blue,opponent,24,30,62.0,target,9,13,6,0,4,15.83,13.39
+836,ablation,No Raid,Fixed 2I,1009,red,opponent,23,30,54.8,target,9,9,6,0,6,18.77,12.19
+837,ablation,No Raid,Fixed 2I,1009,blue,opponent,26,30,54.7,target,9,8,3,0,6,18.77,12.19
+838,ablation,No Raid,Fixed 2I,1010,red,opponent,27,30,60.8,target,8,11,6,0,4,11.70,14.98
+839,ablation,No Raid,Fixed 2I,1010,blue,opponent,20,30,60.7,target,8,13,3,0,4,11.70,14.98
+840,ablation,No Raid,Fixed 2I,1011,red,opponent,23,30,52.9,target,7,10,6,0,6,14.64,13.78
+841,ablation,No Raid,Fixed 2I,1011,blue,opponent,23,30,52.8,target,6,10,6,0,6,14.64,13.78
+842,ablation,No Raid,Fixed 2I,1012,red,opponent,23,30,60.7,target,9,11,5,0,4,17.57,12.58
+843,ablation,No Raid,Fixed 2I,1012,blue,opponent,28,30,60.8,target,8,8,6,0,4,17.57,12.58
+844,ablation,No Raid,Fixed 2I,1013,red,opponent,25,30,52.9,target,8,7,2,0,6,10.50,15.37
+845,ablation,No Raid,Fixed 2I,1013,blue,opponent,27,30,52.9,target,8,7,5,0,6,10.50,15.37
+846,ablation,No Raid,Fixed 2I,1014,red,opponent,29,30,61.9,target,8,9,5,0,4,13.44,14.17
+847,ablation,No Raid,Fixed 2I,1014,blue,opponent,29,30,61.9,target,10,8,3,0,4,13.44,14.17
+848,ablation,No Raid,Fixed 2I,1015,red,opponent,22,30,52.8,target,7,13,6,0,6,16.37,12.96
+849,ablation,No Raid,Fixed 2I,1015,blue,opponent,24,30,52.9,target,8,10,6,0,6,16.37,12.96
+850,ablation,No Raid,Fixed 1D+1I,1001,red,strategist,30,25,49.2,target,3,4,3,0,5,15.29,13.82
+851,ablation,No Raid,Fixed 1D+1I,1001,blue,strategist,30,27,53.9,target,3,6,4,0,5,15.29,13.82
+852,ablation,No Raid,Fixed 1D+1I,1002,red,opponent,29,30,61.2,target,4,4,2,0,3,18.23,12.62
+853,ablation,No Raid,Fixed 1D+1I,1002,blue,opponent,28,30,61.2,target,5,4,2,0,3,18.23,12.62
+854,ablation,No Raid,Fixed 1D+1I,1003,red,strategist,30,27,50.9,target,4,5,1,0,5,11.16,15.41
+855,ablation,No Raid,Fixed 1D+1I,1003,blue,strategist,30,25,47.9,target,3,4,2,0,5,11.16,15.41
+856,ablation,No Raid,Fixed 1D+1I,1004,red,strategist,30,27,55.0,target,4,4,2,0,3,14.10,14.21
+857,ablation,No Raid,Fixed 1D+1I,1004,blue,opponent,28,30,57.6,target,3,7,3,0,3,14.10,14.21
+858,ablation,No Raid,Fixed 1D+1I,1005,red,strategist,30,26,47.8,target,4,5,3,0,6,17.03,13.00
+859,ablation,No Raid,Fixed 1D+1I,1005,blue,strategist,30,26,47.8,target,4,5,3,0,6,17.03,13.00
+860,ablation,No Raid,Fixed 1D+1I,1006,red,strategist,30,26,57.3,target,4,6,1,0,4,19.96,15.80
+861,ablation,No Raid,Fixed 1D+1I,1006,blue,strategist,30,26,56.6,target,4,6,3,0,4,19.96,15.80
+862,ablation,No Raid,Fixed 1D+1I,1007,red,strategist,30,27,47.8,target,3,4,2,0,6,12.90,14.60
+863,ablation,No Raid,Fixed 1D+1I,1007,blue,strategist,30,27,48.1,target,3,4,2,0,6,12.90,14.60
+864,ablation,No Raid,Fixed 1D+1I,1008,red,strategist,30,27,57.0,target,3,7,4,0,4,15.83,13.39
+865,ablation,No Raid,Fixed 1D+1I,1008,blue,strategist,30,27,55.8,target,4,5,3,0,4,15.83,13.39
+866,ablation,No Raid,Fixed 1D+1I,1009,red,strategist,30,24,48.7,target,4,3,2,0,6,18.77,12.19
+867,ablation,No Raid,Fixed 1D+1I,1009,blue,strategist,30,27,50.0,target,4,5,3,0,6,18.77,12.19
+868,ablation,No Raid,Fixed 1D+1I,1010,red,strategist,31,21,44.9,target,3,3,2,0,4,11.70,14.98
+869,ablation,No Raid,Fixed 1D+1I,1010,blue,strategist,30,24,50.3,target,3,6,3,0,4,11.70,14.98
+870,ablation,No Raid,Fixed 1D+1I,1011,red,opponent,27,30,52.9,target,3,7,5,0,6,14.64,13.78
+871,ablation,No Raid,Fixed 1D+1I,1011,blue,strategist,31,27,52.5,target,4,4,4,0,6,14.64,13.78
+872,ablation,No Raid,Fixed 1D+1I,1012,red,strategist,30,25,52.7,target,4,5,1,0,4,17.57,12.58
+873,ablation,No Raid,Fixed 1D+1I,1012,blue,strategist,30,27,57.2,target,4,7,3,0,4,17.57,12.58
+874,ablation,No Raid,Fixed 1D+1I,1013,red,strategist,30,24,45.9,target,4,4,3,0,6,10.50,15.37
+875,ablation,No Raid,Fixed 1D+1I,1013,blue,strategist,30,24,44.6,target,4,4,3,0,6,10.50,15.37
+876,ablation,No Raid,Fixed 1D+1I,1014,red,strategist,30,27,55.2,target,4,5,4,0,4,13.44,14.17
+877,ablation,No Raid,Fixed 1D+1I,1014,blue,strategist,30,26,53.3,target,4,4,2,0,4,13.44,14.17
+878,ablation,No Raid,Fixed 1D+1I,1015,red,strategist,30,27,50.5,target,3,6,3,0,6,16.37,12.96
+879,ablation,No Raid,Fixed 1D+1I,1015,blue,strategist,30,27,52.3,target,4,6,1,0,6,16.37,12.96
+880,ablation,No Guard,Baseline,1001,red,strategist,30,18,55.7,target,26,0,1,0,5,15.29,13.82
+881,ablation,No Guard,Baseline,1001,blue,strategist,30,19,52.9,target,22,0,1,0,5,15.29,13.82
+882,ablation,No Guard,Baseline,1002,red,strategist,30,18,58.9,target,25,0,1,0,3,18.23,12.62
+883,ablation,No Guard,Baseline,1002,blue,strategist,30,19,63.0,target,26,0,1,0,3,18.23,12.62
+884,ablation,No Guard,Baseline,1003,red,strategist,30,21,52.5,target,21,0,1,0,5,11.16,15.41
+885,ablation,No Guard,Baseline,1003,blue,strategist,30,20,50.5,target,20,0,1,0,5,11.16,15.41
+886,ablation,No Guard,Baseline,1004,red,strategist,30,18,55.5,target,23,0,1,0,3,14.10,14.21
+887,ablation,No Guard,Baseline,1004,blue,strategist,30,19,55.5,target,22,0,1,0,3,14.10,14.21
+888,ablation,No Guard,Baseline,1005,red,strategist,30,20,51.2,target,21,0,1,0,6,17.03,13.00
+889,ablation,No Guard,Baseline,1005,blue,strategist,30,18,51.2,target,21,0,1,0,6,17.03,13.00
+890,ablation,No Guard,Baseline,1006,red,strategist,30,19,51.9,target,22,0,1,0,4,19.96,15.80
+891,ablation,No Guard,Baseline,1006,blue,strategist,30,19,55.3,target,25,0,1,0,4,19.96,15.80
+892,ablation,No Guard,Baseline,1007,red,strategist,30,16,50.8,target,26,0,1,0,6,12.90,14.60
+893,ablation,No Guard,Baseline,1007,blue,strategist,30,18,52.2,target,25,0,1,0,6,12.90,14.60
+894,ablation,No Guard,Baseline,1008,red,strategist,30,22,54.6,target,21,0,1,0,4,15.83,13.39
+895,ablation,No Guard,Baseline,1008,blue,strategist,30,16,52.5,target,26,0,1,0,4,15.83,13.39
+896,ablation,No Guard,Baseline,1009,red,strategist,31,17,53.1,target,25,0,1,0,6,18.77,12.19
+897,ablation,No Guard,Baseline,1009,blue,strategist,31,21,53.1,target,22,0,1,0,6,18.77,12.19
+898,ablation,No Guard,Baseline,1010,red,strategist,30,21,50.3,target,18,0,1,0,4,11.70,14.98
+899,ablation,No Guard,Baseline,1010,blue,strategist,30,23,52.5,target,18,0,1,0,4,11.70,14.98
+900,ablation,No Guard,Baseline,1011,red,strategist,30,18,51.6,target,23,0,1,0,6,14.64,13.78
+901,ablation,No Guard,Baseline,1011,blue,strategist,30,21,48.3,target,17,0,1,0,6,14.64,13.78
+902,ablation,No Guard,Baseline,1012,red,strategist,30,22,52.2,target,18,0,1,0,4,17.57,12.58
+903,ablation,No Guard,Baseline,1012,blue,strategist,30,23,52.1,target,16,0,1,0,4,17.57,12.58
+904,ablation,No Guard,Baseline,1013,red,strategist,30,21,51.5,target,19,0,1,0,6,10.50,15.37
+905,ablation,No Guard,Baseline,1013,blue,strategist,30,19,51.5,target,23,0,1,0,6,10.50,15.37
+906,ablation,No Guard,Baseline,1014,red,strategist,30,21,53.4,target,17,0,1,0,4,13.44,14.17
+907,ablation,No Guard,Baseline,1014,blue,strategist,30,22,53.4,target,18,0,1,0,4,13.44,14.17
+908,ablation,No Guard,Baseline,1015,red,strategist,30,24,49.2,target,13,0,1,0,6,16.37,12.96
+909,ablation,No Guard,Baseline,1015,blue,strategist,30,18,51.3,target,23,0,1,0,6,16.37,12.96
+910,ablation,No Guard,Fixed 2I,1001,red,opponent,5,7,180.0,time,90,97,1,0,5,15.29,13.82
+911,ablation,No Guard,Fixed 2I,1001,blue,opponent,9,10,180.0,time,86,89,1,0,5,15.29,13.82
+912,ablation,No Guard,Fixed 2I,1002,red,strategist,10,8,180.0,time,90,88,1,0,3,18.23,12.62
+913,ablation,No Guard,Fixed 2I,1002,blue,strategist,10,7,180.0,time,92,87,1,0,3,18.23,12.62
+914,ablation,No Guard,Fixed 2I,1003,red,opponent,5,8,180.0,time,89,98,1,0,5,11.16,15.41
+915,ablation,No Guard,Fixed 2I,1003,blue,opponent,6,7,180.0,time,91,95,1,0,5,11.16,15.41
+916,ablation,No Guard,Fixed 2I,1004,red,opponent,6,8,180.0,time,90,93,1,0,3,14.10,14.21
+917,ablation,No Guard,Fixed 2I,1004,blue,opponent,6,8,180.0,time,91,93,1,0,3,14.10,14.21
+918,ablation,No Guard,Fixed 2I,1005,red,opponent,5,14,180.0,time,84,96,1,0,6,17.03,13.00
+919,ablation,No Guard,Fixed 2I,1005,blue,opponent,4,10,180.0,time,88,97,1,0,6,17.03,13.00
+920,ablation,No Guard,Fixed 2I,1006,red,opponent,7,8,180.0,time,89,93,1,0,4,19.96,15.80
+921,ablation,No Guard,Fixed 2I,1006,blue,opponent,6,7,180.0,time,90,95,1,0,4,19.96,15.80
+922,ablation,No Guard,Fixed 2I,1007,red,opponent,4,13,180.0,time,85,97,1,0,6,12.90,14.60
+923,ablation,No Guard,Fixed 2I,1007,blue,opponent,7,11,180.0,time,88,93,1,0,6,12.90,14.60
+924,ablation,No Guard,Fixed 2I,1008,red,strategist,9,7,180.0,time,89,90,1,0,4,15.83,13.39
+925,ablation,No Guard,Fixed 2I,1008,blue,draw,7,7,180.0,time,91,92,1,0,4,15.83,13.39
+926,ablation,No Guard,Fixed 2I,1009,red,opponent,4,9,180.0,time,88,97,1,0,6,18.77,12.19
+927,ablation,No Guard,Fixed 2I,1009,blue,opponent,7,9,180.0,time,88,93,1,0,6,18.77,12.19
+928,ablation,No Guard,Fixed 2I,1010,red,opponent,7,11,180.0,time,86,94,1,0,4,11.70,14.98
+929,ablation,No Guard,Fixed 2I,1010,blue,opponent,8,10,180.0,time,86,92,1,0,4,11.70,14.98
+930,ablation,No Guard,Fixed 2I,1011,red,opponent,5,13,180.0,time,84,95,1,0,6,14.64,13.78
+931,ablation,No Guard,Fixed 2I,1011,blue,opponent,5,9,180.0,time,89,96,1,0,6,14.64,13.78
+932,ablation,No Guard,Fixed 2I,1012,red,draw,8,8,180.0,time,88,90,1,0,4,17.57,12.58
+933,ablation,No Guard,Fixed 2I,1012,blue,opponent,6,8,180.0,time,88,94,1,0,4,17.57,12.58
+934,ablation,No Guard,Fixed 2I,1013,red,strategist,10,8,180.0,time,91,89,1,0,6,10.50,15.37
+935,ablation,No Guard,Fixed 2I,1013,blue,opponent,5,9,180.0,time,90,98,1,0,6,10.50,15.37
+936,ablation,No Guard,Fixed 2I,1014,red,strategist,9,5,180.0,time,92,93,1,0,4,13.44,14.17
+937,ablation,No Guard,Fixed 2I,1014,blue,opponent,6,8,180.0,time,89,95,1,0,4,13.44,14.17
+938,ablation,No Guard,Fixed 2I,1015,red,strategist,15,9,180.0,time,90,86,1,0,6,16.37,12.96
+939,ablation,No Guard,Fixed 2I,1015,blue,opponent,8,15,180.0,time,84,94,1,0,6,16.37,12.96
+940,ablation,No Guard,Fixed 1D+1I,1001,red,opponent,22,30,62.6,target,2,23,3,0,5,15.29,13.82
+941,ablation,No Guard,Fixed 1D+1I,1001,blue,opponent,19,30,58.4,target,1,23,2,0,5,15.29,13.82
+942,ablation,No Guard,Fixed 1D+1I,1002,red,opponent,21,30,65.8,target,1,21,3,0,3,18.23,12.62
+943,ablation,No Guard,Fixed 1D+1I,1002,blue,opponent,22,30,69.5,target,3,23,3,0,3,18.23,12.62
+944,ablation,No Guard,Fixed 1D+1I,1003,red,opponent,20,30,55.5,target,0,19,2,0,5,11.16,15.41
+945,ablation,No Guard,Fixed 1D+1I,1003,blue,opponent,22,30,58.5,target,1,20,2,0,5,11.16,15.41
+946,ablation,No Guard,Fixed 1D+1I,1004,red,opponent,20,30,57.6,target,0,19,2,0,3,14.10,14.21
+947,ablation,No Guard,Fixed 1D+1I,1004,blue,opponent,20,30,57.6,target,0,20,2,0,3,14.10,14.21
+948,ablation,No Guard,Fixed 1D+1I,1005,red,opponent,22,30,59.2,target,2,20,2,0,6,17.03,13.00
+949,ablation,No Guard,Fixed 1D+1I,1005,blue,opponent,19,30,54.3,target,0,20,2,0,6,17.03,13.00
+950,ablation,No Guard,Fixed 1D+1I,1006,red,opponent,21,30,63.8,target,0,22,3,0,4,19.96,15.80
+951,ablation,No Guard,Fixed 1D+1I,1006,blue,opponent,24,30,68.1,target,2,21,3,0,4,19.96,15.80
+952,ablation,No Guard,Fixed 1D+1I,1007,red,opponent,23,30,55.4,target,0,18,2,0,6,12.90,14.60
+953,ablation,No Guard,Fixed 1D+1I,1007,blue,opponent,24,30,55.5,target,0,19,2,0,6,12.90,14.60
+954,ablation,No Guard,Fixed 1D+1I,1008,red,opponent,25,30,64.2,target,2,20,3,0,4,15.83,13.39
+955,ablation,No Guard,Fixed 1D+1I,1008,blue,opponent,26,30,63.3,target,1,18,3,0,4,15.83,13.39
+956,ablation,No Guard,Fixed 1D+1I,1009,red,opponent,22,30,54.8,target,0,19,2,0,6,18.77,12.19
+957,ablation,No Guard,Fixed 1D+1I,1009,blue,opponent,22,30,54.7,target,0,19,2,0,6,18.77,12.19
+958,ablation,No Guard,Fixed 1D+1I,1010,red,opponent,25,30,63.1,target,2,22,3,0,4,11.70,14.98
+959,ablation,No Guard,Fixed 1D+1I,1010,blue,opponent,24,30,61.5,target,2,20,3,0,4,11.70,14.98
+960,ablation,No Guard,Fixed 1D+1I,1011,red,opponent,22,30,52.9,target,0,19,2,0,6,14.64,13.78
+961,ablation,No Guard,Fixed 1D+1I,1011,blue,opponent,21,30,52.8,target,0,20,2,0,6,14.64,13.78
+962,ablation,No Guard,Fixed 1D+1I,1012,red,opponent,24,30,71.1,target,3,22,3,0,4,17.57,12.58
+963,ablation,No Guard,Fixed 1D+1I,1012,blue,opponent,21,30,60.9,target,1,22,3,0,4,17.57,12.58
+964,ablation,No Guard,Fixed 1D+1I,1013,red,opponent,25,30,59.2,target,2,20,2,0,6,10.50,15.37
+965,ablation,No Guard,Fixed 1D+1I,1013,blue,opponent,19,30,56.7,target,1,22,2,0,6,10.50,15.37
+966,ablation,No Guard,Fixed 1D+1I,1014,red,opponent,25,30,62.6,target,1,19,3,0,4,13.44,14.17
+967,ablation,No Guard,Fixed 1D+1I,1014,blue,opponent,26,30,61.9,target,0,18,3,0,4,13.44,14.17
+968,ablation,No Guard,Fixed 1D+1I,1015,red,opponent,24,30,57.7,target,1,19,2,0,6,16.37,12.96
+969,ablation,No Guard,Fixed 1D+1I,1015,blue,opponent,22,30,58.0,target,1,21,2,0,6,16.37,12.96
+970,sanity,Full,Strategist,1001,red,strategist,30,29,84.1,target,18,16,9,7,5,15.29,13.82
+971,sanity,Full,Strategist,1001,blue,opponent,29,30,84.1,target,16,18,7,9,5,15.29,13.82
+972,sanity,Full,Strategist,1002,red,strategist,30,27,83.0,target,14,14,6,10,3,18.23,12.62
+973,sanity,Full,Strategist,1002,blue,opponent,27,30,83.0,target,14,14,10,6,3,18.23,12.62
+974,sanity,Full,Strategist,1003,red,strategist,30,25,56.3,target,10,8,5,5,5,11.16,15.41
+975,sanity,Full,Strategist,1003,blue,opponent,25,30,56.3,target,8,10,5,5,5,11.16,15.41
+976,sanity,Full,Strategist,1004,red,strategist,30,29,62.7,target,9,8,6,6,3,14.10,14.21
+977,sanity,Full,Strategist,1004,blue,opponent,29,30,62.7,target,8,9,6,6,3,14.10,14.21
+978,sanity,Full,Strategist,1005,red,strategist,30,26,68.2,target,12,13,6,6,6,17.03,13.00
+979,sanity,Full,Strategist,1005,blue,opponent,26,30,68.2,target,13,12,6,6,6,17.03,13.00
+980,sanity,Full,Strategist,1006,red,opponent,26,30,70.1,target,10,13,7,5,4,19.96,15.80
+981,sanity,Full,Strategist,1006,blue,strategist,30,26,70.1,target,13,10,5,7,4,19.96,15.80
+982,sanity,Full,Strategist,1007,red,strategist,30,29,74.5,target,14,16,6,9,6,12.90,14.60
+983,sanity,Full,Strategist,1007,blue,opponent,29,30,74.5,target,16,14,9,6,6,12.90,14.60
+984,sanity,Full,Strategist,1008,red,strategist,30,29,68.0,target,11,11,5,5,4,15.83,13.39
+985,sanity,Full,Strategist,1008,blue,opponent,29,30,68.0,target,11,11,5,5,4,15.83,13.39
+986,sanity,Full,Strategist,1009,red,opponent,28,30,78.6,target,15,14,9,6,6,18.77,12.19
+987,sanity,Full,Strategist,1009,blue,strategist,30,28,78.6,target,14,15,6,9,6,18.77,12.19
+988,sanity,Full,Strategist,1010,red,strategist,30,27,72.2,target,12,14,6,5,4,11.70,14.98
+989,sanity,Full,Strategist,1010,blue,opponent,27,30,72.2,target,14,12,5,6,4,11.70,14.98
+990,sanity,Full,Strategist,1011,red,opponent,28,30,75.9,target,13,15,8,9,6,14.64,13.78
+991,sanity,Full,Strategist,1011,blue,strategist,30,28,75.9,target,15,13,9,8,6,14.64,13.78
+992,sanity,Full,Strategist,1012,red,opponent,25,30,72.5,target,12,13,6,7,4,17.57,12.58
+993,sanity,Full,Strategist,1012,blue,strategist,30,25,72.5,target,13,12,7,6,4,17.57,12.58
+994,sanity,Full,Strategist,1013,red,opponent,24,30,65.7,target,12,11,4,6,6,10.50,15.37
+995,sanity,Full,Strategist,1013,blue,strategist,30,24,65.7,target,11,12,6,4,6,10.50,15.37
+996,sanity,Full,Strategist,1014,red,opponent,29,30,72.5,target,11,12,7,4,4,13.44,14.17
+997,sanity,Full,Strategist,1014,blue,strategist,30,29,72.5,target,12,11,4,7,4,13.44,14.17
+998,sanity,Full,Strategist,1015,red,strategist,30,25,68.0,target,11,12,6,6,6,16.37,12.96
+999,sanity,Full,Strategist,1015,blue,opponent,25,30,68.0,target,12,11,6,6,6,16.37,12.96

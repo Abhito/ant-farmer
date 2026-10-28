@@ -13,6 +13,7 @@ MapView = NodePath("../MapView")
 AntView = NodePath("../AntView")
 Hud = NodePath("../Hud")
 Camera = NodePath("../Camera2D")
+Seed = 300
 RedController = 2
 BlueController = 1
 FixedDefenders = 1
