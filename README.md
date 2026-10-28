@@ -77,12 +77,6 @@ It builds the project, plays the matches in parallel headless processes (about 3
 
 What the results show: [docs/EVALUATION.md](docs/EVALUATION.md). To redo the tables from an existing CSV: `python tools/summarize_results.py results/results.csv`. The list of matches is in `scripts/Tools/BatchRunner.cs`.
 
-## Documentation
-
-- [docs/OVERVIEW.md](docs/OVERVIEW.md): how the code is organized, game rules, the Strategist
-- [docs/EXTENDING_AI.md](docs/EXTENDING_AI.md): how the AI works and how to add rules, roles, and controllers
-- [docs/EVALUATION.md](docs/EVALUATION.md): evaluation results
-
 ## Attribution
 
 - **Engine (Godot 4.7.2, MIT license):** the engine itself, its C# bindings (`Godot.NET.Sdk`), and `AStarGrid2D`, which we use for grid pathfinding (`scripts/Sim/Pathfinder.cs` supplies only the step cost, including the climbing penalty). Rendering uses Godot's built-in 2D drawing calls.
