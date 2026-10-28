@@ -56,6 +56,10 @@ public class Simulation
     // Rolled from the seed. Piles near a nest regrow slower than RegrowSeconds.
     public int PileSize { get; }
     public float RegrowSeconds { get; }
+    public float DefendLeash { get; }
+
+    // All randomness in a match comes from here, so the same seed replays the same match.
+    private readonly Random _rng;
 
     public bool IsOver { get; private set; }
 
@@ -70,9 +74,10 @@ public class Simulation
         Settings = settings;
         Pathfinder = new Pathfinder(map, settings.ClimbCost);
 
-        var rng = new Random(settings.Seed);
-        PileSize = rng.Next(settings.MinPileSize, settings.MaxPileSize + 1);
-        RegrowSeconds = Mathf.Lerp(settings.MinRegrowSeconds, settings.MaxRegrowSeconds, (float)rng.NextDouble());
+        _rng = new Random(settings.Seed);
+        PileSize = _rng.Next(settings.MinPileSize, settings.MaxPileSize + 1);
+        RegrowSeconds = Mathf.Lerp(settings.MinRegrowSeconds, settings.MaxRegrowSeconds, (float)_rng.NextDouble());
+        DefendLeash = Mathf.Lerp(settings.MinDefendLeash, settings.MaxDefendLeash, (float)_rng.NextDouble());
 
         // Copy the food so the map can be reused for the next match.
         _food = map.Food
@@ -106,13 +111,17 @@ public class Simulation
 
     private int Ticks(float seconds) => Mathf.RoundToInt(seconds * Settings.TicksPerSecond);
 
+    // seconds, plus or minus up to jitter.
+    private float Jittered(float seconds, float jitter) => seconds + ((float)_rng.NextDouble() * 2f - 1f) * jitter;
+
     private void SpawnAnts()
     {
         foreach (Team team in Enum.GetValues<Team>())
         {
             List<Vector2I> nest = Map.Nests[team];
-            for (int i = 0; i < Settings.AntsPerTeam; i++)
-                _ants.Add(new Ant(_ants.Count, team, nest[i % nest.Count]));
+            List<Vector2I> cells = Enumerable.Range(0, Settings.AntsPerTeam).Select(i => nest[i % nest.Count]).ToList();
+            foreach (Vector2I cell in cells.OrderBy(_ => _rng.Next()).ToList())
+                _ants.Add(new Ant(_ants.Count, team, cell));
         }
     }
 
@@ -314,14 +323,14 @@ public class Simulation
             if (target.IsDead)
                 continue;
 
-            biter.BiteCooldownLeft = Ticks(Settings.BiteCooldownSeconds);
+            biter.BiteCooldownLeft = Ticks(Jittered(Settings.BiteCooldownSeconds, Settings.BiteCooldownJitter));
             biter.Kills++;
             _kills[biter.Team]++;
 
             if (target.CarryingFood && target.CarriedFrom != null)
                 target.CarriedFrom.Amount++;
 
-            target.Kill(Ticks(Settings.RespawnSeconds));
+            target.Kill(Ticks(Jittered(Settings.RespawnSeconds, Settings.RespawnJitter)));
 
             // It respawns at the nest, so a waiting switch can happen now.
             ApplyPendingOrder(target);

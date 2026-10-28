@@ -53,7 +53,7 @@ public partial class Hud : CanvasLayer
         _clock.Text = $"{seconds / 60}:{seconds % 60:00}";
 
         string paused = Paused ? "PAUSED  ·  " : "";
-        _info.Text = $"{paused}first to {_sim.WinTarget}  ·  piles of {_sim.PileSize}, regrow {_sim.RegrowSeconds:0}-{_sim.RegrowSeconds * _sim.Settings.NearNestRegrowFactor:0}s  ·  seed {_sim.Settings.Seed}";
+        _info.Text = $"{paused}first to {_sim.WinTarget}  ·  piles of {_sim.PileSize}, regrow {_sim.RegrowSeconds:0}-{_sim.RegrowSeconds * _sim.Settings.NearNestRegrowFactor:0}s  ·  guard area {_sim.DefendLeash:0.0}  ·  seed {_sim.Settings.Seed}";
 
         if (_sim.IsOver && !_banner.Visible)
             ShowBanner();

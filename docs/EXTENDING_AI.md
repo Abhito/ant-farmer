@@ -55,7 +55,7 @@ public class GuardPileRule : IStrategyRule
             return;
 
         FoodInfo pile = world.Food.First(f => f.Id == id);
-        if (world.DistanceFromMyNest(pile.Cell) > world.Settings.DefendLeash)
+        if (world.DistanceFromMyNest(pile.Cell) > world.DefendLeash)
             return;
 
         AntInfo? guard = plan.FreeAnts
@@ -109,7 +109,8 @@ See [Testing a change](#testing-a-change). At minimum, play strategist vs. Basel
 | `MyDeliveries`, `EnemyDeliveries`, `ScoreDifference`, `WinTarget` | Score |
 | `MyKills`, `EnemyKills`, `MyCarriers`, `EnemyCarriers` | Combat and carrying counts |
 | `ElapsedSeconds`, `RemainingSeconds` | Clock |
-| `Settings` | All match rules (speeds, `DefendLeash`, `RespawnSeconds`, ...) |
+| `Settings` | All match rules (speeds, `RespawnSeconds`, ...) |
+| `DefendLeash` | How far defenders may go from their nest this match (rolled from the seed, 12-16 cells) |
 | `PathCost(from, to)` | Walking cost between two cells, the same measure ants use. Cached for the rest of the decision |
 | `CostHome(ant)` | Cost for one of our ants to reach our nest |
 | `CostToStart(ant, role, target)` | Cost for an ant to begin a job, **including the walk home if it has to switch roles**. Use this to pick who gets a job |

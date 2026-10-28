@@ -25,7 +25,7 @@ public class RecentEvents
 
             if (ant.Dead && !before.Dead)
             {
-                bool atHome = world.DistanceFromMyNest(ant.Position) <= world.Settings.DefendLeash;
+                bool atHome = world.DistanceFromMyNest(ant.Position) <= world.DefendLeash;
                 _events.Add((world.ElapsedSeconds, before.Role, false, atHome));
             }
         }

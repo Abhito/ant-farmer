@@ -91,7 +91,7 @@ public partial class GameRunner : Node
         _lastFoodRemaining = Sim.FoodRemaining;
         _paused = false;
 
-        MapView.DefendLeash = settings.DefendLeash;
+        MapView.DefendLeash = Sim.DefendLeash;
         MapView.SetMap(Map, Sim.Food);
         AntView.SetSimulation(Sim);
         AntView.TickBlend = 1f;
@@ -100,7 +100,7 @@ public partial class GameRunner : Node
 
         GD.Print($"Match started: seed {settings.Seed}, {settings.TicksPerSecond} ticks/s, " +
                  $"{settings.MatchSeconds}s limit, first to {Sim.WinTarget} deliveries wins, " +
-                 $"{settings.AntsPerTeam} ant(s) per side, piles of {Sim.PileSize} regrowing after {Sim.RegrowSeconds:0.0}s (up to {Sim.RegrowSeconds * settings.NearNestRegrowFactor:0.0}s near a nest). " +
+                 $"{settings.AntsPerTeam} ant(s) per side, piles of {Sim.PileSize} regrowing after {Sim.RegrowSeconds:0.0}s (up to {Sim.RegrowSeconds * settings.NearNestRegrowFactor:0.0}s near a nest), defender area {Sim.DefendLeash:0.0} cells. " +
                  $"Red: {Sim.Controller(Team.Red).Name}, Blue: {Sim.Controller(Team.Blue).Name}.");
     }
 

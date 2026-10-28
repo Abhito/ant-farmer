@@ -7,7 +7,7 @@ public static class DefendBehavior
 {
     public static void Update(Ant ant, Simulation sim)
     {
-        float leash = sim.Settings.DefendLeash;
+        float leash = sim.DefendLeash;
         bool InHomeArea(Vector2 point) => sim.DistanceFromNest(ant.Team, point) <= leash;
 
         Vector2I post = ant.Order.Post ?? sim.Map.Nests[ant.Team][0];

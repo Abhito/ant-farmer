@@ -34,6 +34,10 @@ public class MatchSettings
     public float BiteCooldownSeconds = 2f;
     public float RespawnSeconds = 3f;
 
+    // Each bite cooldown and each respawn is this many seconds longer or shorter, at random.
+    public float BiteCooldownJitter = 0.3f;
+    public float RespawnJitter = 0.5f;
+
     // Each match rolls one pile size and one regrow time from the seed, used for every pile.
     public int MinPileSize = 3;
     public int MaxPileSize = 6;
@@ -44,7 +48,9 @@ public class MatchSettings
     public float NearNestRegrowFactor = 1.5f;
 
     // Defenders attack enemies inside this distance from their nest, and never leave it.
-    public float DefendLeash = 14f;
+    // Each match rolls one value from this range, the same for both sides.
+    public float MinDefendLeash = 12f;
+    public float MaxDefendLeash = 16f;
 
     // How often each side's AI gives new orders.
     public float DecisionSeconds = 0.5f;

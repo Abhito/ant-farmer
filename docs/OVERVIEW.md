@@ -34,7 +34,7 @@ The main rule: **game logic (`Sim/`) is separate from rendering (`View/`).**
 | `Ant.cs` | One ant: position, path following (speed depends on `MoveCost`), carried food (and the pile it came from), role order and any waiting role switch (`PendingOrder`), respawn/cooldown timers |
 | `Role.cs` | `Role` enum and `RoleOrder` (role plus optional target pile / post / enemy ant) |
 | `GatherBehavior.cs` | Go to the ordered (or cheapest-to-reach) pile, take 1 food, carry it to the nearest nest cell. Also `ReturnHome`, used by any ant walking home to switch roles |
-| `DefendBehavior.cs` | Guard the home area: chase and kill any enemy carrier **or enemy interceptor** within `DefendLeash` (14 cells) of its nest, then return to its post (a resting spot, the nest by default). Never leaves the area or picks up food |
+| `DefendBehavior.cs` | Guard the home area: chase and kill any enemy carrier **or enemy interceptor** within `DefendLeash` (12-16 cells, from the seed) of its nest, then return to its post (a resting spot, the nest by default). Never leaves the area or picks up food |
 | `InterceptBehavior.cs` | Hunt a specific enemy or the nearest enemy carrier anywhere on the map; with no carriers, shadow the nearest enemy gatherer. Never picks up food |
 | `Combat.cs` | Shared chase-and-bite and nearest-target helpers (skip dead ants) |
 
@@ -82,21 +82,23 @@ Design references (Millington, *AI for Games*, 3rd ed.): strategist on top of ro
 - Gatherers walk **5 cells/s** on flat ground, interceptors **1.1x** that, defenders **0.8x**. Each level climbed adds one normal step's cost to that step (climbing one level is twice as slow). Going downhill costs nothing extra. Carrying food slows an ant to **70%**.
 - **Food:** every pile starts with the same small amount and, once emptied, refills to that amount after a delay. Both come from the **seed**: pile size **3-6** and a base regrow time of **10-20 s**. Piles closer to a nest regrow slower, up to **1.5x** the base time for the pile nearest a nest, which pushes ants toward the middle. Distance is measured to the nearest nest of either side, so both sides always get an equal board. Ants that run a pile dry have to move on, often toward the middle or the enemy side.
 - **Win:** first side to **30 deliveries**, or more deliveries when the **180 s** limit runs out. Equal scores are a draw.
-- **Roles:** Gatherers collect food and never attack. **Interceptors** attack enemy carriers anywhere. **Defenders** guard an area: they attack enemy carriers and enemy interceptors anywhere within **14 cells** of their nest (the faint circle), never leave it, and wait at their post otherwise. Attackers never pick up food.
-- **Bite:** an attacker within **1.2 cells** of a valid target kills it. Each ant can bite once every **2 s**. Food the victim was carrying goes **back to the pile it came from**.
-- **Respawn:** a killed ant respawns at its nest after **3 s**, keeping its role.
+- **Roles:** Gatherers collect food and never attack. **Interceptors** attack enemy carriers anywhere. **Defenders** guard an area: they attack enemy carriers and enemy interceptors anywhere within **12-16 cells** (rolled from the seed, the same for both sides) of their nest (the faint circle), never leave it, and wait at their post otherwise. Attackers never pick up food.
+- **Bite:** an attacker within **1.2 cells** of a valid target kills it. Each ant can bite once every **2 s ± 0.3 s** (random per bite). Food the victim was carrying goes **back to the pile it came from**.
+- **Respawn:** a killed ant respawns at its nest after **3 s ± 0.5 s** (random per death), keeping its role.
 - **Switching roles happens at the nest.** An ant given a new role walks home (delivering any food on the way), then switches; a thin arc over it shows the role it is heading home for. A new target within the same role (another pile, post or enemy) applies immediately, and dead ants switch at once since they respawn at the nest.
 
 ### Fairness
 
-The arena is mirror-symmetric, and the simulation is built so that identical AIs play exactly mirrored matches and draw:
+The arena is mirror-symmetric, and nothing in the simulation favors a side:
 
-- Spawn cells are ordered from the map center outward, not in reading order.
+- Each ant's starting nest cell is shuffled by the seed (cells are listed from the map center outward, so both nests have the same choices).
 - Ant update order flips every tick.
 - Ants see other ants (position, cell, carrying) as they were at the **start of the tick**.
 - Bites are declared during the tick and all **resolve together** at the end, so an ant killed this tick still lands its own bite. Ants only die (end of tick) and respawn (start of tick) between ticks.
 - Respawns cycle through the nest cells in the same center-out order as the first spawn.
 - Winners are checked only after every ant has acted.
+
+**Randomness:** everything random comes from one generator seeded with `MatchSettings.Seed`, so the same seed always replays the same match. Per match: pile size, base regrow time, and defender area. During the match: starting cells, respawn times and bite cooldowns. The random draws aren't mirrored, so swapping sides gives a different match with the same odds; evaluations should play each seed from both sides.
 - Equal path costs (within 0.001) are decided by straight-line distance, not list order.
 
 ## Status
@@ -115,7 +117,7 @@ Strategist results before seeded regrowing food (13 piles of 10, first to 66; de
 
 Rule ablations: without **Raid** it only draws Baseline (65-65) and loses to Fixed 2 Interceptors 62-66; without **Guard** it draws Fixed 2 Interceptors 4-4; without **Spread gather** results barely change. Adding **Close out** back lowers the margin against Baseline (66-26 instead of 66-20).
 
-Check with results-based Guard and Raid on the arena with hill patches and strips (first to 30, regrowing food, area defenders; 20 seeds × both sides per opponent, 200 matches): the strategist wins all 40 against Baseline (avg 30-20), Fixed 1I (30-19) and Fixed 2I (30-17), 38 of 40 against Fixed 1D (30-28), and **20 of 40 against Fixed 1D+1I** (avg 28-29). It changes roles mid-match (about 5-10 role switches per match against teams with attackers). Against 1D+1I its Guard only reacts after losses, while the opponent defends from the start.
+Check with seeded randomness (spawn cells, respawn and bite-cooldown jitter, defender area 12-16), results-based Guard and Raid, first to 30, regrowing food (20 seeds × both sides per opponent, 200 matches): the strategist wins all 40 against Baseline (avg 30-20) and Fixed 2I (30-17), 38 of 40 against Fixed 1I (30-19), 39 of 40 against Fixed 1D (30-27), but only **9 of 40 against Fixed 1D+1I** (avg 28-30). It changes roles mid-match (about 5-10 role switches per match against teams with attackers). Against 1D+1I its Guard only reacts after losses, while the opponent defends from the start. A larger probe of that matchup (50 seeds × both sides) puts the strategist at about **30%** wins whether or not the defender area and timing jitter vary, so the randomness didn't cause the drop; the smaller samples were noisy. Pile size matters most: it wins about half the time with piles of 4-5 and almost never with piles of 3 or 6.
 
 **Balance note:** interceptors are strong (they always catch carriers, since carriers move at 0.7x). With first to 30 no match in the checks reached the time limit, but interceptor-heavy matchups take about twice as long. Knobs if this should change: a longer bite cooldown, a shorter respawn, or slower interceptors.
 

@@ -42,6 +42,9 @@ public class WorldSnapshot
     public MapData Map { get; private init; }
     public MatchSettings Settings { get; private init; }
 
+    // How far defenders may go from their nest this match (rolled from the seed).
+    public float DefendLeash { get; private init; }
+
     private Pathfinder _pathfinder;
     private readonly Dictionary<(Vector2I, Vector2I), float> _pathCosts = new();
 
@@ -103,6 +106,7 @@ public class WorldSnapshot
             EnemyNest = sim.Map.Nests[enemy],
             Map = sim.Map,
             Settings = sim.Settings,
+            DefendLeash = sim.DefendLeash,
             _pathfinder = sim.Pathfinder,
         };
     }
