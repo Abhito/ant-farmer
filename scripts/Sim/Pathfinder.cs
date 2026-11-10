@@ -34,12 +34,15 @@ public partial class Pathfinder
 
     public bool IsWalkable(Vector2I cell) => Map.InBounds(cell) && Map[cell].IsWalkable;
 
-    // Step distance times (1 + ClimbCost per level climbed). Ants use this for movement too.
-    public float MoveCost(Vector2I from, Vector2I to)
+    // Ants use this for movement too.
+    public float MoveCost(Vector2I from, Vector2I to) => StepCost(Map, from, to, ClimbCost);
+
+    // Step distance times (1 + climbCost per level climbed).
+    public static float StepCost(MapData map, Vector2I from, Vector2I to, float climbCost)
     {
         float distance = ((Vector2)(to - from)).Length();
-        int climb = Mathf.Max(0, Map[to].Height - Map[from].Height);
-        return distance * (1f + ClimbCost * climb);
+        int climb = Mathf.Max(0, map[to].Height - map[from].Height);
+        return distance * (1f + climbCost * climb);
     }
 
     /// <summary>Cells to walk through, not including the start. Empty if there is no route.</summary>
