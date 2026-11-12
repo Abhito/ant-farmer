@@ -129,32 +129,39 @@ namespace AntFarmer.Gen
 
         private static void BlendTerrainAroundFeatures(char[] cells, int width, int height)
         {
-            var features = new List<(int X, int Y)>();
             for (int y = 0; y < height; y++)
             {
                 for (int x = 0; x < width; x++)
                 {
                     char cell = cells[x + y * width];
-                    if (cell == 'F' || cell == 'R' || cell == 'B') features.Add((x, y));
+                    if (cell == 'F' || cell == 'R' || cell == 'B') BlendAround(cells, width, height, x, y);
                 }
             }
+        }
 
-            foreach (var (X, Y) in features)
+        // Caps hills so they rise at most one level per cell away from a feature, making slopes up to nests and food.
+        // Heights only go to 9, so only cells within 9 of the feature can change.
+        private static void BlendAround(char[] cells, int width, int height, int featureX, int featureY)
+        {
+            for (int y = Math.Max(0, featureY - 9); y <= Math.Min(height - 1, featureY + 9); y++)
             {
-                for (int y = 0; y < height; y++)
+                for (int x = Math.Max(0, featureX - 9); x <= Math.Min(width - 1, featureX + 9); x++)
                 {
-                    for (int x = 0; x < width; x++)
-                    {
-                        int index = x + y * width;
-                        if (cells[index] < '1' || cells[index] > '9') continue;
+                    int index = x + y * width;
+                    if (cells[index] < '1' || cells[index] > '9') continue;
 
-                        int distance = Math.Max(Math.Abs(x - X), Math.Abs(y - Y));
-                        int heightLimit = Math.Min(9, distance);
-                        if (cells[index] - '0' > heightLimit)
-                            cells[index] = (char)('0' + heightLimit);
-                    }
+                    int distance = Math.Max(Math.Abs(x - featureX), Math.Abs(y - featureY));
+                    if (cells[index] - '0' > distance)
+                        cells[index] = (char)('0' + distance);
                 }
             }
+        }
+
+        private static void BlendAroundNest(char[] cells, int width, int height, int nestX, int nestY)
+        {
+            for (int dy = 0; dy <= 1; dy++)
+                for (int dx = 0; dx <= 1; dx++)
+                    BlendAround(cells, width, height, nestX + dx, nestY + dy);
         }
 
         // Close any pockets smaller than 10 cells, then carve tunnels between the remaining pockets
@@ -366,8 +373,7 @@ namespace AntFarmer.Gen
 
             int requestedFood = Math.Max(0, p.FoodPiles);
             float allowedImbalance = Math.Clamp(p.MaxNestImbalance, 0f, 1f);
-            float biasTarget = (Math.Clamp(p.FoodBias, -1f, 1f) + 1f) * 0.5f;
-            float mapDiagonal = MathF.Sqrt(p.Width * p.Width + p.Height * p.Height);
+            float bias = Math.Clamp(p.FoodBias, -1f, 1f);
             float bestScore = float.PositiveInfinity;
             NestPair bestPair = default;
             List<Disk> bestFood = [];
@@ -387,6 +393,9 @@ namespace AntFarmer.Gen
                 var pathCells = (char[])cells.Clone();
                 SetNest(pathCells, p.Width, pair.RedX, pair.RedY, 'R');
                 SetNest(pathCells, p.Width, pair.BlueX, pair.BlueY, 'B');
+                // Blend now so the costs match the slopes the final map will have around the nests.
+                BlendAroundNest(pathCells, p.Width, p.Height, pair.RedX, pair.RedY);
+                BlendAroundNest(pathCells, p.Width, p.Height, pair.BlueX, pair.BlueY);
                 float[] redCosts = GetTravelCosts(pathCells, p.Width, p.Height, pair.RedX, pair.RedY);
                 float[] blueCosts = GetTravelCosts(pathCells, p.Width, p.Height, pair.BlueX, pair.BlueY);
                 if (float.IsPositiveInfinity(redCosts[pair.BlueX + pair.BlueY * p.Width])) continue;
@@ -411,19 +420,21 @@ namespace AntFarmer.Gen
                     }
                 }
 
+                float[] weights = FoodBiasWeights(foodCandidates, redCosts, blueCosts, p.Width, bias);
+
                 for (int layoutAttempt = 0; layoutAttempt < 4; layoutAttempt++)
                 {
-                    var food = PoissonDisk.Generate(foodCandidates, requestedFood, p.MinFoodSpacing, rand);
+                    var food = PoissonDisk.Generate(foodCandidates, requestedFood, p.MinFoodSpacing, rand, weights);
                     if (requestedFood > 0 && food.Count == 0) continue;
 
                     float redAccess = FoodAccess(redCosts, food, p.Width);
                     float blueAccess = FoodAccess(blueCosts, food, p.Width);
+                    // How much worse the worse nest's food access is than the better one's (0.2 = 20% worse).
                     float imbalance = requestedFood == 0 ? 0f :
-                        MathF.Abs(redAccess - blueAccess) / MathF.Max(redAccess, blueAccess);
-                    float biasError = FoodBiasError(food, pair, biasTarget, mapDiagonal);
+                        MathF.Max(redAccess, blueAccess) / MathF.Max(MathF.Min(redAccess, blueAccess), 0.001f) - 1f;
                     float missingFoodPenalty = (requestedFood - food.Count) * 10000f;
                     float fairnessPenalty = MathF.Max(0f, imbalance - allowedImbalance) * 100f;
-                    float score = missingFoodPenalty + fairnessPenalty + imbalance + biasError * 0.1f;
+                    float score = missingFoodPenalty + fairnessPenalty + imbalance;
 
                     if (score < bestScore)
                     {
@@ -552,25 +563,28 @@ namespace AntFarmer.Gen
             return total / count;
         }
 
-        private static float FoodBiasError(List<Disk> food, NestPair pair, float target, float mapDiagonal)
-        {
-            if (food.Count == 0) return 0f;
+        // At FoodBias = +-1, the most favored cell is e^FoodBiasStrength times as likely to be tried early as the least favored.
+        private const float FoodBiasStrength = 6f;
 
-            float total = 0f;
-            foreach (var pile in food)
+        // Sampling weight per candidate from its travel cost to the nearer nest:
+        // negative bias favors cells near a nest, positive favors cells far from both.
+        private static float[] FoodBiasWeights(List<Disk> candidates, float[] redCosts, float[] blueCosts, int width, float bias)
+        {
+            var weights = new float[candidates.Count];
+            float maxCost = 0f;
+            for (int i = 0; i < candidates.Count; i++)
             {
-                float redDistance = Distance(pile.X, pile.Y, pair.RedX + 0.5f, pair.RedY + 0.5f);
-                float blueDistance = Distance(pile.X, pile.Y, pair.BlueX + 0.5f, pair.BlueY + 0.5f);
-                total += MathF.Min(redDistance, blueDistance) / mapDiagonal;
+                int index = candidates[i].X + candidates[i].Y * width;
+                weights[i] = MathF.Min(redCosts[index], blueCosts[index]);
+                maxCost = MathF.Max(maxCost, weights[i]);
             }
-            return MathF.Abs(total / food.Count - target);
-        }
 
-        private static float Distance(float x1, float y1, float x2, float y2)
-        {
-            float dx = x1 - x2;
-            float dy = y1 - y2;
-            return MathF.Sqrt(dx * dx + dy * dy);
+            for (int i = 0; i < weights.Length; i++)
+            {
+                float farness = maxCost > 0f ? weights[i] / maxCost - 0.5f : 0f;
+                weights[i] = MathF.Exp(FoodBiasStrength * bias * farness);
+            }
+            return weights;
         }
 
         // Generate rocks using Perlin noise

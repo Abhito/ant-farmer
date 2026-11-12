@@ -44,6 +44,7 @@ MEASURES = [
 LABELS = dict(MEASURES) | {
     "rock_density": "Rock density",
     "outside_defense": "Ground outside both defender areas",
+    "food_nearer_nest_cost": "Pile cost to nearer nest",
 }
 
 
@@ -157,7 +158,7 @@ def expressive_range(rows, reference, out):
 
 
 def sweeps(rows, out):
-    plan = [("RockDensity", "nest_path_cost"), ("FoodBias", "food_access"),
+    plan = [("RockDensity", "nest_path_cost"), ("FoodBias", "food_nearer_nest_cost"),
             ("MinNestDistance", "nest_path_cost"), ("MaxHillHeight", "hill_penalty")]
     fig, axes = plt.subplots(1, len(plan), figsize=(12, 3.4), facecolor=SURFACE)
     for ax, (param, key) in zip(axes, plan):

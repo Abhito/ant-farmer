@@ -45,6 +45,7 @@ public static class MapMetrics
         Add("hill_penalty", Finite(nestPath / flatPath - 1f));
 
         Add("food_cost_mean", Finite(map.Food.Average(p => (report.RedCosts[p.Cell] + report.BlueCosts[p.Cell]) / 2f)));
+        Add("food_nearer_nest_cost", Finite(map.Food.Average(p => Math.Min(report.RedCosts[p.Cell], report.BlueCosts[p.Cell]))));
 
         float redAccess = MapValidator.FoodAccess(map, report.RedCosts, rules.FoodAccessPiles);
         float blueAccess = MapValidator.FoodAccess(map, report.BlueCosts, rules.FoodAccessPiles);
