@@ -26,3 +26,6 @@ export/
 *.apk
 # Per-process evaluation output (merged into results/results.csv)
 results/raw/
+
+# Generated map files from the map batch (re-made by scenes/MapBatch.tscn)
+results/maps/generated/

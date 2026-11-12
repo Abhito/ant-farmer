@@ -12,4 +12,7 @@
     <Compile Remove="tools\MapGenerator.Cli\**\*.cs" />
     <Compile Remove="tools\MapGenerator.Core\**\*.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="tools\MapGenerator.Core\MapGenerator.Core.csproj" />
+  </ItemGroup>
 </Project>
