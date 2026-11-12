@@ -23,7 +23,7 @@ dotnet run --project tools/MapGenerator.Cli -- Caves 1234
 dotnet run --project tools/MapGenerator.Cli -- Highlands 1234 --no-repair
 ```
 
-Generated text files are written to the repository root's `maps/` directory, regardless of the current working directory. Filenames contain the preset and a sortable UTC timestamp; raw maps end with `_raw.txt`.
+The CLI saves each map to the repository root's `maps/` directory, regardless of the current working directory. Filenames contain the preset and seed (e.g. `Caves_1234.txt`); raw maps end with `_raw.txt`. `MapGenerator.Generate` itself only returns the text and never writes files.
 
 ## Validate maps
 

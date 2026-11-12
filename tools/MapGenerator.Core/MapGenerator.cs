@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
 using System.Text;
 
 namespace AntFarmer.Gen
@@ -125,29 +123,8 @@ namespace AntFarmer.Gen
                 map.AppendLine();
             }
 
-            string mapText = map.ToString();
-            string timestamp = DateTime.UtcNow.ToString("yyyyMMdd_HHmmss", CultureInfo.InvariantCulture);
-            string suffix = repair ? string.Empty : "_raw";
-            string fileName = $"{p.Name}_{timestamp}{suffix}.txt";
-            string mapsDirectory = Path.Combine(FindRepositoryRoot(), "maps");
-            Directory.CreateDirectory(mapsDirectory);
-            File.WriteAllText(Path.Combine(mapsDirectory, fileName), mapText);
-
-            return mapText;
-        }
-
-        private static string FindRepositoryRoot()
-        {
-            var directory = new DirectoryInfo(AppContext.BaseDirectory);
-            while (directory is not null)
-            {
-                if (File.Exists(Path.Combine(directory.FullName, "Ant Farmer.csproj")))
-                    return directory.FullName;
-
-                directory = directory.Parent;
-            }
-
-            throw new DirectoryNotFoundException("Could not find the repository root containing 'Ant Farmer.csproj'.");
+            // Only returns the text; callers decide whether to save it.
+            return map.ToString();
         }
 
         private static void BlendTerrainAroundFeatures(char[] cells, int width, int height)
@@ -613,8 +590,9 @@ namespace AntFarmer.Gen
             {
                 for (int x = 1; x < width - 1; x++)
                 {
-                    float nx = (float)x / (p.RockFeatureSize / 2);
-                    float ny = (float)y / (p.RockFeatureSize / 2);
+                    float featureSize = Math.Max(1, p.RockFeatureSize);
+                    float nx = x / featureSize;
+                    float ny = y / featureSize;
                     float value = perlin.Get(nx, ny);
                     noiseValues.Add((value, x + y * width));
                 }
