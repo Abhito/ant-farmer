@@ -5,4 +5,11 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <RootNamespace>AntFarmer</RootNamespace>
   </PropertyGroup>
+  <ItemGroup>
+    <None Include="tools\MapGenerator.Cli\MapGenerator.Cli.csproj" />
+    <None Include="tools\MapGenerator.Cli\README.md" />
+    <None Include="tools\MapGenerator.Core\MapGenerator.Core.csproj" />
+    <Compile Remove="tools\MapGenerator.Cli\**\*.cs" />
+    <Compile Remove="tools\MapGenerator.Core\**\*.cs" />
+  </ItemGroup>
 </Project>
