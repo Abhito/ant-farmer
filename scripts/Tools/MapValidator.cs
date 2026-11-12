@@ -214,26 +214,9 @@ public static class MapValidator
 
     private static void CheckConnected(MapData map, ValidityRules rules, ValidityReport report)
     {
-        var seen = new bool[map.Width * map.Height];
-        int total = 0;
-        int largest = 0;
-
-        for (int y = 0; y < map.Height; y++)
-        {
-            for (int x = 0; x < map.Width; x++)
-            {
-                if (!map[x, y].IsWalkable)
-                    continue;
-
-                total++;
-                if (seen[y * map.Width + x])
-                    continue;
-
-                largest = Math.Max(largest, FloodSize(map, new Vector2I(x, y), seen));
-            }
-        }
-
-        report.ConnectedShare = total > 0 ? (float)largest / total : 0f;
+        List<int> regions = RegionSizes(map);
+        int total = regions.Sum();
+        report.ConnectedShare = total > 0 ? (float)regions.Max() / total : 0f;
         if (report.ConnectedShare < rules.MinConnectedShare)
             report.Add("connected", $"largest open region is {report.ConnectedShare:P0} of open ground, need {rules.MinConnectedShare:P0}");
     }
@@ -259,6 +242,18 @@ public static class MapValidator
                 if (map.InBounds(p) && !cells.Contains(p))
                     yield return p;
             }
+    }
+
+    // Size of each separate open area.
+    public static List<int> RegionSizes(MapData map)
+    {
+        var seen = new bool[map.Width * map.Height];
+        var sizes = new List<int>();
+        for (int y = 0; y < map.Height; y++)
+            for (int x = 0; x < map.Width; x++)
+                if (map[x, y].IsWalkable && !seen[y * map.Width + x])
+                    sizes.Add(FloodSize(map, new Vector2I(x, y), seen));
+        return sizes;
     }
 
     private static int FloodSize(MapData map, Vector2I start, bool[] seen)

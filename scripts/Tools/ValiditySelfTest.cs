@@ -24,6 +24,8 @@ public static class ValiditySelfTest
 
         passed &= Expect("costs match the game's pathfinder", CostsMatchPathfinder(baseline.Map), baseline);
 
+        passed &= Expect("mirrored map measures the same for both sides", SidesMatch(baseline), baseline);
+
         ValidityReport small = MapValidator.Check(FileAccess.GetFileAsString(SmallMap));
         passed &= Expect("small arena fails size", Has(small, "size"), small);
 
@@ -100,6 +102,14 @@ public static class ValiditySelfTest
             }
         }
         return ok;
+    }
+
+    private static bool SidesMatch(ValidityReport report)
+    {
+        Dictionary<string, double> m = MapMetrics.Measure(report).ToDictionary(v => v.Name, v => v.Value);
+        bool Same(string a, string b) => Math.Abs(m[a] - m[b]) < 0.01;
+        return Same("food_access_red", "food_access_blue") && Same("exposure_red", "exposure_blue")
+               && Same("entrances_red", "entrances_blue") && m["fairness_gap"] < 0.01 && m["exposure_gap"] < 0.01;
     }
 
     private static bool Expect(string name, bool ok, ValidityReport report)
