@@ -3,6 +3,8 @@ using System.Collections.Generic;
 
 namespace AntFarmer.Gen
 {
+    // Cave rock from cellular automata, adapted from the C# example code in RogueBasin, "Cellular Automata Method for Generating Random Cave-Like Levels"
+    // (https://www.roguebasin.com/index.php/Cellular_Automata_Method_for_Generating_Random_Cave-Like_Levels).
     public static class CellularAutomata
     {
         public static bool[] Generate(int width, int height, Random rand, int iterations = 4, int percentAreWalls = 40)

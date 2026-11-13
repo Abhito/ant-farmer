@@ -29,3 +29,8 @@ results/raw/
 
 # Generated map files from the map batch (re-made by scenes/MapBatch.tscn)
 results/maps/generated/
+
+# Submission files kept outside the repo
+*.mp4
+Ant_Farmer_Report_D2.pdf
+docs/writeup/

@@ -8,7 +8,8 @@ namespace AntFarmer.Gen
     // Dart throwing (Millington §8.1.4): try candidates in random order and keep each one far enough from those kept.
     public static class PoissonDisk
     {
-        // Weights make some candidates likely to be tried earlier (weighted random order: each gets the key u^(1/w)).
+        // Weights make some candidates likely to be tried earlier: each gets the key u^(1/w)
+        // (Efraimidis and Spirakis, "Weighted random sampling with a reservoir", 2006).
         public static List<Disk> Generate(IReadOnlyList<Disk> candidates, int count, int minSpacing, Random rand,
             IReadOnlyList<float>? weights = null)
         {
