@@ -22,6 +22,8 @@ public partial class Hud : CanvasLayer
 
     public bool Paused { get; set; }
 
+    public string MapName { get; set; } = "";
+
     public void SetSimulation(Simulation sim)
     {
         EnsureBuilt();
@@ -53,7 +55,8 @@ public partial class Hud : CanvasLayer
         _clock.Text = $"{seconds / 60}:{seconds % 60:00}";
 
         string paused = Paused ? "PAUSED  ·  " : "";
-        _info.Text = $"{paused}first to {_sim.WinTarget}  ·  piles of {_sim.PileSize}, regrow {_sim.RegrowSeconds:0}-{_sim.RegrowSeconds * _sim.Settings.NearNestRegrowFactor:0}s  ·  guard area {_sim.DefendLeash:0.0}  ·  seed {_sim.Settings.Seed}";
+        string map = MapName.Length > 0 ? $"map {MapName}  ·  " : "";
+        _info.Text = $"{paused}{map}first to {_sim.WinTarget}  ·  piles of {_sim.PileSize}, regrow {_sim.RegrowSeconds:0}-{_sim.RegrowSeconds * _sim.Settings.NearNestRegrowFactor:0}s  ·  guard area {_sim.DefendLeash:0.0}  ·  seed {_sim.Settings.Seed}";
 
         if (_sim.IsOver && !_banner.Visible)
             ShowBanner();

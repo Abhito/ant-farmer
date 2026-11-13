@@ -1,15 +1,49 @@
+using System;
+using AntFarmer.Gen;
 using AntFarmer.Sim;
 using AntFarmer.Sim.Ai;
+using AntFarmer.Tools;
 using AntFarmer.View;
 using Godot;
 
 namespace AntFarmer;
 
-/// <summary>Main scene: runs the simulation on a fixed clock and draws it. R restarts, Space pauses.</summary>
+public enum MapSource
+{
+    File,
+    Generated,
+}
+
+public enum MapPreset
+{
+    Open,
+    Caves,
+    Highlands,
+    Contested,
+}
+
+/// <summary>
+/// Main scene: runs the simulation on a fixed clock and draws it.
+/// R restarts, Space pauses, N makes a new generated map, 1-4 pick the generator preset.
+/// </summary>
 public partial class GameRunner : Node
 {
+    // Generated maps that fail the validity check are rejected and the next seed is tried, up to this many times.
+    private const int MaxMapAttempts = 20;
+
+    [ExportGroup("Map")]
+    [Export] public MapSource MapSource { get; set; } = MapSource.File;
+
     [Export(PropertyHint.File, "*.txt")]
     public string MapPath { get; set; } = "res://maps/arena.txt";
+
+    [Export] public MapPreset MapPreset { get; set; } = MapPreset.Open;
+
+    [Export] public int MapSeed { get; set; } = 1;
+
+    [Export] public bool RepairMap { get; set; } = true;
+
+    [ExportGroup("")]
 
     [Export] public MapView MapView { get; set; }
     [Export] public AntView AntView { get; set; }
@@ -53,14 +87,19 @@ public partial class GameRunner : Node
     private double _tickTimer;
     private int _lastFoodRemaining;
     private bool _paused;
+    private string _mapName;
+
+    // Set from the command line to save one screenshot and quit.
+    private string _screenshotPath;
+    private float _screenshotAt;
+    private bool _screenshotTaken;
 
     public override void _Ready()
     {
         RenderingServer.SetDefaultClearColor(new Color(0.08f, 0.07f, 0.06f));
 
-        Map = MapLoader.LoadFile(MapPath);
-        PrintMapSummary();
-
+        ReadCommandLine();
+        LoadMap();
         StartMatch();
 
         FitCameraToMap();
@@ -97,6 +136,7 @@ public partial class GameRunner : Node
         AntView.TickBlend = 1f;
         Hud.SetSimulation(Sim);
         Hud.Paused = false;
+        Hud.MapName = _mapName;
 
         GD.Print($"Match started: seed {settings.Seed}, {settings.TicksPerSecond} ticks/s, " +
                  $"{settings.MatchSeconds}s limit, first to {Sim.WinTarget} deliveries wins, " +
@@ -123,6 +163,12 @@ public partial class GameRunner : Node
 
         AntView.TickBlend = Sim.IsOver ? 1f : (float)(_tickTimer / tickLength);
 
+        if (_screenshotPath != null && !_screenshotTaken && (Sim.ElapsedSeconds >= _screenshotAt || Sim.IsOver))
+        {
+            _screenshotTaken = true;
+            SaveScreenshotAndQuit();
+        }
+
         if (Sim.FoodRemaining != _lastFoodRemaining)
         {
             _lastFoodRemaining = Sim.FoodRemaining;
@@ -144,7 +190,120 @@ public partial class GameRunner : Node
                 _paused = !_paused;
                 Hud.Paused = _paused;
                 break;
+            case Key.N:
+                if (MapSource == MapSource.Generated)
+                    MapSeed++;
+                MapSource = MapSource.Generated;
+                ReloadMap();
+                break;
+            case >= Key.Key1 and <= Key.Key4:
+                MapSource = MapSource.Generated;
+                MapPreset = (MapPreset)(key.Keycode - Key.Key1);
+                ReloadMap();
+                break;
         }
+    }
+
+    private void ReloadMap()
+    {
+        LoadMap();
+        StartMatch();
+        FitCameraToMap();
+    }
+
+    private void LoadMap()
+    {
+        if (MapSource == MapSource.File)
+        {
+            Map = MapLoader.LoadFile(MapPath);
+            _mapName = MapPath.GetFile().GetBaseName();
+        }
+        else
+        {
+            Map = GenerateMap();
+        }
+
+        PrintMapSummary();
+    }
+
+    // Generate, check, and reject: a map that fails the validity check is thrown away and the next seed is tried.
+    private MapData GenerateMap()
+    {
+        for (int attempt = 0; attempt < MaxMapAttempts; attempt++)
+        {
+            GenParams parameters = PresetParams(MapPreset);
+            string text = MapGenerator.Generate(parameters, MapSeed, RepairMap);
+            ValidityReport report = MapValidator.Check(text);
+            if (report.IsValid)
+            {
+                _mapName = $"{MapPreset} {MapSeed}{(RepairMap ? "" : " raw")}";
+                return report.Map;
+            }
+
+            GD.Print($"Rejected {MapPreset} seed {MapSeed}: {string.Join("; ", report.Problems)}");
+            MapSeed++;
+        }
+
+        GD.PrintErr($"No valid {MapPreset} map in {MaxMapAttempts} seeds; using {MapPath}.");
+        _mapName = MapPath.GetFile().GetBaseName();
+        return MapLoader.LoadFile(MapPath);
+    }
+
+    private static GenParams PresetParams(MapPreset preset) => preset switch
+    {
+        MapPreset.Caves => GenParams.Caves(),
+        MapPreset.Highlands => GenParams.Highlands(),
+        MapPreset.Contested => GenParams.Contested(),
+        _ => GenParams.Open(),
+    };
+
+    // Options after "--": map=Caves:7, raw, seed=12, sim_speed=4, shot=path.png, shot_at=30.
+    private void ReadCommandLine()
+    {
+        foreach (string arg in OS.GetCmdlineUserArgs())
+        {
+            string[] parts = arg.Split('=', 2);
+            string value = parts.Length > 1 ? parts[1] : "";
+            switch (parts[0])
+            {
+                case "map":
+                    string[] map = value.Split(':');
+                    MapSource = MapSource.Generated;
+                    MapPreset = Enum.Parse<MapPreset>(map[0], ignoreCase: true);
+                    if (map.Length > 1)
+                        MapSeed = int.Parse(map[1]);
+                    break;
+                case "map_file":
+                    MapSource = MapSource.File;
+                    MapPath = value;
+                    break;
+                case "raw":
+                    RepairMap = false;
+                    break;
+                case "seed":
+                    Seed = int.Parse(value);
+                    break;
+                case "sim_speed":
+                    SimSpeed = float.Parse(value, System.Globalization.CultureInfo.InvariantCulture);
+                    break;
+                case "shot":
+                    _screenshotPath = value;
+                    break;
+                case "shot_at":
+                    _screenshotAt = float.Parse(value, System.Globalization.CultureInfo.InvariantCulture);
+                    break;
+            }
+        }
+    }
+
+    private async void SaveScreenshotAndQuit()
+    {
+        // Wait for the current frame to finish drawing so the image has this tick on it.
+        await ToSignal(RenderingServer.Singleton, RenderingServer.SignalName.FramePostDraw);
+        Image image = GetViewport().GetTexture().GetImage();
+        image.SavePng(_screenshotPath);
+        GD.Print($"Saved screenshot to {_screenshotPath}");
+        GetTree().Quit();
     }
 
     private static void LogRole(Simulation sim, Ant ant, string what, string reason)
@@ -193,7 +352,7 @@ public partial class GameRunner : Node
             }
         }
 
-        GD.Print($"Loaded {MapPath}: {Map.Width}x{Map.Height}, " +
+        GD.Print($"Loaded {_mapName}: {Map.Width}x{Map.Height}, " +
                  $"{rockCells} rock cells, {hillCells} hill cells, " +
                  $"{Map.Food.Count} food sources, " +
                  $"red nest {Map.Nests[Team.Red].Count} cells, blue nest {Map.Nests[Team.Blue].Count} cells.");

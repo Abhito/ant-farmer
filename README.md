@@ -42,6 +42,47 @@ Controls:
 |---|---|
 | **R** | Restart the match |
 | **Space** | Pause / resume |
+| **N** | Generate a new map (next seed) and restart |
+| **1-4** | Generate a map with the Open, Caves, Highlands or Contested preset |
+
+## Play on generated maps
+
+The map generator (`tools/MapGenerator.Core`) is plain C# and is built into the game. On the **GameRunner** node, under **Map**, set **Map Source** to **Generated**, then pick a **Map Preset**, **Map Seed**, and whether to **Repair** the map. Or press **N** or **1-4** while the game runs.
+
+Every generated map goes through the validity checker before the match starts. A map that fails is rejected, and the next seed is tried; the console says why. The bottom bar shows which map is playing, e.g. `map Caves 7`.
+
+From the command line, add options after `--`:
+
+```
+Godot_v4.7.2-stable_mono_win64_console.exe --headless --path . --fixed-fps 60 --quit-after 12000 res://scenes/Main.tscn -- map=Caves:7
+```
+
+| Option | Meaning |
+|---|---|
+| `map=Caves:7` | Generated map: preset and seed |
+| `raw` | Skip the generator's repair step |
+| `map_file=res://maps/arena_large.txt` | Play a map file |
+| `seed=12` | Match seed |
+| `shot=out.png shot_at=35` | Save a screenshot at 35 s of game time, then quit (needs a window, so leave out `--headless`) |
+
+## Generate and analyze maps
+
+The generator, its parameters and presets are described in [docs/MAP_GENERATION.md](docs/MAP_GENERATION.md) and [docs/PERLIN_ROCK_GENERATION_GUIDE.md](docs/PERLIN_ROCK_GENERATION_GUIDE.md).
+
+1. **Batch:** generate, check and measure 800 preset maps (4 presets × 100 seeds, raw and repaired) and 570 parameter-sweep maps (about 5 minutes):
+   ```
+   Godot_v4.7.2-stable_mono_win64_console.exe --headless --path . res://scenes/MapBatch.tscn -- 100 30
+   ```
+   This writes `results/maps/maps.csv` (one row per map: validity, failed rules, measurements) and the map files to `results/maps/generated/`.
+2. **Plots and tables:** needs Python 3 with matplotlib (`pip install matplotlib`):
+   ```
+   python tools/plot_maps.py
+   ```
+   This writes `results/maps/summary.md` (validity rates, medians), `distributions.png`, `expressive_range.png` and `sweeps.png`.
+3. **Check map files:** `res://scenes/MapCheck.tscn -- <file or folder>` prints each map's problems and measurements. `-- selftest` breaks a good map in 12 ways and confirms the checker catches each one, and confirms its path costs match the game's A*.
+4. **Generator on its own (no Godot):** `dotnet run --project tools/MapGenerator.Cli -- Caves 1234` saves `maps/Caves_1234.txt`. See `tools/MapGenerator.Cli/README.md`.
+
+Screenshots of generated maps in play, and two failed maps, are in `results/maps/screenshots/`.
 
 ## Change the match settings
 
@@ -80,6 +121,7 @@ What the results show: [docs/EVALUATION.md](docs/EVALUATION.md). To redo the tab
 ## Attribution
 
 - **Engine (Godot 4.7.2, MIT license):** the engine itself, its C# bindings (`Godot.NET.Sdk`), and `AStarGrid2D`, which we use for grid pathfinding (`scripts/Sim/Pathfinder.cs` supplies only the step cost, including the climbing penalty). Rendering uses Godot's built-in 2D drawing calls.
-- **Our code:** everything in `scenes/`, `maps/` and `tools/`: the simulation, ant behaviors, team AI interface, Baseline and Fixed Mix opponents, the Strategist, the evaluation runner and scripts. Claude Code with Sonnet 5.5 was used to generate scripts for testing, boilerplate code, and to find documentation or generate guides.
+- **Our code:** everything in `scenes/`, `scripts/`, `maps/` and `tools/`: the simulation, ant behaviors, team AI interface, Baseline and Fixed Mix opponents, the Strategist, the evaluation runner and scripts, the map generator (Perlin noise, cellular automata, Poisson disk food placement, repair), the validity checker, map measurements and plots. The generator does not use Godot's `FastNoiseLite` or any generation library. Claude Code with Sonnet 5.5 was used to generate scripts for testing, boilerplate code, and to find documentation or generate guides.
 - **Others:** no third-party code, assets or libraries.
-- **Design references:** Millington, *AI for Games*, 3rd ed. (CRC Press, 2019): multi-tier AI (§6.4.1), rule-based systems with first-applicable arbitration (§5.8, §5.8.5), hysteresis (§6.4.2).
+- **Design references:** Millington, *AI for Games*, 3rd ed. (CRC Press, 2019): multi-tier AI (§6.4.1), rule-based systems with first-applicable arbitration (§5.8, §5.8.5), hysteresis (§6.4.2); Perlin noise (§8.3.3), Poisson disk (§8.1.4), height-maps (§8.3.1), generate and test (§8.4.4).
+- **Map generation references:** cellular automata caves from Shaker, Togelius & Nelson, *Procedural Content Generation in Games*, Ch. 3 §3.4 (Springer, 2016), based on Johnson, Yannakakis & Togelius (2010), and the RogueBasin article "Cellular Automata Method for Generating Random Cave-Like Levels".
